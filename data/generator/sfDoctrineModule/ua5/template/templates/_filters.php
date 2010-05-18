@@ -7,30 +7,26 @@
   [?php endif; ?]
 
   <form action="[?php echo url_for('<?php echo $this->getUrlForAction('collection') ?>', array('action' => 'filter')) ?]" method="post">
-    <table cellspacing="0">
-      <tfoot>
-        <tr>
-          <td colspan="2">
-            [?php echo $form->renderHiddenFields() ?]
-            [?php echo link_to(__('Reset', array(), 'ua5_admin'), '<?php echo $this->getUrlForAction('collection') ?>', array('action' => 'filter'), array('query_string' => '_reset', 'method' => 'post')) ?]
-            <input type="submit" value="[?php echo __('Filter', array(), 'ua5_admin') ?]" />
-          </td>
-        </tr>
-      </tfoot>
-      <tbody>
-        [?php foreach ($configuration->getFormFilterFields($form) as $name => $field): ?]
-        [?php if ((isset($form[$name]) && $form[$name]->isHidden()) || (!isset($form[$name]) && $field->isReal())) continue ?]
-          [?php include_partial('<?php echo $this->getModuleName() ?>/filters_field', array(
-            'name'       => $name,
-            'attributes' => $field->getConfig('attributes', array()),
-            'label'      => $field->getConfig('label'),
-            'help'       => $field->getConfig('help'),
-            'form'       => $form,
-            'field'      => $field,
-            'class'      => 'ua5_admin_form_row ua5_admin_'.strtolower($field->getType()).' ua5_admin_filter_field_'.$name,
-          )) ?]
-        [?php endforeach; ?]
-      </tbody>
-    </table>
+
+    <ul class="ua5_admin_filter_fields">
+      [?php foreach ($configuration->getFormFilterFields($form) as $name => $field): ?]
+      [?php if ((isset($form[$name]) && $form[$name]->isHidden()) || (!isset($form[$name]) && $field->isReal())) continue ?]
+        [?php include_partial('<?php echo $this->getModuleName() ?>/filters_field', array(
+          'name'       => $name,
+          'attributes' => $field->getConfig('attributes', array()),
+          'label'      => $field->getConfig('label'),
+          'help'       => $field->getConfig('help'),
+          'form'       => $form,
+          'field'      => $field,
+          'class'      => 'ua5_admin_form_row ua5_admin_'.strtolower($field->getType()).' ua5_admin_filter_field_'.$name,
+        )) ?]
+      [?php endforeach; ?]
+    </ul>
+    
+    
+    [?php echo $form->renderHiddenFields() ?]
+    [?php echo link_to(__('Reset', array(), 'ua5_admin'), '<?php echo $this->getUrlForAction('collection') ?>', array('action' => 'filter'), array('query_string' => '_reset', 'method' => 'post')) ?]
+    <input type="submit" value="[?php echo __('Filter', array(), 'ua5_admin') ?]" />
+      
   </form>
 </div>

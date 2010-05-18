@@ -2,35 +2,63 @@
 [?php include_partial('<?php echo $this->getModuleName() ?>/assets') ?]
 
 <div id="ua5_admin_container">
-  <h1>[?php echo <?php echo $this->getI18NString('list.title') ?> ?]</h1>
 
-  [?php include_partial('<?php echo $this->getModuleName() ?>/flashes') ?]
-
-  <div id="ua5_admin_header">
-    [?php include_partial('<?php echo $this->getModuleName() ?>/list_header', array('pager' => $pager)) ?]
-  </div>
-
-<?php if ($this->configuration->hasFilterForm()): ?>
-  <div id="ua5_admin_bar">
-    [?php include_partial('<?php echo $this->getModuleName() ?>/filters', array('form' => $filters, 'configuration' => $configuration)) ?]
-  </div>
-<?php endif; ?>
-
-  <div id="ua5_admin_content">
-<?php if ($this->configuration->getValue('list.batch_actions')): ?>
-    <form action="[?php echo url_for('<?php echo $this->getUrlForAction('collection') ?>', array('action' => 'batch')) ?]" method="post">
-<?php endif; ?>
-    [?php include_partial('<?php echo $this->getModuleName() ?>/list', array('pager' => $pager, 'sort' => $sort, 'helper' => $helper)) ?]
-    <ul class="ua5_admin_actions">
-      [?php include_partial('<?php echo $this->getModuleName() ?>/list_batch_actions', array('helper' => $helper)) ?]
-      [?php include_partial('<?php echo $this->getModuleName() ?>/list_actions', array('helper' => $helper)) ?]
-    </ul>
-<?php if ($this->configuration->getValue('list.batch_actions')): ?>
-    </form>
-<?php endif; ?>
-  </div>
-
-  <div id="ua5_admin_footer">
-    [?php include_partial('<?php echo $this->getModuleName() ?>/list_footer', array('pager' => $pager)) ?]
-  </div>
+   <div id="bd-hd" class="yui-g">
+     <div class="yui-u first">
+       <h1>[?php echo <?php echo $this->getI18NString('list.title') ?> ?]</h1>
+     </div>
+   </div>
+   
+    <div id="yui-main" class="yui-ge"> <!-- main content -->
+                
+      <div class="yui-u first">
+      
+         <div class="yui-b" id="bd-content">
+	  
+           [?php include_partial('<?php echo $this->getModuleName() ?>/flashes') ?]
+         
+           <div id="ua5_admin_header">
+             [?php include_partial('<?php echo $this->getModuleName() ?>/list_header', array('pager' => $pager)) ?]
+           </div>
+         
+         <?php if ($this->configuration->hasFilterForm()): ?>
+           <div id="ua5_admin_bar">
+             [?php include_partial('<?php echo $this->getModuleName() ?>/filters', array('form' => $filters, 'configuration' => $configuration)) ?]
+           </div>
+         <?php endif; ?>
+         
+           <div id="ua5_admin_content">
+         <?php if ($this->configuration->getValue('list.batch_actions')): ?>
+             <form action="[?php echo url_for('<?php echo $this->getUrlForAction('collection') ?>', array('action' => 'batch')) ?]" method="post">
+         <?php endif; ?>
+             [?php include_partial('<?php echo $this->getModuleName() ?>/list', array('pager' => $pager, 'sort' => $sort, 'helper' => $helper)) ?]
+             <ul class="ua5_admin_actions">
+               [?php include_partial('<?php echo $this->getModuleName() ?>/list_batch_actions', array('helper' => $helper)) ?]
+               [?php include_partial('<?php echo $this->getModuleName() ?>/list_actions', array('helper' => $helper)) ?]
+             </ul>
+         <?php if ($this->configuration->getValue('list.batch_actions')): ?>
+             </form>
+         <?php endif; ?>
+           </div>
+         
+           <div id="ua5_admin_footer">
+             [?php include_partial('<?php echo $this->getModuleName() ?>/list_footer', array('pager' => $pager)) ?]
+           </div>
+           
+         </div>
+	  
+      </div>
+                   
+      <div class="yui-u">  <!-- Right Side -->
+       
+        <div id="bd-secondary">
+          
+          [?php include_partial('<?php echo $this->getModuleName() ?>/right_column') ?]
+      
+        </div>               
+      
+      </div>                 <!-- End Right Side -->
+  
+    </div>          <!-- End Main Content Section -->
+  
 </div>

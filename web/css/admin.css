@@ -1,0 +1,226 @@
+@CHARSET "ISO-8859-1";
+
+/*
+ *  V1 UA5 Admin Style Sheet
+ *
+ *  Written by J.J. Kaye for Use All Five. jjkaye@useallfive.com
+ *
+ *  There is LOTS of CSS 3 Happening, but don't worry. Plenty of JS fallback.
+ */
+ 
+html, body { background-color: #1f7799; }
+
+a { color: #2090bc; text-decoration: none; }
+
+a:hover { text-decoration: underline; }
+
+#main { 
+
+  min-width: 974px;
+  max-width: 98.46em;
+  *max-width: 96em ?>;
+  margin: 0 auto;
+  padding: 0 15px;
+  text-align:left;
+  width:auto;/* non-IE */
+  z-index: 3000;
+
+}
+
+#ua5_admin_container { background-color: #fff; height: 100%;}
+
+#ft {  }
+
+.clear { clear: left; }
+
+.round {
+  -webkit-border-radius: 5px;
+     -moz-border-radius: 5px; 
+          border-radius: 5px;
+}
+
+input[type='submit'], a.button { 
+  background-color: #e0e0e0;  padding: .3em .8em;
+  border: 1px solid #c1c1c1; font-weight: bold; color: #2090bc; cursor: pointer;
+  background-image: -moz-linear-gradient(100% 100% 90deg, #d5d5d5, #f6f6f6);
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f6f6f6), to(#d5d5d5));
+}
+
+
+/* Header */
+
+  #hd-actions { 
+    font-size: 85%; float: right; margin: 1em 10px 0 0;
+  }
+  
+    #hd-actions li, #hd-actions li a {
+      float: left; display: inline;
+    }
+    
+    #hd-actions li {
+      margin-right: 10px;
+    }
+    
+      #hd-actions li a { 
+        padding: .4em .5em; color: #e6efff;
+      }
+      
+      #hd-actions li a:hover { 
+        text-decoration: none;
+      }
+      
+      #hd-actions li.help a {
+        padding: .4em .7em;
+        background-color: #0f516b;
+        text-decoration: none;
+      }
+      
+
+  /* Title */
+  
+  #hd-title { 
+    float: left; display: inline;
+    margin: 2em 0px .2em 20px;
+  }
+  
+    #hd-title span {
+      float: left; display: inline;
+    }
+    
+    #hd-title .account { 
+      font-size: 182%; font-weight: bold;
+      text-shadow: #000 1px 1px 0px;
+      letter-spacing: -.07em;
+    }
+      
+      #hd-title .account a {
+        color: #fff; text-decoration: none;
+      }
+    
+    #hd-title .client { 
+      font-size: 108%; font-weight: bold;
+      margin-left: 10px;
+    }
+    
+      #hd-title .client a {
+        color: #fff; text-decoration: none; 
+        float: left; display: inline;
+        padding: .5em .9em;
+        background-color: #0f516b;
+      }
+      
+      #hd-title .client a:hover { text-decoration: underline; cursor: pointer; }
+      
+      
+      
+/* Main Navigation */
+  
+  #hd-nav {
+    float: right; display: inline; width: auto; clear: right; margin: 1.2em 15px 0 0;
+  }
+  
+    #hd-nav .tab { 
+      font-size: 108%; font-weight: bold; float: left; display: inline;
+    }
+    
+      #hd-nav .tab a, #hd-nav .tab span { 
+        padding: .5em .9em; float: left; display: inline;  text-decoration: none; margin-right: 5px;
+      }
+      
+      #hd-nav .tab a { color: #eee; background-color: #0f516b;}
+      
+      #hd-nav .tab span { color: #0b626f; background-color: #e0f6ff; }
+      
+      #hd-nav .tab a:hover { background-color: #2090bc; }
+      
+
+/* Body */
+  
+  #bd-hd {
+    background-color: #e0f6ff;
+    border-bottom: #b5daea solid 1px;
+    /*padding: 1.1em 0;*/
+  }
+  
+    #bd-hd h1 {
+      font-size: 153.9%; font-weight: bold; margin: .9em 0 .9em 20px;
+    }
+    
+      #bd-hd h1 { color: #555; text-decoration: none; }
+      
+      #bd-hd h1 a:hover {
+        text-decoration: underline;
+      }
+      
+/* Content Sections */        
+  
+  #bd-content { 
+    margin: 20px 0 20px 20px; padding-right: 20px; border-right: 1px #e5e5e5 solid; 
+  }
+  
+  /* Filter */
+  
+  #ua5_admin_bar { 
+    background: #f3f3f3; border: 1px solid #e5e5e5; 
+  }
+  
+  .ua5_admin_filter_fields { padding: 0 1em 1em 1em; }
+  
+  .ua5_admin_filter_fields label { 
+    font-size: 85%; text-transform: uppercase; color: #666; width: 15em; display: inline; float: left; padding-top: .5em; 
+  }
+  
+    .ua5_admin_filter_fields input { 
+      width: 20em; border: 1px solid #ccc; padding: .5em;
+    }
+    
+    .ua5_admin_filter_fields input, .ua5_admin_filter_fields select { 
+      float: left; display: inline;
+    }
+    
+    .ua5_admin_form_row { display: block; clear: left; padding-top: 1em;}
+  
+          
+  /* Secondary Nav */
+  
+  #bd-secondary {
+    margin: 20px 20px 0 0;
+  }
+  
+    #bd-secondary a.button.create { 
+      height: 30px; width: 179px; background: transparent url(../images/create_new_lead_button.png) no-repeat 0px -30px; display: block;
+    }
+    
+      #bd-secondary a.button.create:hover { background-position: 0px 0px; }
+    
+      #bd-secondary a.button.create span { display: none; }
+  
+    #bd-secondary h4 {
+      font-size: 85%; text-transform: uppercase; color: #ccc;
+      border-bottom: 1px solid #e5e5e5; font-weight: bold; padding-bottom: 3px; margin-top: 2.7em;
+    }
+    
+    #bd-secondary #bd-navigation {
+      font-size: 93%;
+    }
+    
+      #bd-secondary #bd-navigation li { padding: .2em 0; border-bottom: 1px solid #e5e5e5; } 
+      
+      #bd-secondary #bd-navigation li a {
+        text-transform: none; font-weight: bold; padding: .8em 0 .8em 0px; display: block; text-decoration: none;
+      }
+      
+        #bd-secondary #bd-navigation li a span { padding-left: 15px; }
+        
+        #bd-secondary #bd-navigation li a em { 
+          font-size: 85%; padding: .3em .8em; background-color: #e0f6ff; margin-left: 8px; color: #555; float: left; display: inline; margin-top: -.2em;
+          font-style: normal; 
+        }
+        
+        #bd-secondary #bd-navigation li.current a em { background-color: #f7f972; }
+        #bd-secondary #bd-navigation li.past a em { background-color: #eee; }
+        
+        #bd-secondary #bd-navigation li.selected a { background-color: #2090bc; color: #fff; }
+              
+        #bd-secondary #bd-navigation li a:hover { background-color: #2090bc; color: #fff; }
+
