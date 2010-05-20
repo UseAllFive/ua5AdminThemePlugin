@@ -190,6 +190,8 @@ input[type='submit'], a.button {
     float: right; display: inline; position: absolute; right: 1em; top: 1em;
     padding-left: 24px; background: transparent url(../images/magnifier.png) no-repeat left center; 
   }
+  
+    a.ua5_admin_filter_toggle:hover { cursor: pointer; }
       
       
   /* List Style */
