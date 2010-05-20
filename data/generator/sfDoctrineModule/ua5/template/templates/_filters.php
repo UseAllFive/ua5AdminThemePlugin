@@ -2,13 +2,13 @@
 [?php use_javascripts_for_form($form) ?]
 
 <div class="ua5_admin_filter">
-  [?php if ($form->hasGlobalErrors()): ?]
-    [?php echo $form->renderGlobalErrors() ?]
-  [?php endif; ?]
+
+  <h2>Filter Results</h2>
 
   <form action="[?php echo url_for('<?php echo $this->getUrlForAction('collection') ?>', array('action' => 'filter')) ?]" method="post">
 
     <ul class="ua5_admin_filter_fields">
+    
       [?php foreach ($configuration->getFormFilterFields($form) as $name => $field): ?]
       [?php if ((isset($form[$name]) && $form[$name]->isHidden()) || (!isset($form[$name]) && $field->isReal())) continue ?]
         [?php include_partial('<?php echo $this->getModuleName() ?>/filters_field', array(
@@ -21,12 +21,18 @@
           'class'      => 'ua5_admin_form_row ua5_admin_'.strtolower($field->getType()).' ua5_admin_filter_field_'.$name,
         )) ?]
       [?php endforeach; ?]
+      
     </ul>
     
-    
-    [?php echo $form->renderHiddenFields() ?]
-    [?php echo link_to(__('Reset', array(), 'ua5_admin'), '<?php echo $this->getUrlForAction('collection') ?>', array('action' => 'filter'), array('query_string' => '_reset', 'method' => 'post')) ?]
-    <input type="submit" value="[?php echo __('Filter', array(), 'ua5_admin') ?]" />
+    <div class="ua5_admin_filter_submit">
+      [?php echo $form->renderHiddenFields() ?]
+      <input type="submit" value="[?php echo __('Filter', array(), 'ua5_admin') ?]" class="round" />
+      [?php echo link_to(__('Reset', array(), 'ua5_admin'), '<?php echo $this->getUrlForAction('collection') ?>', array('action' => 'filter'), array('query_string' => '_reset', 'method' => 'post')) ?]
+    </div>
       
   </form>
 </div>
+
+[?php if ($form->hasGlobalErrors()): ?]
+    [?php echo $form->renderGlobalErrors() ?]
+  [?php endif; ?]

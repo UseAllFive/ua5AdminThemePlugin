@@ -161,7 +161,7 @@ input[type='submit'], a.button {
   /* Filter */
   
   #ua5_admin_bar { 
-    background: #f3f3f3; border: 1px solid #e5e5e5; 
+    background: #f3f3f3; border: 1px solid #e5e5e5; position: relative;
   }
   
   .ua5_admin_filter_fields { padding: 0 1em 1em 1em; }
@@ -170,15 +170,43 @@ input[type='submit'], a.button {
     font-size: 85%; text-transform: uppercase; color: #666; width: 15em; display: inline; float: left; padding-top: .5em; 
   }
   
-    .ua5_admin_filter_fields input { 
+    .ua5_admin_filter_fields input, .ua5_admin_filter_fields select[multiple=multiple] { 
       width: 20em; border: 1px solid #ccc; padding: .5em;
     }
     
     .ua5_admin_filter_fields input, .ua5_admin_filter_fields select { 
-      float: left; display: inline;
+      float: left; display: inline; 
     }
     
-    .ua5_admin_form_row { display: block; clear: left; padding-top: 1em;}
+    .ua5_admin_form_row, .ua5_admin_filter_submit { display: block; clear: left; padding-top: 1em;}
+    
+    .ua5_admin_filter_submit { padding-bottom: 1em; padding-left: 14em; }
+    
+      .ua5_admin_filter_submit input[type=submit] { margin-right: .5em; }
+      
+  .ua5_admin_filter h2 { font-size: 108%; font-weight: bold; padding: 1em 1em 1em 1em; color: #555; }
+  
+  a.ua5_admin_filter_toggle { 
+    float: right; display: inline; position: absolute; right: 1em; top: 1em;
+    padding-left: 24px; background: transparent url(../images/magnifier.png) no-repeat left center; 
+  }
+      
+      
+  /* List Style */
+  
+  .ua5_admin_list { margin-top: 20px; }
+  
+    .ua5_admin_list table { /*border: 1px solid #eee;*/ }
+    
+      .ua5_admin_list table tr { border-bottom: 1px solid #e5e5e5; }
+      
+      .ua5_admin_list table td { padding: .5em; color: #555; }
+      
+      .ua5_admin_list table tr:hover { background: #f3f3f3; }
+      
+      .ua5_admin_list table thead { font-size: 85%; font-weight: bold; }
+        
+        .ua5_admin_list table thead th { padding-bottom: .5em; text-align: center; }
   
           
   /* Secondary Nav */
