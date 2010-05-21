@@ -27,16 +27,16 @@ UA5.Filter = Class.$extend({
     var $self = this;
   
     var toggle = $('<a/>')
-      .attr({ 'class' : 'ua5_admin_filter_toggle' })
-      .html('Open Filter')
+      .attr({ 'class' : 'ua5_admin_filter_toggle round' })
+      .html('Open')
       .click(function(e){
       
         e.preventDefault();
     
         if($self.open) {
-          $($self.filter + ' form').hide(); $(e.target).html('Open Filter'); $self.open = false;
+          $($self.filter + ' form').hide(); $(e.target).html('Open'); $self.open = false;
         } else {
-          $($self.filter + ' form').show(); $(e.target).html('Close Filter'); $self.open = true;
+          $($self.filter + ' form').show(); $(e.target).html('Close'); $self.open = true;
         }
     
       });

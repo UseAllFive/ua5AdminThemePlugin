@@ -187,8 +187,8 @@ input[type='submit'], a.button {
   .ua5_admin_filter h2 { font-size: 108%; font-weight: bold; padding: 1em 1em 1em 1em; color: #555; }
   
   a.ua5_admin_filter_toggle { 
-    float: right; display: inline; position: absolute; right: 1em; top: 1em;
-    padding-left: 24px; background: transparent url(../images/magnifier.png) no-repeat left center; 
+    float: right; display: inline; position: absolute; right: 1em; top: 1em; font-size: 85%; padding: .5em 1em .5em 3em;
+    background: #ccc url(../images/magnifier.png) no-repeat 1em center; color: #555; font-weight: bold;
   }
   
     a.ua5_admin_filter_toggle:hover { cursor: pointer; }
