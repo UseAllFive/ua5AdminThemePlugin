@@ -10,3 +10,18 @@
 <?php if (isset($this->params['css']) && ($this->params['css'] !== false)): ?> 
 [?php use_stylesheet('<?php echo $this->params['css'] ?>', 'first') ?] 
 <?php endif; ?>
+
+[?php 
+slot("tabs");
+include_partial("global/tabs", array('active' => ''));
+end_slot("tabs");
+
+slot("sub_tabs");
+include_partial("sub_tabs");
+end_slot("sub_tabs");
+
+slot("right_column");
+include_partial("right_column");
+end_slot("right_column");
+
+?]

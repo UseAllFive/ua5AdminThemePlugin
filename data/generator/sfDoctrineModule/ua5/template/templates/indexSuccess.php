@@ -1,22 +1,6 @@
 [?php use_helper('I18N', 'Date') ?]
 [?php include_partial('<?php echo $this->getModuleName() ?>/assets') ?]
 
-<div id="ua5_admin_container">
-
-   <div id="bd-hd" class="yui-g">
-     <div class="yui-u first">
-       <h1>[?php echo <?php echo $this->getI18NString('list.title') ?> ?]</h1>
-     </div>
-   </div>
-   
-    <div id="yui-main" class="yui-ge"> <!-- main content -->
-                
-      <div class="yui-u first">
-      
-         <div class="yui-b" id="bd-content">
-	  
-           [?php include_partial('<?php echo $this->getModuleName() ?>/flashes') ?]
-         
            <div id="ua5_admin_header">
              [?php include_partial('<?php echo $this->getModuleName() ?>/list_header', array('pager' => $pager)) ?]
            </div>
@@ -44,21 +28,3 @@
            <div id="ua5_admin_footer">
              [?php include_partial('<?php echo $this->getModuleName() ?>/list_footer', array('pager' => $pager)) ?]
            </div>
-           
-         </div>
-	  
-      </div>
-                   
-      <div class="yui-u">  <!-- Right Side -->
-       
-        <div id="bd-secondary">
-          
-          [?php include_partial('<?php echo $this->getModuleName() ?>/right_column') ?]
-      
-        </div>               
-      
-      </div>                 <!-- End Right Side -->
-  
-    </div>          <!-- End Main Content Section -->
-  
-</div>
