@@ -1,0 +1,1 @@
+<?php echo ucfirst($this->getModuleName()) ?> list

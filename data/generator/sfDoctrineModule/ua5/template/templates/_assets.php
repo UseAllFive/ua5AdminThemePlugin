@@ -12,6 +12,10 @@
 <?php endif; ?>
 
 [?php 
+slot("list_title");
+include_partial("list_title");
+end_slot("list_title");
+
 slot("tabs");
 include_partial("global/tabs", array('active' => ''));
 end_slot("tabs");
