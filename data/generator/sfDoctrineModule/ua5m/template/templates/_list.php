@@ -1,3 +1,4 @@
+<?php /*
 <div class="ua5_admin_list">
   <?php if (!$pager->getNbResults()): ?>
     <p><?php echo __('No result', array(), 'ua5_admin') ?></p>
@@ -36,7 +37,7 @@
     </table>
   <?php endif; ?>
 </div>
-
+*/?>
 <script type="text/javascript">
 /* <![CDATA[ */
 function checkAll()
