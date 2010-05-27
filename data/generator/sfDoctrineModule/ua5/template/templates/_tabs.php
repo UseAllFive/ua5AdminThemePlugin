@@ -1,2 +1,2 @@
-<div class="tabs">
-</div> 
+<ul id="hd-nav">
+</ul> 
