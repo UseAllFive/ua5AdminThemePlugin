@@ -10,6 +10,11 @@
  */
 abstract class Base<?php echo ucfirst($this->getModuleName()) ?>GeneratorConfiguration extends sfModelGeneratorConfiguration
 {
+  public function compile()
+  {
+    sfConfig::set('sf_app_template_dir', sfConfig::get("sf_plugins_dir").'/ua5AdminThemePlugin/templates');
+    parent::compile();   
+  }
 <?php include dirname(__FILE__).'/actionsConfiguration.php' ?>
 
 <?php include dirname(__FILE__).'/fieldsConfiguration.php' ?>

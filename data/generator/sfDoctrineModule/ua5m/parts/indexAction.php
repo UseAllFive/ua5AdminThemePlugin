@@ -1,3 +1,9 @@
+  public function initialize($context, $moduleName, $actionName)
+  {
+    sfConfig::set('sf_app_template_dir', sfConfig::get("sf_plugins_dir").'/ua5AdminThemePlugin/templates');
+    parent::initialize($context, $moduleName, $actionName);
+  }
+  
   public function executeIndex(sfWebRequest $request)
   {
     $this->pager = false;
