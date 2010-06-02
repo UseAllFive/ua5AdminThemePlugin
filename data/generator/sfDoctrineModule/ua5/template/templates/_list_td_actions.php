@@ -1,5 +1,5 @@
-<td>
-  <ul class="ua5_admin_td_actions">
+<td class="ua5_admin_td_actions">
+  <ul class="ua5_admin_td_actions_list">
 <?php foreach ($this->configuration->getValue('list.object_actions') as $name => $params): ?>
 <?php if ('_delete' == $name): ?>
     <?php echo $this->addCredentialCondition('[?php echo $helper->linkToDelete($'.$this->getSingularName().', '.$this->asPhp($params).') ?]', $params) ?>

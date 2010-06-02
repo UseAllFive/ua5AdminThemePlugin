@@ -8,7 +8,9 @@
  *  There is LOTS of CSS 3 Happening, but don't worry. Plenty of JS fallback.
  */
  
-html, body { background-color: #1f7799; }
+html, body {  }
+
+html { background: #9ddef1 url(../images/bg.jpg) top left repeat-x; }
 
 a { color: #2090bc; text-decoration: none; }
 
@@ -27,7 +29,13 @@ a:hover { text-decoration: underline; }
 
 }
 
-#ua5_admin_container { background-color: #fff; height: 100%;}
+#ua5_admin_container { 
+  background: #f6f6f6; height: 100%; 
+  -webkit-box-shadow: 0px 1px 5px #6f9eac;
+     -moz-box-shadow: 0px 1px 5px #6f9eac;
+          box-shadow: 0px 1px 5px #6f9eac;
+}
+
 
 #ft {  }
 
@@ -120,33 +128,32 @@ input[type='submit'], a.button {
   }
   
     #hd-nav .tab { 
-      font-size: 108%; font-weight: bold; float: left; display: inline;
+      font-size: 100%; font-weight: bold; float: left; display: inline;
     }
     
       #hd-nav .tab a, #hd-nav .tab span { 
         padding: .5em .9em; float: left; display: inline;  text-decoration: none; margin-right: 5px;
       }
       
-      #hd-nav .tab a { color: #eee; background-color: #0f516b;}
+      #hd-nav .tab a { color: #eee; background-color: #7f7f7f; }
       
-      #hd-nav .tab span { color: #0b626f; background-color: #e0f6ff; }
+       #hd-nav .tab a.active { color: #fff; background-color: #474747;}
       
-      #hd-nav .tab a:hover { background-color: #2090bc; }
+      #hd-nav .tab a:hover { background-color: #474747; }
       
 
 /* Body */
   
   #bd-hd {
-    background-color: #e0f6ff;
-    border-bottom: #b5daea solid 1px;
+    background-color: #474747;
     /*padding: 1.1em 0;*/
   }
   
     #bd-hd h1 {
-      font-size: 153.9%; font-weight: bold; margin: .9em 0 .9em 20px;
+      font-size: 153.9%; font-weight: bold; margin: .8em 0 .8em 20px;
     }
     
-      #bd-hd h1 { color: #555; text-decoration: none; }
+      #bd-hd h1 { color: #fff; text-decoration: none; }
       
       #bd-hd h1 a:hover {
         text-decoration: underline;
@@ -155,13 +162,17 @@ input[type='submit'], a.button {
 /* Content Sections */        
   
   #bd-content { 
-    margin: 20px 0 20px 20px; padding-right: 20px; border-right: 1px #e5e5e5 solid; 
+    margin: 20px 0 20px 20px; padding-right: 20px; border-right: 1px #e5e5e5 solid;
   }
+  
+    #ua5_admin_content { 
+      background: #fff; border: 3px solid #e5e5e5; padding: 15px;
+    }
   
   /* Filter */
   
   #ua5_admin_bar { 
-    background: #f3f3f3; border: 1px solid #e5e5e5; position: relative;
+    background: #f3f3f3; border: 1px solid #e5e5e5; position: relative; margin-bottom: 15px;
   }
   
   .ua5_admin_filter_fields { padding: 0 1em 1em 1em; }
@@ -198,17 +209,46 @@ input[type='submit'], a.button {
   
   .ua5_admin_list { margin-top: 20px; }
   
-    .ua5_admin_list table { /*border: 1px solid #eee;*/ }
+    .ua5_admin_list table { /*border: 1px solid #eee;*/ width: 100%; }
     
-      .ua5_admin_list table tr { border-bottom: 1px solid #e5e5e5; }
-      
+      .ua5_admin_list table tbody tr { border-top: 1px solid #e5e5e5; }
+            
       .ua5_admin_list table td { padding: .5em; color: #555; }
       
-      .ua5_admin_list table tr:hover { background: #f3f3f3; }
+      .ua5_admin_list table tbody tr:hover { background: #f0fbff; }
+      
+        .ua5_admin_td_actions { display: block; position: relative;}
+      
+        .ua5_admin_list table tr .ua5_admin_td_actions_list { 
+          /*visibility: hidden;*/ 
+          position: absolute;  display: inline; width: 11em;  display: none; float: left; top: 0px;
+          
+        }
+            
+        .ua5_admin_list table tr:hover .ua5_admin_td_actions_list {
+          /*visibility: visible;*/ display: block;
+        }
       
       .ua5_admin_list table thead { font-size: 85%; font-weight: bold; }
         
-        .ua5_admin_list table thead th { padding-bottom: .5em; text-align: center; }
+        .ua5_admin_list table thead th { padding: .5em; text-align: left; }
+              
+      .ua5_admin_td_actions li { 
+        float: left; display: inline; font-size: 85%; padding: .7em 1em .7em 3em; font-weight: bold;
+          -webkit-border-radius: 5px;
+     -moz-border-radius: 5px; 
+          border-radius: 5px;
+      }
+      
+      .ua5_admin_td_actions .sf_admin_action_edit {
+        background: #5bc4ee url(../images/pencil-field.png) no-repeat 1em center; 
+      }
+      
+      .ua5_admin_td_actions .sf_admin_action_delete {
+        background: #5bc4ee url(../images/cross.png) no-repeat 1em center;
+      }
+      
+      #ua5_admin_list_th_actions { display: none; width: 0; position: absolute;}
   
           
   /* Secondary Nav */
