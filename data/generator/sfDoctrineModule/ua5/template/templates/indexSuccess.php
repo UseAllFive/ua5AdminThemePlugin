@@ -20,6 +20,7 @@
                [?php include_partial('<?php echo $this->getModuleName() ?>/list_batch_actions', array('helper' => $helper)) ?]
                [?php include_partial('<?php echo $this->getModuleName() ?>/list_actions', array('helper' => $helper)) ?]
              </ul>
+             <hr class="clear" />
          <?php if ($this->configuration->getValue('list.batch_actions')): ?>
              </form>
          <?php endif; ?>

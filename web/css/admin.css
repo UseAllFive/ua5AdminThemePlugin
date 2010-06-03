@@ -12,7 +12,7 @@ html, body {  }
 
 html { background: #9ddef1 url(../images/bg.jpg) top left repeat-x; }
 
-a { color: #2090bc; text-decoration: none; }
+a { color: #0066ff; text-decoration: none; }
 
 a:hover { text-decoration: underline; }
 
@@ -41,6 +41,8 @@ a:hover { text-decoration: underline; }
 
 .clear { clear: left; }
 
+  hr.clear { visibility: hidden; margin: 0; padding: 0; }
+
 .round {
   -webkit-border-radius: 5px;
      -moz-border-radius: 5px; 
@@ -49,11 +51,24 @@ a:hover { text-decoration: underline; }
 
 input[type='submit'], a.button { 
   background-color: #e0e0e0;  padding: .3em .8em;
-  border: 1px solid #c1c1c1; font-weight: bold; color: #2090bc; cursor: pointer;
+  border: 1px solid #c1c1c1; font-weight: bold; color: #0066ff; cursor: pointer;
   background-image: -moz-linear-gradient(100% 100% 90deg, #d5d5d5, #f6f6f6);
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f6f6f6), to(#d5d5d5));
 }
 
+/* Field Styles */
+
+input[type='text'] { 
+  border: 1px solid #bdbdbd; font-size: 108%; font-weight: bold; padding: .3em; width: 30em;
+}
+
+  input.large_field { 
+    font-size: 138.5%; padding: .3em;
+  }
+  
+  label { 
+    font-size: 85%; text-transform: uppercase; padding-bottom: .5em;  display: block;
+  }
 
 /* Header */
 
@@ -159,6 +174,10 @@ input[type='submit'], a.button {
         text-decoration: underline;
       }
       
+    #ua5_admin_container h2 { 
+      font-size: 123.1%; font-weight: bold; color: #555; border-bottom: 1px solid #eee; padding-bottom: .5em; margin-bottom: .5em;
+    }
+      
 /* Content Sections */        
   
   #bd-content { 
@@ -222,6 +241,7 @@ input[type='submit'], a.button {
         .ua5_admin_list table tr .ua5_admin_td_actions_list { 
           /*visibility: hidden;*/ 
           position: absolute;  display: inline; width: 11em;  display: none; float: left; top: 0px;
+          background: transparent url(../images/arrow.gif) left center no-repeat; padding-left: 6px;
           
         }
             
@@ -235,17 +255,17 @@ input[type='submit'], a.button {
               
       .ua5_admin_td_actions li { 
         float: left; display: inline; font-size: 85%; padding: .7em 1em .7em 3em; font-weight: bold;
-          -webkit-border-radius: 5px;
-     -moz-border-radius: 5px; 
-          border-radius: 5px;
+
       }
       
+        .ua5_admin_td_actions li a { }
+      
       .ua5_admin_td_actions .sf_admin_action_edit {
-        background: #5bc4ee url(../images/pencil-field.png) no-repeat 1em center; 
+        background: #a4e5ff url(../images/pencil-field.png) no-repeat 1em center; 
       }
       
       .ua5_admin_td_actions .sf_admin_action_delete {
-        background: #5bc4ee url(../images/cross.png) no-repeat 1em center;
+        background: #a4e5ff url(../images/cross.png) no-repeat 1em center;
       }
       
       #ua5_admin_list_th_actions { display: none; width: 0; position: absolute;}
@@ -293,3 +313,41 @@ input[type='submit'], a.button {
         #bd-secondary #bd-navigation li.selected a { background-color: #2090bc; color: #fff; }
               
         #bd-secondary #bd-navigation li a:hover { background-color: #2090bc; color: #fff; }
+        
+   /* Form Styles */
+   
+   .ua5_admin_fieldset_fields li { margin-bottom: 1em; }
+   
+   .ua5_admin_actions { float: left; display: inline; width: 100%;}
+   
+     .ua5_admin_actions li { float: left; display: inline; margin-right: 1em;}
+     
+     .ua5_admin_actions li a { 
+       padding: .3em .8em; float: left; display: inline; border: 1px solid #fff;
+     }
+     
+     .ua5_admin_actions .sf_admin_action_delete { 
+       float: right;
+     }
+     
+     .ua5_admin_actions .sf_admin_action_list { 
+       
+     }
+     
+     .ua5_admin_actions .sf_admin_action_delete a { 
+       color: #333; text-decoration: underline; font-weight: bold;
+     }
+     
+     .ua5_admin_actions .sf_admin_action_delete a:hover { 
+       border: 1px solid #c1c1c1; color: #333; cursor: pointer; text-decoration: none;
+       background-image: -moz-linear-gradient(100% 100% 90deg, #d5d5d5, #f6f6f6); background-color: #e0e0e0;
+       background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f6f6f6), to(#d5d5d5));
+     }
+     
+   .ua5_admin_form span.link {
+     font-size: 85%; text-decoration: underline; color: #666; margin-left: .5em; 
+   }
+   
+     .ua5_admin_form span.link:hover { 
+       cursor: pointer; color: #0066ff; text-decoration: none; 
+     }

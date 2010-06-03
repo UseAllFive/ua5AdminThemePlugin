@@ -33,3 +33,5 @@
 <?php endforeach; ?>
 [?php endif; ?]
 </ul>
+
+<hr class="clear"/>
