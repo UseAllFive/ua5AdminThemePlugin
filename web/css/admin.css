@@ -351,3 +351,19 @@ input[type='text'] {
      .ua5_admin_form span.link:hover { 
        cursor: pointer; color: #0066ff; text-decoration: none; 
      }
+     
+   /* Flash Styles */
+   
+   #ua5_admin_container .flash { 
+     color: #333; margin: 20px 20px 0 20px; padding: 10px;
+   }
+   
+     .flash.notice { 
+       background-color: #a7ffd0; border: 1px solid #5dd495;
+     }
+     
+     .flash.error {
+       background-color: #ffff99; border: 1px solid #ffdf5f;
+     }
+   
+   

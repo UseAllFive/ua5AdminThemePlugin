@@ -30,11 +30,11 @@
           </div>
           
           <div class="yui-u">
-            something
+            
           </div>
           
         </div>
-        
+                
         <?php include_partial('global/flashes') ?> 
 
         <div id="yui-main" class="yui-ge"> <!-- main content -->
