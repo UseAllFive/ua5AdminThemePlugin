@@ -5,7 +5,6 @@ slot("list_title");
 echo '<h1>New <?php echo ucfirst($this->getModuleName()) ?></h1>'; 
 end_slot("list_title");
 ?]
-  <h1>[?php echo <?php echo $this->getI18NString('new.title') ?> ?]</h1>
 
   [?php include_partial('<?php echo $this->getModuleName() ?>/flashes') ?]
 
