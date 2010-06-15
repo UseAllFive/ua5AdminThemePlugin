@@ -8,7 +8,7 @@
  * @author     ##AUTHOR_NAME##
  * @version    SVN: $Id: actions.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
  */
-class <?php echo $this->getGeneratedModuleName() ?>Actions extends <?php echo $this->getActionsBaseClass() ?>
+class <?php echo $this->getGeneratedModuleName() ?>Actions extends cwActions
 
 {
 <?php include dirname(__FILE__).'/../../parts/indexAction.php' ?>
