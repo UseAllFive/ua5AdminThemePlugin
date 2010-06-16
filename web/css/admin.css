@@ -87,7 +87,7 @@ input[type='text'] {
     }
     
       #hd-actions li a { 
-        padding: .4em .5em; color: #e6efff;
+        padding: .4em .5em; color: #009dc9;
       }
       
       #hd-actions li a:hover { 
@@ -96,7 +96,8 @@ input[type='text'] {
       
       #hd-actions li.help a {
         padding: .4em .7em;
-        background-color: #0f516b;
+        background-color: #009dc9;
+        color: #fff;
         text-decoration: none;
       }
       
