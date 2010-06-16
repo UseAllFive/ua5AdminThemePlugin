@@ -1,5 +1,10 @@
 <ul id="hd-actions">
-  <li class="user"><a href="<?php echo url_for("@homepage")?>">Admin Users</a></li>
-  <li class="logout"><a href="<?php echo url_for("sfGuardAuth/signout")?>">Logout</a></li>
+<?php if(sfContext::getInstance()->has("top_menu")){
+  foreach(sfContext::getInstance()->get("top_menu") as $record_key => $tabs_record){
+?>
+  <li class="tab"><a href="<?php echo url_for($tabs_record['url'])?>"><?php echo $tabs_record['text']?></a></li>
+<?php 
+  }
+}?>
   <li class="help"><a href="<?php echo url_for("@homepage")?>">Help</a></li>
-</ul>
+</ul> 

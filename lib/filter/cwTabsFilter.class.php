@@ -1,8 +1,9 @@
 <?php
 class cwTabsFilter extends sfFilter {
 	public function execute($filterChain) {
-		if ($this->hasParameter ( "tabs" )) {
-	    $this->getContext ()->set ( "tabs", $this->getParameter ( "tabs" ));		
+		$param = $this->getParameter("param_holder");
+		if ($this->hasParameter ($param)) {
+	    $this->getContext ()->set ( $param, $this->getParameter ( $param ));		
 		}
 		$filterChain->execute ();
 	}
