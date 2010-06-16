@@ -16,8 +16,10 @@ UA5.Filter = Class.$extend({
     if($($_sel)) {
     
       this.addToggle();
-      $($_sel + ' form').hide();
-      
+      if(!$($_sel + ' form').hasClass('expanded_filter'))
+      {
+          $($_sel + ' form').hide();
+      }
     }
     
   },

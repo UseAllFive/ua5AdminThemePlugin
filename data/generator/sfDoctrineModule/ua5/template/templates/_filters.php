@@ -5,7 +5,8 @@
 
   <h2>Filter Results</h2>
 
-  <form action="[?php echo url_for('<?php echo $this->getUrlForAction('collection') ?>', array('action' => 'filter')) ?]" method="post">
+  <form action="[?php echo url_for('<?php echo $this->getUrlForAction('collection') ?>', array('action' => 'filter')) ?]" method="post"
+  class='[?php if ($sf_user->getAttribute('<?php echo $this->getModuleName() ?>.filters',false, 'admin_module')->count()) { echo 'expanded_filter';}?]'>
 
     <ul class="ua5_admin_filter_fields">
     
