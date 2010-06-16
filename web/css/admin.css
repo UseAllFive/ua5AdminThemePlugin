@@ -12,7 +12,7 @@ html, body {  }
 
 html { background: #9ddef1 url(../images/bg.jpg) top left repeat-x; }
 
-a { color: #0066ff; text-decoration: none; }
+a { color: #009dc9; text-decoration: none; }
 
 a:hover { text-decoration: underline; }
 
@@ -50,8 +50,8 @@ a:hover { text-decoration: underline; }
 }
 
 input[type='submit'], a.button { 
-  background-color: #e0e0e0;  padding: .3em .8em;
-  border: 1px solid #c1c1c1; font-weight: bold; color: #0066ff; cursor: pointer;
+  background-color: #e0e0e0;  padding: .3em .8em; float: left; display: inline;
+  border: 1px solid #c1c1c1; font-weight: bold; color: #333; cursor: pointer;
   background-image: -moz-linear-gradient(100% 100% 90deg, #d5d5d5, #f6f6f6);
   background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f6f6f6), to(#d5d5d5));
 }
@@ -65,6 +65,8 @@ input[type='text'] {
   input.large_field { 
     font-size: 138.5%; padding: .3em;
   }
+  
+  textarea { width: 30em; padding: .3em; }
   
   label { 
     font-size: 85%; text-transform: uppercase; padding-bottom: .5em;  display: block;
@@ -232,21 +234,19 @@ input[type='text'] {
     
       .ua5_admin_list table tbody tr { border-top: 1px solid #e5e5e5; }
             
-      .ua5_admin_list table td { padding: .5em; color: #555; }
+      .ua5_admin_list table td { padding: .7em; color: #555; }
       
-      .ua5_admin_list table tbody tr:hover { background: #f0fbff; }
+      .ua5_admin_list table tbody tr:hover { }
       
         .ua5_admin_td_actions { display: block; position: relative;}
       
         .ua5_admin_list table tr .ua5_admin_td_actions_list { 
-          /*visibility: hidden;*/ 
-          position: absolute;  display: inline; width: 11em;  display: none; float: left; top: 0px;
-          background: transparent url(../images/arrow.gif) left center no-repeat; padding-left: 6px;
+          display: none; float: left; top: 0px; position: absolute; right: 0px; background-color: #e5e5e5;
           
         }
             
         .ua5_admin_list table tr:hover .ua5_admin_td_actions_list {
-          /*visibility: visible;*/ display: block;
+          display: block;
         }
       
       .ua5_admin_list table thead { font-size: 85%; font-weight: bold; }
@@ -254,21 +254,24 @@ input[type='text'] {
         .ua5_admin_list table thead th { padding: .5em; text-align: left; }
               
       .ua5_admin_td_actions li { 
-        float: left; display: inline; font-size: 85%; padding: .7em 1em .7em 3em; font-weight: bold;
+        float: left; display: inline; padding: .5em 1em .5em 2.8em; font-weight: bold;
 
       }
       
-        .ua5_admin_td_actions li a { }
+        .ua5_admin_td_actions li a { color: #666; }
+          .ua5_admin_td_actions li a:hover { color: #333; }
       
       .ua5_admin_td_actions .sf_admin_action_edit {
-        background: #a4e5ff url(../images/pencil-field.png) no-repeat 1em center; 
+        background: url(../images/pencil-field.png) no-repeat 1em center; 
       }
       
       .ua5_admin_td_actions .sf_admin_action_delete {
-        background: #a4e5ff url(../images/cross.png) no-repeat 1em center;
+        background: url(../images/cross.png) no-repeat 1em center;
       }
       
       #ua5_admin_list_th_actions { display: none; width: 0; position: absolute;}
+      
+      .ua5_admin_list hr { border: none; border-top: 1px solid #ccc; }
   
           
   /* Secondary Nav */
@@ -277,16 +280,26 @@ input[type='text'] {
     margin: 20px 20px 0 0;
   }
   
-    #bd-secondary a.button.create { 
+    /*#bd-secondary a.button.create { 
       height: 30px; width: 179px; background: transparent url(../images/create_new_lead_button.png) no-repeat 0px -30px; display: block;
     }
     
       #bd-secondary a.button.create:hover { background-position: 0px 0px; }
     
-      #bd-secondary a.button.create span { display: none; }
+      #bd-secondary a.button.create span { display: none; }*/
+    
+    #bd-secondary a.button { 
+      padding: 5px 20px; color: #555;
+    }
+    
+      #bd-secondary a.button:hover { color: #333; text-decoration: none; border-color: #999;}
+    
+      #bd-secondary a.button span { 
+        padding: 2px 0 2px 25px; background: transparent url(../images/plus.png) no-repeat left center;
+      }
   
     #bd-secondary h4 {
-      font-size: 85%; text-transform: uppercase; color: #ccc;
+      font-size: 85%; text-transform: uppercase; color: #999;
       border-bottom: 1px solid #e5e5e5; font-weight: bold; padding-bottom: 3px; margin-top: 2.7em;
     }
     
@@ -303,16 +316,15 @@ input[type='text'] {
         #bd-secondary #bd-navigation li a span { padding-left: 15px; }
         
         #bd-secondary #bd-navigation li a em { 
-          font-size: 85%; padding: .3em .8em; background-color: #e0f6ff; margin-left: 8px; color: #555; float: left; display: inline; margin-top: -.2em;
+          font-size: 85%; padding: .3em .8em; background-color: #fff; margin-left: 8px; color: #555; float: left; display: inline; margin-top: -.2em;
           font-style: normal; 
         }
         
-        #bd-secondary #bd-navigation li.current a em { background-color: #f7f972; }
-        #bd-secondary #bd-navigation li.past a em { background-color: #eee; }
+        #bd-secondary #bd-navigation li.selected a em { background: #fff;}
         
-        #bd-secondary #bd-navigation li.selected a { background-color: #2090bc; color: #fff; }
+        #bd-secondary #bd-navigation li.selected a { background-color: #009dc9; color: #fff; }
               
-        #bd-secondary #bd-navigation li a:hover { background-color: #2090bc; color: #fff; }
+        #bd-secondary #bd-navigation li a:hover { background-color: #009dc9; color: #fff; }
         
    /* Form Styles */
    
@@ -366,4 +378,6 @@ input[type='text'] {
        background-color: #ffff99; border: 1px solid #ffdf5f;
      }
    
+ /* Form Styles */
+ 
    

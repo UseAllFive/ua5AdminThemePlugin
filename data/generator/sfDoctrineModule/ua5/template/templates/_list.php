@@ -14,20 +14,6 @@
 <?php endif; ?>
         </tr>
       </thead>
-      <tfoot>
-        <tr>
-          <th colspan="<?php echo count($this->configuration->getValue('list.display')) + ($this->configuration->getValue('list.object_actions') ? 1 : 0) + ($this->configuration->getValue('list.batch_actions') ? 1 : 0) ?>">
-            [?php if ($pager->haveToPaginate()): ?]
-              [?php include_partial('<?php echo $this->getModuleName() ?>/pagination', array('pager' => $pager)) ?]
-            [?php endif; ?]
-
-            [?php echo format_number_choice('[0] no result|[1] 1 result|(1,+Inf] %1% results', array('%1%' => $pager->getNbResults()), $pager->getNbResults(), 'ua5_admin') ?]
-            [?php if ($pager->haveToPaginate()): ?]
-              [?php echo __('(page %%page%%/%%nb_pages%%)', array('%%page%%' => $pager->getPage(), '%%nb_pages%%' => $pager->getLastPage()), 'ua5_admin') ?]
-            [?php endif; ?]
-          </th>
-        </tr>
-      </tfoot>
       <tbody>
         [?php foreach ($pager->getResults() as $i => $<?php echo $this->getSingularName() ?>): $odd = fmod(++$i, 2) ? 'odd' : 'even' ?]
           <tr class="ua5_admin_row [?php echo $odd ?]">
@@ -42,6 +28,19 @@
         [?php endforeach; ?]
       </tbody>
     </table>
+    
+    <hr/>
+    
+    [?php if ($pager->haveToPaginate()): ?]
+      [?php include_partial('<?php echo $this->getModuleName() ?>/pagination', array('pager' => $pager)) ?]
+    [?php endif; ?]
+
+    [?php echo format_number_choice('[0] no result|[1] 1 result|(1,+Inf] %1% results', array('%1%' => $pager->getNbResults()), $pager->getNbResults(), 'ua5_admin') ?]
+    [?php if ($pager->haveToPaginate()): ?]
+      [?php echo __('(page %%page%%/%%nb_pages%%)', array('%%page%%' => $pager->getPage(), '%%nb_pages%%' => $pager->getLastPage()), 'ua5_admin') ?]
+    [?php endif; ?]
+    
+    
   [?php endif; ?]
 </div>
 <script type="text/javascript">

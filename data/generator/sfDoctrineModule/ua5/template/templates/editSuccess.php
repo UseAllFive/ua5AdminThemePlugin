@@ -5,7 +5,6 @@ slot("list_title");
 echo '<h1>Edit <?php echo ucfirst($this->getModuleName()) ?></h1>'; 
 end_slot("list_title");
 ?]
-  <h1>[?php echo <?php echo $this->getI18NString('edit.title') ?> ?]</h1>
 
   <div id="ua5_admin_header">
     [?php include_partial('<?php echo $this->getModuleName() ?>/form_header', array('<?php echo $this->getSingularName() ?>' => $<?php echo $this->getSingularName() ?>, 'form' => $form, 'configuration' => $configuration)) ?]
