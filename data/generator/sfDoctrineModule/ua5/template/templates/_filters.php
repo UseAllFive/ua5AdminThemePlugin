@@ -1,12 +1,22 @@
 [?php use_stylesheets_for_form($form) ?]
 [?php use_javascripts_for_form($form) ?]
+[?php 
+$expand_filter = false;
+if(false != $filters = $sf_user->getAttribute('<?php echo $this->getModuleName() ?>.filters',false, 'admin_module'))
+{
+  if ($filters->count()!=0)
+  {
+    $expand_filter = true;
+  }
+}
+?]
 
 <div class="ua5_admin_filter">
 
   <h2>Filter Results</h2>
 
   <form action="[?php echo url_for('<?php echo $this->getUrlForAction('collection') ?>', array('action' => 'filter')) ?]" method="post"
-  class='[?php if ($sf_user->getAttribute('<?php echo $this->getModuleName() ?>.filters',false, 'admin_module')->count()) { echo 'expanded_filter';}?]'>
+  class='[?php if ($expand_filter==true) { echo 'expanded_filter';}?]'>
 
     <ul class="ua5_admin_filter_fields">
     
