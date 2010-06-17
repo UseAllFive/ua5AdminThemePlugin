@@ -180,6 +180,10 @@ input[type='text'] {
     #ua5_admin_container h2 { 
       font-size: 123.1%; font-weight: bold; color: #555; border-bottom: 1px solid #eee; padding-bottom: .5em; margin-bottom: .5em;
     }
+    
+    #ua5_admin_container h3 {
+      font-size: 100%; color: #999; display: block; border-bottom: 1px solid #eee; margin-bottom: 15px; padding-bottom: 5px; font-weight: bold; text-transform: uppercase;
+    }
       
 /* Content Sections */        
   
