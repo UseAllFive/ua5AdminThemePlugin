@@ -1,14 +1,8 @@
 [?php use_stylesheets_for_form($form) ?]
 [?php use_javascripts_for_form($form) ?]
 [?php 
-$expand_filter = false;
-if(false != $filters = $sf_user->getAttribute('<?php echo $this->getModuleName() ?>.filters',false, 'admin_module'))
-{
-  if ($filters->count()!=0)
-  {
-    $expand_filter = true;
-  }
-}
+use_helper("FilterData");
+$expand_filter = filter_has_data('<?php echo $this->getModuleName() ?>.filters', $form);
 ?]
 
 <div class="ua5_admin_filter">
