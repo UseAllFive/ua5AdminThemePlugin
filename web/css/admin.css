@@ -277,7 +277,12 @@ input[type='text'] {
       #ua5_admin_list_th_actions { display: none; width: 0; position: absolute;}
       
       .ua5_admin_list hr { border: none; border-top: 1px solid #ccc; }
-  
+      
+    .ua5_admin_actions {  padding-top: 10px; border-top: 1px solid #eee; margin-top: 10px;}
+    
+      .ua5_admin_actions .ua5_admin_batch_actions_choice { width: 200px; }  
+      
+        .ua5_admin_actions .ua5_admin_batch_actions_choice select { float: left; margin-right: 10px; }
           
   /* Secondary Nav */
   
