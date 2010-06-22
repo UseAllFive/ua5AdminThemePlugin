@@ -14,7 +14,7 @@
     <div id="main">
     
       <div id="hd">
-      
+        <?php include_partial('global/owner')?>
         <?php include_partial('global/top_menu') ?> 
         
         <?php include_slot('tabs')?>   
