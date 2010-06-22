@@ -2,8 +2,16 @@
 function filter_has_data($attribute_name, $form)
 {
 	$expand_filter = false;
+	$filters = false;
+	if(sfContext::getInstance()->has($attribute_name))
+	{
+		$filters = false;
+	}else
+	{
+		$filters = sfContext::getInstance()->getUser()->getAttribute($attribute_name,false, 'admin_module');
+	}
 	
-	if(false != $filters = sfContext::getInstance()->getUser()->getAttribute($attribute_name,false, 'admin_module'))
+	if(false != $filters)
 	{
 		foreach($filters as $key => $value)
 		{

@@ -2,6 +2,7 @@
   {
     if (isset($this->overridden_filters))
     {
+      sfContext::getInstance()->set("<?php echo $this->getModuleName() ?>.filters", $this->overridden_filters);    
       return $this->overridden_filters;
     }else
     {
