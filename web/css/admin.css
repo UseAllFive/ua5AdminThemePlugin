@@ -58,8 +58,12 @@ input[type='submit'], a.button {
 
 /* Field Styles */
 
-input[type='text'] { 
+input[type='text'], input[type='password'] { 
   border: 1px solid #bdbdbd; font-size: 108%; font-weight: bold; padding: .3em; width: 30em;
+}
+
+input[type='password'] {
+  width: 15em;
 }
 
   input.large_field { 
