@@ -1,6 +1,6 @@
 [?php use_stylesheets_for_form($form) ?]
 [?php use_javascripts_for_form($form) ?]
-
+<div id="ua5_admin_content">
 <div class="ua5_admin_form">
 <?php $form = $this->getFormObject() ?>
 <?php if (isset($this->params['route_prefix']) && $this->params['route_prefix']): ?>
@@ -13,33 +13,11 @@
 <?php endif;?>
 
 <fieldset id="sf_fieldset_<?php echo $this->getModuleName() ?>">
-<h2><?php echo $this->getModuleName() ?></h2>
+<h2><?php echo sfInflector::humanize($this->getSingularName()) ?> Details</h2>
 [?php echo $form->renderGlobalErrors() ?]
 
 <ul class="ua5_admin_fieldset_fields">
 <?php foreach ($form as $name => $field): if ($field->isHidden()) continue ?>
-<?php /*      <tr>
-        <th></th>
-        <td>
-          [?php echo $form['<?php echo $name ?>']->renderError() ?]
-          [?php echo $form['<?php echo $name ?>'] ?]
-        </td>
-      </tr>
-  <li class="[?php echo $class ?][?php $form[$name]->hasError() and print ' errors' ?]">
-    [?php echo $form[$name]->renderError() ?]
-    <div>
-      [?php echo $form[$name]->renderLabel($label) ?]
-
-      <div class="content">[?php echo $form[$name]->render($attributes instanceof sfOutputEscaper ? $attributes->getRawValue() : $attributes) ?]</div>
-
-      [?php if ($help): ?]
-        <div class="help">[?php echo __($help, array(), '<?php echo $this->getI18nCatalogue() ?>') ?]</div>
-      [?php elseif ($help = $form[$name]->renderHelp()): ?]
-        <div class="help">[?php echo $help ?]</div>
-      [?php endif; ?]
-    </div>
-  </li>*/?>
-  
 <li class="ua5_admin_form_row ua5_admin_text ua5_admin_form_field_<?php echo $name ?>">
   [?php echo $form['<?php echo $name ?>']->renderError() ?]
   <div>
@@ -70,4 +48,5 @@
 
 </form>
 
+</div>
 </div>
