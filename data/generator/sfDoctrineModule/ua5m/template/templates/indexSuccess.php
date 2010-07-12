@@ -2,8 +2,6 @@
 [?php include_partial('<?php echo $this->getModuleName() ?>/assets') ?]
 
     
-[?php include_partial('<?php echo $this->getModuleName() ?>/flashes') ?]
-
 <div id="ua5_admin_header">
  [?php include_partial('<?php echo $this->getModuleName() ?>/list_header', array('pager' => $pager)) ?]
 </div>
