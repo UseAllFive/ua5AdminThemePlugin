@@ -6,5 +6,5 @@
 <?php 
   }
 }?>
-  <li class="help"><a href="<?php echo url_for("@homepage")?>">Help</a></li>
+  <li class="help"><a href="<?php echo url_for(sfConfig::get('app_ua5_theme_help_index','@homepage'))?>">Help</a></li>
 </ul> 

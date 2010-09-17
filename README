@@ -12,3 +12,11 @@ all:
     enabled_modules:      [default, ua5GuardAuth, sfGuardUser]  
     # Form security secret (CSRF protection)
     csrf_secret:            b2ad37b22dfa0e54e1965ffed0f76bd8d593b774
+
+    
+...........
+Setup help index page in app.yml
+
+all:
+  ua5_theme:
+    help_index:	help/index
