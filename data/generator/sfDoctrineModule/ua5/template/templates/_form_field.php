@@ -6,9 +6,16 @@
   <li class="[?php echo $class ?][?php $form[$name]->hasError() and print ' errors' ?]">
     [?php echo $form[$name]->renderError() ?]
     <div>
+[?php if($form[$name]->getWidget() instanceof sfWidgetFormInputCheckbox):?]
+      <div class="content checkbox">[?php echo $form[$name]->render($attributes instanceof sfOutputEscaper ? $attributes->getRawValue() : $attributes) ?]</div>
+      
+	  [?php echo $form[$name]->renderLabel($label) ?]      
+[?php else:?]
+    
       [?php echo $form[$name]->renderLabel($label) ?]
 
       <div class="content">[?php echo $form[$name]->render($attributes instanceof sfOutputEscaper ? $attributes->getRawValue() : $attributes) ?]</div>
+[?php endif;?]
 
       [?php if ($help): ?]
         <div class="help">[?php echo __($help, array(), '<?php echo $this->getI18nCatalogue() ?>') ?]</div>
@@ -18,3 +25,4 @@
     </div>
   </li>
 [?php endif; ?]
+

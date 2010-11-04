@@ -250,7 +250,7 @@ input[type='password'] {
         .ua5_admin_td_actions { display: block; position: relative;}
       
         .ua5_admin_list table tr .ua5_admin_td_actions_list { 
-          display: none; float: left; top: 0px; position: absolute; right: 0px; background-color: #e5e5e5;
+          display: none; float: left; top: 0px; position: absolute; right: 0px; background-color: #e5e5e5; width: 170px;
           
         }
             
@@ -395,3 +395,6 @@ input[type='password'] {
  /* Form Styles */
  
    
+div.content.checkbox{width: 15px; display: block; float: left; padding-right: 10px;}
+.checkbox_list input[type=checkbox]{width: 15px; display: block; float: left;}
+.checkbox_list label {width: 500px; float: left;padding-left:10px}
