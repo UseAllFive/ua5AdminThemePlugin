@@ -1,1 +1,1 @@
-<?php echo ucfirst($this->getModuleName()) ?> list
+<?php echo ucfirst($this->getPluralName()) ?> list

@@ -2,7 +2,7 @@
 [?php include_partial('<?php echo $this->getModuleName() ?>/assets') ?]
 [?php
 slot("list_title");
-echo '<h1>New <?php echo ucfirst($this->getModuleName()) ?></h1>'; 
+echo '<h1>New <?php echo ucfirst($this->getSingularName()) ?></h1>';
 end_slot("list_title");
 ?]
 
