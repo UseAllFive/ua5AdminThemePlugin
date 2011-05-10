@@ -15,6 +15,10 @@ abstract class <?php echo $this->getGeneratedModuleName() ?>Actions extends cwAc
 {
   public function preExecute()
   {
+    //-- Set active tab
+    sfContext::getInstance()->getConfiguration()->loadHelpers('Tabs');
+    set_active_tab("tab_<?php echo $this->moduleName; ?>");
+
     $this->configuration = new <?php echo $this->getModuleName() ?>GeneratorConfiguration();
 
     if (!$this->getUser()->hasCredential($this->configuration->getCredentials($this->getActionName())))

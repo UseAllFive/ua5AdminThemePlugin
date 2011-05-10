@@ -8,59 +8,59 @@
     <?php include_stylesheets() ?>
     <?php include_javascripts() ?>
   </head>
-  
-  <body>
+
+  <body class="<?php echo "module". ucfirst($sf_request->getParameter('module')) .' action'. ucfirst($sf_request->getParameter('action')); ?>">
 
     <div id="main">
-    
+
       <div id="hd">
         <?php include_partial('global/owner')?>
-        <?php include_partial('global/top_menu') ?> 
-        
-        <?php include_slot('tabs')?>   
-    
+        <?php include_partial('global/top_menu') ?>
+
+        <?php include_slot('tabs')?>
+
       </div>
-    
+
       <div id="ua5_admin_container">                       <!-- Body Start -->
-    
+
         <div id="bd-hd" class="yui-g">
-        
+
           <div class="yui-u first">
             <h1><?php include_slot('list_title')?></h1>
           </div>
-          
+
           <div class="yui-u">
-            
+
           </div>
-          
+
         </div>
-                
-        <?php include_partial('global/flashes') ?> 
+
+        <?php include_partial('global/flashes') ?>
 
         <div id="yui-main" class="yui-ge"> <!-- main content -->
-                  
+
           <div class="yui-u first">
-          
+
              <div class="yui-b" id="bd-content">
                <?php echo $sf_content ?>
              </div>
-          
+
           </div>
-                                  
-          <div class="yui-u">  <!-- Right Side -->  
-        
+
+          <div class="yui-u">  <!-- Right Side -->
+
             <div id="bd-secondary">
-              <?php include_slot('right_column')?> 
-            </div>       
-                    
+              <?php include_slot('right_column')?>
+            </div>
+
           </div>  <!-- End Right Side -->
-          
+
         </div>
-    
+
       </div>   <!-- End Main Content Section -->
-    
+
     </div>
 
   </body>
-  
+
 </html>
