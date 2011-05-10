@@ -7,7 +7,7 @@
     foreach ( sfContext::getInstance()->get("tabs") as $record_key => $tabs_record ){
       if (
         !isset($tabs_record['credentials']) ||
-        $sf_user->hasPermission($tabs_record['credentials'])
+        $sf_user->hasCredential($tabs_record['credentials'])
       ):
 ?>
   <li class="tab">
