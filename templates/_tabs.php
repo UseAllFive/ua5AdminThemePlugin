@@ -1,6 +1,7 @@
 <ul id="hd-nav">
 <?php
   if ( sfContext::getInstance()->has("tabs") ){
+    $active = false;
     if ( sfContext::getInstance()->has("active_tab") ){
       $active = sfContext::getInstance()->get("active_tab");
     }
