@@ -9,14 +9,27 @@ all:
     secure_module:          ua5GuardAuth
     secure_action:          secure
 
-    enabled_modules:      [default, ua5GuardAuth, sfGuardUser]  
+    enabled_modules:      [default, ua5GuardAuth, sfGuardUser]
     # Form security secret (CSRF protection)
     csrf_secret:            b2ad37b22dfa0e54e1965ffed0f76bd8d593b774
 
-    
+
 ...........
 Setup help index page in app.yml
 
 all:
   ua5_theme:
     help_index:	help/index
+
+...........
+Add to lib/filters/doctrine/BaseFormFilterDoctrine.class.php::setup()
+
+    $date_filter_template = <<<EOF
+      <span class="date_filter_sub_label">from</span> %from_date%<br />
+      <span class="date_filter_sub_label">to</span> %to_date%
+    EOF;
+    foreach ( $this->widgetSchema->getFields() as $key => $field ) {
+      if ( "sfWidgetFormFilterDate" == get_class($field) ) {
+        $field->setOption('template', $date_filter_template);
+      }
+    }
