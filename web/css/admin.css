@@ -218,6 +218,10 @@ input[type='password'] {
     .ua5_admin_filter_fields input, .ua5_admin_filter_fields select[multiple=multiple] {
       width: 20em; border: 1px solid #ccc; padding: .5em;
     }
+    .ua5_admin_filter_fields .date_filter_sub_label {
+      display: inline-block;
+      width: 2em;
+    }
 
     .ua5_admin_filter_fields input, .ua5_admin_filter_fields select {
       display: inline;
