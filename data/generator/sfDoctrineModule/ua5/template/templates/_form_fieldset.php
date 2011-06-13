@@ -15,6 +15,7 @@
         'form'       => $form,
         'field'      => $field,
         'class'      => 'ua5_admin_form_row ua5_admin_'.strtolower($field->getType()).' ua5_admin_form_field_'.$name,
+        '<?php echo $this->getModuleName() ?>' => $<?php echo $this->getModuleName() ?>,
       )) ?]
     [?php endforeach; ?]
   
