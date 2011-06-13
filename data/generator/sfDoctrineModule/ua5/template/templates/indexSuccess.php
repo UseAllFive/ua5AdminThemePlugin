@@ -1,5 +1,10 @@
 [?php use_helper('I18N', 'Date') ?]
-[?php include_partial('<?php echo $this->getModuleName() ?>/assets') ?]
+[?php include_partial(
+  '<?php echo $this->getModuleName(); ?>/assets',
+  array(
+    'filters' => $filters,
+  )
+); ?]
 
            <div id="ua5_admin_header">
              [?php include_partial('<?php echo $this->getModuleName() ?>/list_header', array('pager' => $pager)) ?]

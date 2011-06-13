@@ -26,7 +26,12 @@ include_partial("sub_tabs");
 end_slot("sub_tabs");
 
 slot("right_column");
-include_partial("right_column");
+  $vars = array();
+  if ( isset($filters) ) { $vars['filters'] = $filters; }
+  if ( isset($<?php echo $this->getModuleName() ?>) ) {
+    $vars['<?php echo $this->getModuleName(); ?>'] = $<?php echo $this->getModuleName(); ?>;
+  }
+  include_partial("right_column", $vars);
 end_slot("right_column");
 
 ?]

@@ -1,5 +1,10 @@
 [?php use_helper('I18N', 'Date') ?]
-[?php include_partial('<?php echo $this->getModuleName() ?>/assets') ?]
+[?php include_partial(
+  '<?php echo $this->getModuleName(); ?>/assets',
+  array(
+    '<?php echo $this->getModuleName(); ?>' => $<?php echo $this->getModuleName(); ?>,
+  )
+); ?]
 [?php
 slot("list_title");
 echo '<h1>Edit <?php echo ucfirst($this->getSingularName()) ?></h1>';
