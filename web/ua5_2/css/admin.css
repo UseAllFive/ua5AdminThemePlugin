@@ -296,7 +296,7 @@ s,m,l,n = small(5px),medium(10px),large(20px),none(0px)
    Author: Matt Farmer <matt@useallfive.com>
    ========================================================================== */
 
-/* Color_Priority#:
+/* Color_Priority#{bold}:
  *   1 - Top nav
  *   2 - left nav
  *   3 - filter col
@@ -310,8 +310,8 @@ s,m,l,n = small(5px),medium(10px),large(20px),none(0px)
 .c_p1_fg {
   color: #999999;
 }
-.c_p1 .b,
-.c_p1_fg .b {
+.c_p1b,
+.c_p1b_fg .b {
   color: #ffffff;
 }
 .c_p3,
@@ -321,6 +321,22 @@ s,m,l,n = small(5px),medium(10px),large(20px),none(0px)
 .c_p3,
 .c_p3_fg {
   color: #687f90;
+}
+.c_p3b,
+.c_p3b_bg {
+  background-color: #cee1e9;
+}
+.c_p3b,
+.c_p3b_fg {
+  color: #3d3f3f;
+}
+.c_p3i,
+.c_p3i_bg {
+  background-color: #e7faff;
+}
+.c_p3i,
+.c_p3i_fg {
+  color: #8da4b6;
 }
 .c_p4,
 .c_p4_bg {
@@ -428,8 +444,13 @@ s,m,l,n = small(5px),medium(10px),large(20px),none(0px)
 /* =============================================================================
    Filter Column
    ========================================================================== */
+.sf_admin_bar {
+  padding: 20px 7px 10px 10px;
+}
 .sf_admin_filter {
-  padding: 20px 10px 10px 20px;
+  padding-left: 10px;
+  padding-bottom: 20010px;  /* X + padding-bottom */
+  margin-bottom: -20000px;  /* X */
 }
 .sf_admin_filter ul {
   list-style: none;
@@ -439,7 +460,7 @@ s,m,l,n = small(5px),medium(10px),large(20px),none(0px)
   padding-top: 14px;
 }
 .sf_admin_filter input[type=text] {
-  width: 115px;
+  width: 140px;
   height: 25px;
   padding-left: 5px;
   border: 1px solid black;
@@ -449,11 +470,42 @@ s,m,l,n = small(5px),medium(10px),large(20px),none(0px)
  -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
 }
 
+.sf_admin_extras h3 {
+  padding-left: 10px;
+}
+.sf_admin_extras ul {
+  list-style: none;
+  padding-left: 0px;
+}
+.sf_admin_extras li {
+  list-style: none;
+  padding: 10px;
+}
+
+
 /* =============================================================================
-   Filter Column
+   Admin container
    ========================================================================== */
 #sf_admin_container {
   padding: 30px;
+}
+
+table {
+  width: 100%;
+}
+thead {
+  text-align: left;
+  background-color: #fefefe;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#fefefe), to(#dedede));
+  background-image: -webkit-linear-gradient(top, #fefefe, #dedede);
+  background-image:    -moz-linear-gradient(top, #fefefe, #dedede);
+  background-image:     -ms-linear-gradient(top, #fefefe, #dedede);
+  background-image:      -o-linear-gradient(top, #fefefe, #dedede);
+  background-image:         linear-gradient(top, #fefefe, #dedede);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#fefefe', EndColorStr='#dedede');
+}
+thead th {
+  border: 1px solid #dedede;
 }
 
 

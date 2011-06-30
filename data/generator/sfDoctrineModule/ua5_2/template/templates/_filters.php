@@ -1,7 +1,7 @@
 [?php use_stylesheets_for_form($form) ?]
 [?php use_javascripts_for_form($form) ?]
 
-<div class="sf_admin_filter c_p3">
+<div class="sf_admin_filter">
   <h3>Filter Segments</h3>
   [?php if ($form->hasGlobalErrors()): ?]
     [?php echo $form->renderGlobalErrors() ?]

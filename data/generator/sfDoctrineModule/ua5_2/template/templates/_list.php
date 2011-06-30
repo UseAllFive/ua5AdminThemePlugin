@@ -2,15 +2,15 @@
   [?php if (!$pager->getNbResults()): ?]
     <p>[?php echo __('No result', array(), 'sf_admin') ?]</p>
   [?php else: ?]
-    <table cellspacing="0">
+    <table class="rt_5" cellspacing="0">
       <thead>
         <tr>
 <?php if ($this->configuration->getValue('list.batch_actions')): ?>
-          <th id="sf_admin_list_batch_actions"><input id="sf_admin_list_batch_checkbox" type="checkbox" onclick="checkAll();" /></th>
+          <th id="sf_admin_list_batch_actions" class="rtl_5"><input id="sf_admin_list_batch_checkbox" type="checkbox" onclick="checkAll();" /></th>
 <?php endif; ?>
           [?php include_partial('<?php echo $this->getModuleName() ?>/list_th_<?php echo $this->configuration->getValue('list.layout') ?>', array('sort' => $sort)) ?]
 <?php if ($this->configuration->getValue('list.object_actions')): ?>
-          <th id="sf_admin_list_th_actions">[?php echo __('Actions', array(), 'sf_admin') ?]</th>
+          <th id="sf_admin_list_th_actions" class="rtr_5">[?php echo __('Actions', array(), 'sf_admin') ?]</th>
 <?php endif; ?>
         </tr>
       </thead>

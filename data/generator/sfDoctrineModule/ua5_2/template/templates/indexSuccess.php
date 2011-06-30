@@ -2,8 +2,9 @@
 [?php include_partial('<?php echo $this->getModuleName() ?>/assets') ?]
 
 <?php if ($this->configuration->hasFilterForm()): ?>
-  <div id="sf_admin_bar" class="leftCol">
+  <div class="sf_admin_bar leftCol c_p3">
     [?php include_partial('<?php echo $this->getModuleName() ?>/filters', array('form' => $filters, 'configuration' => $configuration)) ?]
+    [?php include_partial('<?php echo $this->getModuleName() ?>/admin_bar_extras', array('configuration' => $configuration)) ?]
   </div>
 <?php endif; ?>
 
