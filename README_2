@@ -1,0 +1,7 @@
+To use the Admin Theme Template, you may have to add something like the following to your preExecute()
+
+  public function preExecute()
+  {
+    $layout = sfConfig::get('sf_plugins_dir').'/ua5AdminThemePlugin/templates/ua5_2';
+    sfConfig::set('symfony.view.'.$this->getModuleName().'_'.$this->getActionName().'_layout', $layout);
+  }

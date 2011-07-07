@@ -25,6 +25,11 @@ abstract class <?php echo $this->getGeneratedModuleName() ?>Actions extends <?ph
     $this->dispatcher->notify(new sfEvent($this, 'admin.pre_execute', array('configuration' => $this->configuration)));
 
     $this->helper = new <?php echo $this->getModuleName() ?>GeneratorHelper();
+
+    //-- Set the default template
+    //-- FIXME:  make it possible to disable this
+    $layout = sfConfig::get('sf_plugins_dir').'/ua5AdminThemePlugin/templates/ua5_2';
+    sfConfig::set('symfony.view.'.$this->getModuleName().'_'.$this->getActionName().'_layout', $layout);
   }
 
 <?php include dirname(__FILE__).'/../../parts/indexAction.php' ?>
