@@ -1,4 +1,26 @@
-To use the Admin Theme Template, you may have to add something like the following to your preExecute()
+# Setting up the nav:
+
+1) Enable the module:
+  apps/admin/config/settings.yml:
+
+    all:
+      .settings:
+          enabled_modules:      [ ua5Nav ]
+
+2) Create a partial file:
+  mkdir -p apps/admin/modules/ua5Nav/templates/
+  cp plugins/ua5AdminThemePlugin/modules/ua5Nav/templates/_site_nav.php \
+     apps/admin/modules/ua5Nav/templates/_site_nav.php
+
+3) (Optional) Override the ua5NavComponents::executeSite_nav() method in 
+   apps/admin/modules/ua5Nav/actions/components.class.php
+
+
+
+
+# Other points of interest:
+
+This admin generator has its own template, but if you have parts of your admin which are not created by the admin generator, you will need to add a little code to make them them use the same template.
 
   public function preExecute()
   {
