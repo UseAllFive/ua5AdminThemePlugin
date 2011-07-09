@@ -1,0 +1,2 @@
+all:
+  layout: %SF_ROOT_DIR%/plugins/ua5AdminThemePlugin/templates/ua5_2

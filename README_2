@@ -12,7 +12,7 @@
   cp plugins/ua5AdminThemePlugin/modules/ua5Nav/templates/_site_nav.php \
      apps/admin/modules/ua5Nav/templates/_site_nav.php
 
-3) (Optional) Override the ua5NavComponents::executeSite_nav() method in 
+3) (Optional) Override the ua5NavComponents::executeSite_nav() method in
    apps/admin/modules/ua5Nav/actions/components.class.php
 
 
@@ -20,10 +20,9 @@
 
 # Other points of interest:
 
-This admin generator has its own template, but if you have parts of your admin which are not created by the admin generator, you will need to add a little code to make them them use the same template.
+This admin generator has its own template, but if you have parts of your
+admin which are not created by the admin generator, you will need to edit
+your view.yml file:
 
-  public function preExecute()
-  {
-    $layout = sfConfig::get('sf_plugins_dir').'/ua5AdminThemePlugin/templates/ua5_2';
-    sfConfig::set('symfony.view.'.$this->getModuleName().'_'.$this->getActionName().'_layout', $layout);
-  }
+  all:
+    layout: %SF_ROOT_DIR%/plugins/ua5AdminThemePlugin/templates/ua5_2
