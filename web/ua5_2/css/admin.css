@@ -424,6 +424,12 @@ s,m,l,n = small(5px),medium(10px),large(20px),none(0px)
 .nav .l1.active>a {
   border-top: 1px solid transparent;
 }
+.nav .l1.page {
+  /* FIX:  This is so you can have an admin module called Page
+   *       but not have the OOCSS .page class apply to it.
+   */
+  width: auto;
+}
 /* =================== */
 /* ===== sub nav ===== */
 /* =================== */
