@@ -47,7 +47,7 @@
         <li><a href="#" class="c_p1_fg">Account</a></li>
         <li><a href="#" class="c_p1_fg">Help</a></li>
       </ul>
-      <h3 class="c_p1b man">Summit on the Summit</h3>
+      <h3 class="c_p1b man">IM Global</h3>
     </div> <!-- end of .container -->
   </header>
 
