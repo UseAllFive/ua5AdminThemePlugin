@@ -5,13 +5,7 @@
 <?php foreach ($this->configuration->getValue('list.display') as $name => $field): ?>
 <?php 
   $i = 1 + $i;
-  if ( 1 === $i && !$this->configuration->getValue('list.batch_actions')) { 
-    $class = ' rtl_5';
-  } elseif ( $max === $i && !$this->configuration->getValue('list.object_actions')) { 
-    $class = ' rtr_5';
-  } else {
-    $class = '';
-  }
+  $class = (1 === $i) ? ' rtl_5' : '';
 ?>
 [?php slot('sf_admin.current_header') ?]
 <th class="sf_admin_<?php echo strtolower($field->getType()) ?> sf_admin_list_th_<?php echo $name.$class ?>">

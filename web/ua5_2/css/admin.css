@@ -347,6 +347,19 @@ s,m,l,n = small(5px),medium(10px),large(20px),none(0px)
   color: #333333;
 }
 
+/**!! anchor color **/
+.c_p4 a,
+.c_p4_fg a {
+  color: #333333;
+  text-decoration: none;
+}
+
+/**!! anchor hover **/
+.c_p4 a:hover,
+.c_p4_fg a:hover {
+  text-decoration: underline;
+}
+
 
 .r_5,
 .rt_5,
@@ -390,7 +403,10 @@ s,m,l,n = small(5px),medium(10px),large(20px),none(0px)
    Left Side navigation
    ========================================================================== */
 /* for nav column to appear full height */
-.body { overflow: hidden; }
+.body {
+  overflow: hidden;
+  margin-top: 15px; /**!! more space between content and black bar **/
+}
 .leftNav,
 .nav,
 .nav .l1.last {
@@ -452,6 +468,11 @@ s,m,l,n = small(5px),medium(10px),large(20px),none(0px)
    ========================================================================== */
 .sf_admin_bar {
   padding: 20px 7px 10px 10px;
+  
+  /**!! filter bar blue border **/
+  border-color: #B4D5EE;
+  border-style: solid;
+  border-width: 1px 0;
 }
 .sf_admin_filter {
   padding-left: 10px;
@@ -469,7 +490,7 @@ s,m,l,n = small(5px),medium(10px),large(20px),none(0px)
   width: 140px;
   height: 25px;
   padding-left: 5px;
-  border: 1px solid black;
+  border: 1px solid #b2c5d3;
   -moz-border-radiustop: 4px;
   -webkit-border-radius: 4px;
   border-radius: 4px;
@@ -494,12 +515,60 @@ s,m,l,n = small(5px),medium(10px),large(20px),none(0px)
    ========================================================================== */
 #sf_admin_container {
   padding: 30px;
+  
+  /**!! content gray border **/
+  border-style: solid;
+  border-color: #dedede;
+  border-width: 1px 1px 1px 0;
 }
 
-table {
-  width: 100%;
+#sf_admin_container h1 {
+  margin-bottom: 10px;
 }
-thead {
+
+#sf_admin_header {
+  margin-bottom: 15px;
+}
+
+
+/**!! list **/
+
+.sf_admin_list table {
+  width: 100%;
+  border-collapse: separate;
+}
+
+.sf_admin_list thead th {
+  border-style: solid;
+  border-color: #ccc;
+  border-width: 1px 0 1px 0;
+}
+
+.sf_admin_list tfoot th {
+  border-style: solid;
+  border-color: #ccc;
+  border-width: 1px 0 1px 0;
+}
+
+/**!! START
+      left and right borders on first and last thead/tfoot > th **/
+.sf_admin_list thead th:first-child {
+  border-width: 1px 0 1px 1px;
+}
+
+.sf_admin_list thead th:last-child {
+  border-width: 1px 1px 1px 0;
+}
+
+.sf_admin_list tfoot th {
+  border-width: 1px;
+}
+
+/**!! END **/
+
+
+
+thead, tfoot {
   text-align: left;
   background-color: #fefefe;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#fefefe), to(#dedede));
@@ -510,8 +579,181 @@ thead {
   background-image:         linear-gradient(top, #fefefe, #dedede);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#fefefe', EndColorStr='#dedede');
 }
-thead th {
-  border: 1px solid #dedede;
+
+/**!! thead/tfood th padding **/
+.sf_admin_list thead th, .sf_admin_list tfoot th {
+  padding: 8px 10px;
+}
+
+/**!! td anchors **/
+tr.sf_admin_row td a {
+  color: #687f8f;
+  text-decoration: underline;
+}
+
+.sf_admin_list thead th, .sf_admin_list thead th a {
+  color: #666;
+}
+
+
+.sf_admin_list tbody tr td {
+  border-bottom: 1px solid #dedede;
+  padding: 8px 10px;
+  color: #999999;
+}
+
+.sf_admin_list .batch_actions {
+  width: 30px;
+  text-align: center;
+}
+
+.sf_admin_list tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.sf_admin_list tbody tr:hover td {
+  background-color: #f7f7f7;
+}
+
+.sf_admin_batch_actions {
+  float: right;
+}
+
+
+
+/**!! Pagination **/
+.sf_admin_pagination ul {
+  list-style: none;
+  float:left;
+}
+.sf_admin_pagination li {
+  float: left;
+  margin-right: 6px;
+  padding: 3px 7px;
+  
+  background-color: #fff;
+  border: 1px solid #dfdfdf;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  
+  font-size:12px;
+  font-weight: bold;
+}
+
+.sf_admin_pagination li.active {
+  background-color: #687f8f;
+  border-color: #687f8f;
+  color: #fff;
+}
+
+.sf_admin_pagination li a {
+  font-size: inherit;
+  color: #677e8e;
+  outline: none;
+}
+
+.sf_admin_pagination .next_page {
+  float:left; display:block;
+  padding: 4px 0 0 7px;
+  color: #677e8e;
+}
+
+
+/* =============================================================================
+   Edit / Form
+   ========================================================================== */
+
+.sf_admin_form {
+  border: 1px solid #e1e1e1;
+  padding: 20px;
+  background-color: #fefefe;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#fefefe), to(#f4f4f4));
+  background-image: -webkit-linear-gradient(top, #fefefe, #f4f4f4);
+  background-image:    -moz-linear-gradient(top, #fefefe, #f4f4f4);
+  background-image:     -ms-linear-gradient(top, #fefefe, #f4f4f4);
+  background-image:      -o-linear-gradient(top, #fefefe, #f4f4f4);
+  background-image:         linear-gradient(top, #fefefe, #f4f4f4);
+}
+
+.sf_admin_form fieldset {
+  margin-bottom: 15px;
+  padding: 20px 20px;
+  border: 1px solid #c9c9c9;
+  background-color: #fbfbfb;
+  
+  box-shadow:inset 0 0 4px #ddd;
+}
+
+
+.sf_admin_form fieldset h2 {
+  margin-bottom: 15px;
+  color: #5191bf;
+}
+
+
+.sf_admin_form input[type=text],  .sf_admin_form textarea {
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  
+  border: 1px solid #bbbbbb;
+  padding: 5px;
+}
+
+.sf_admin_form input.big {
+  width: 500px;
+  font-size: 18px;
+}
+
+.sf_admin_form input:-moz-placeholder {
+  color: #aaa;
+}
+
+.sf_admin_form input::-webkit-input-placeholder {
+  color: #aaa;
+}
+
+
+
+/**!! subfieldsets **/
+
+.sf_admin_form fieldset .subfieldset {
+  border-bottom: 1px solid #e9e9e9;
+  margin-bottom:20px;
+  padding-bottom:20px;
+}
+.sf_admin_form fieldset .subfieldset:last-child {
+  border-bottom:0;
+}
+
+.sf_admin_form fieldset .subfieldset h3 {
+  margin-bottom: 10px;
+  color: #666666;
+}
+
+.sf_admin_form fieldset .subfieldset ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none; 
+}
+
+.sf_admin_form fieldset .subfieldset ul li {
+  float: left;
+  margin-right: 15px;
+}
+
+/**!! tabular forms **/
+
+.sf_admin_form table {}
+.sf_admin_form table th {
+  padding: 6px 10px;
+  text-align: left;
+  font-weight: normal;
+  color: #888;
+}
+.sf_admin_form table td {
+  padding: 6px 10px;
 }
 
 
