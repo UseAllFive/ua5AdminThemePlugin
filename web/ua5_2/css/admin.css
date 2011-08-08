@@ -802,6 +802,18 @@ header {
   float: right;
 }
 
+.ui-sortable .ui-icon {
+  width: 16px;
+  height: 16px;
+  background-image: url(admin/222222_256x240_icons_icons.png);
+}
+.ui-sortable tr {
+  cursor: pointer;
+}
+.ui-sortable .ui-icon.ui-icon-arrowthick-2-n-s {
+  background-position: -128px -48px;
+}
+
 /*
 .page { background-color: green; }
 .leftCol { background-color: red; }
