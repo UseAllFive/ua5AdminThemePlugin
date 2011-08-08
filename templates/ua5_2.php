@@ -33,7 +33,11 @@
   <script src="/js/libs/modernizr-2.0.min.js"></script>
   <script src="/js/libs/respond.min.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
-  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.1.min.js"><\/script>')</script>
+  <script>window.jQuery || document.write('<script src="/ua5AdminThemePlugin/ua5_2/js/libs/jquery-1.6.2.min.js"><\/script>')</script>
+<?php if ( sfConfig::get('app_ua5_cms_include_jquery_ui', false) ): ?>
+  <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.15/jquery-ui.min.js"></script>
+  <script>!window.jQuery.ui && document.write('<script src="/ua5AdminThemePlugin/ua5_2/js/libs/jquery-ui-1.8.5.min.js"><\/script>')</script>
+<?php endif; ?>
 
   <?php include_javascripts() ?>
 </head>
