@@ -541,6 +541,10 @@ s,m,l,n = small(5px),medium(10px),large(20px),none(0px)
   margin-bottom: 10px;
 }
 
+#sf_admin_container img {
+  max-width: 500px;
+}
+
 #sf_admin_header {
   margin-bottom: 15px;
 }
