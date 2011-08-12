@@ -1,4 +1,8 @@
 <div class="sf_admin_pagination">
+  [?php $prev_page = (int)$pager->getPreviousPage(); ?]
+  [?php $next_page = (int)$pager->getNextPage(); ?]
+
+
   <!-- first page -->
   <!--
   <a href="[?php echo url_for('@<?php echo $this->getUrlForAction('list') ?>') ?]?page=1">
@@ -6,13 +10,15 @@
   </a>
   -->
 
-  <!-- previous page -->
-  <!--
-  <a href="[?php echo url_for('@<?php echo $this->getUrlForAction('list') ?>') ?]?page=[?php echo $pager->getPreviousPage() ?]">
-    [?php echo image_tag('/ua5AdminThemePlugin/ua5_2/img/previous.png', array('alt' => __('Previous page', array(), 'sf_admin'), 'title' => __('Previous page', array(), 'sf_admin'))) ?]
-  </a>
-  -->
-  
+  [?php if ( $pager->getPage() != $prev_page ) : ?]
+  <div class="prev_page clearfix">
+    <a href="[?php echo url_for('@<?php echo $this->getUrlForAction('list') ?>') ?]?page=[?php echo $prev_page; ?]" class="">
+      Previous Page
+    </a>
+  </div>
+  [?php endif; ?]
+
+
   <!-- pages -->
   <ul>
     [?php foreach ($pager->getLinks() as $page): ?]
@@ -24,18 +30,13 @@
     [?php endforeach; ?]
   </ul>
   
-  <div>
-    <a href="[?php echo url_for('@<?php echo $this->getUrlForAction('list') ?>') ?]?page=[?php echo $pager->getNextPage() ?]" class="next_page">
+  [?php if ( $pager->getPage() != $next_page ) : ?]
+  <div class="next_page clearfix">
+    <a href="[?php echo url_for('@<?php echo $this->getUrlForAction('list') ?>') ?]?page=[?php echo $next_page; ?]" class="">
       Next Page
     </a>
   </div>
-  
-  <!-- next page -->
-  <!--
-  <a href="[?php echo url_for('@<?php echo $this->getUrlForAction('list') ?>') ?]?page=[?php echo $pager->getNextPage() ?]">
-    [?php echo image_tag('/ua5AdminThemePlugin/ua5_2/img/next.png', array('alt' => __('Next page', array(), 'sf_admin'), 'title' => __('Next page', array(), 'sf_admin'))) ?]
-  </a>
-  -->
+  [?php endif; ?]
 
   <!-- last page -->
   <!--
@@ -43,6 +44,5 @@
     [?php echo image_tag('/ua5AdminThemePlugin/ua5_2/img/last.png', array('alt' => __('Last page', array(), 'sf_admin'), 'title' => __('Last page', array(), 'sf_admin'))) ?]
   </a>
   -->
-    
 
 </div>
