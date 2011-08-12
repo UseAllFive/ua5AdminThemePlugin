@@ -1,6 +1,6 @@
 <?php
 
-class ua5BasicSecurityUser extends sfBasicSecurityUser {
+class ua5GuardSecurityUser extends sfGuardSecurityUser {
 
   public function addFlash($name, $value) {
     $data = $this->getFlash($name);
