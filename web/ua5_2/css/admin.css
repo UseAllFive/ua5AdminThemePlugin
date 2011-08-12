@@ -460,6 +460,13 @@ s,m,l,n = small(5px),medium(10px),large(20px),none(0px)
    */
   width: auto;
 }
+.nav .l1 a .icon {
+  display: block;
+  float: left;
+  width: 16px;
+  height: 16px;
+  margin: 9px 10px 0px; 9px;
+}
 /* =================== */
 /* ===== sub nav ===== */
 /* =================== */
@@ -673,10 +680,18 @@ tr.sf_admin_row td a {
   outline: none;
 }
 
+.sf_admin_pagination .prev_page,
 .sf_admin_pagination .next_page {
-  float:left; display:block;
-  padding: 4px 0 0 7px;
+  float: left;
+}
+.sf_admin_pagination .prev_page a,
+.sf_admin_pagination .next_page a {
+  display: block;
+  padding-top: 3px;
   color: #677e8e;
+}
+.sf_admin_pagination .prev_page {
+  margin-right: 6px;
 }
 
 /**!! END Pagination **/
