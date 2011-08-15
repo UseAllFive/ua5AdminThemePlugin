@@ -13,6 +13,9 @@ require_once(dirname(__FILE__).'/../lib/Base<?php echo ucfirst($this->moduleName
  */
 abstract class <?php echo $this->getGeneratedModuleName() ?>Actions extends cwActions
 {
+  protected
+    $_model = '<?php echo sfInflector::underscore($this->getSingularName()); ?>';
+
   public function preExecute()
   {
     //-- Set active tab
