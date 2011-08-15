@@ -6,6 +6,8 @@
     <?php include_title() ?>
     <link rel="shortcut icon" href="/favicon.ico" />
     <?php include_stylesheets() ?>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/ua5AdminThemePlugin/js/jquery-1.6.1.min.js">\x3C/script>')</script>
     <?php include_javascripts() ?>
   </head>
 
