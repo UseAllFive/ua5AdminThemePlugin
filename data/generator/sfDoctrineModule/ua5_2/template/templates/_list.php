@@ -1,9 +1,7 @@
 <?php
-$has_object_actions = (0 !== count(array_diff_key($this->configuration->getValue('list.object_actions'), array('_delete' => null, '_edit' => null))));
-
 $column_count =
   count($this->configuration->getValue('list.display')) +
-  ($has_object_actions ? 1 : 0) +
+  ($this->configuration->getValue('list.object_actions') ? 1 : 0) +
   ($this->configuration->getValue('list.batch_actions') ? 1 : 0);
 ?>
 
@@ -15,7 +13,7 @@ $column_count =
       <thead>
         <tr>
           [?php include_partial('<?php echo $this->getModuleName() ?>/list_th_<?php echo $this->configuration->getValue('list.layout') ?>', array('sort' => $sort)) ?]
-<?php if ($has_object_actions): ?>
+<?php if ($this->configuration->getValue('list.object_actions')): ?>
           <th id="sf_admin_list_th_actions">[?php echo __('Actions', array(), 'sf_admin') ?]</th>
 <?php endif; ?>
 <?php if ($this->configuration->getValue('list.batch_actions')): ?>
@@ -40,7 +38,7 @@ $column_count =
         [?php foreach ($pager->getResults() as $i => $<?php echo $this->getSingularName() ?>): $odd = fmod(++$i, 2) ? 'odd' : 'even' ?]
           <tr class="sf_admin_row [?php echo $odd ?]">
             [?php include_partial('<?php echo $this->getModuleName() ?>/list_td_<?php echo $this->configuration->getValue('list.layout') ?>', array('<?php echo $this->getSingularName() ?>' => $<?php echo $this->getSingularName() ?>)) ?]
-<?php if($has_object_actions): ?>
+<?php if($this->configuration->getValue('list.object_actions')): ?>
             [?php include_partial('<?php echo $this->getModuleName() ?>/list_td_actions', array('<?php echo $this->getSingularName() ?>' => $<?php echo $this->getSingularName() ?>, 'helper' => $helper)) ?]
 <?php endif; ?>
 <?php if ($this->configuration->getValue('list.batch_actions')): ?>
