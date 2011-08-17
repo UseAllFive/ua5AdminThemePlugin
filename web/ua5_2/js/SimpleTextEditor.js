@@ -97,8 +97,8 @@ function SimpleTextEditor(id, objectId) {
         html += '<td><div class="separator"></div></td>';
         html += '<td class="button"><img src="'+this.path+'images/link.gif" width="20" height="20" alt="Insert Link" title="Insert Link" onclick="'+this.objectId+'.execCommand(\'createlink\')"></td>';
         html += '<td class="button"><img src="'+this.path+'images/image.gif" width="20" height="20" alt="Insert Image" title="Insert Image" onclick="'+this.objectId+'.execCommand(\'insertimage\')"></td>';
-        html += '<td><div class="separator"></div></td>';
-        html += '<td class="button"><img src="'+this.path+'images/help.gif" width="20" height="20" alt="Help" title="Help" onclick="'+this.objectId+'.openWindow(\''+this.path+'help.html\', \'300\', \'300\')"></td>';
+//        html += '<td><div class="separator"></div></td>';
+//        html += '<td class="button"><img src="'+this.path+'images/help.gif" width="20" height="20" alt="Help" title="Help" onclick="'+this.objectId+'.openWindow(\''+this.path+'help.html\', \'300\', \'300\')"></td>';
         html += '</tr></table></td></tr>';
         html += '<tr><td class="frame"><iframe id="'+this.id+'-frame" frameborder="0"></iframe></td></tr>';
         html += '<tr><td class="source"><input id="'+this.id+'-viewSource" type="checkbox" onclick="'+this.objectId+'.toggleSource()"> View Source</td></tr>';
