@@ -7,3 +7,7 @@
 .ste .button-click { padding: 1px; border: 1px solid; border-color: #ACA899 #ffffff #ffffff #ACA899; }
 .ste .separator { width: 0px; height: 18px; border-left: #aca899 1px solid; border-right: #ffffff 1px solid; margin: 0 5px; }
 .ste .source { padding-top: 5px; }
+
+/* HACK: by Matt */
+.ste .frame { padding: 0; }
+.ste .frame iframe { width: 100%; }
