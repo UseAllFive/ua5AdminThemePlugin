@@ -13,6 +13,10 @@ require_once dirname(__FILE__).'/../lib/Baseua5NavComponents.class.php';
 class ua5NavComponents extends Baseua5NavComponents
 {
 
+  public function executeHeader_nav() {
+  }
+
+
   public function executeSite_nav() {
   }
 

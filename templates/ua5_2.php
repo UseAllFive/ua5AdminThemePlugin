@@ -47,12 +47,8 @@
 
   <header class="c_p1_fg clearfix">
     <div class="container">
-      <ul id="header-nav" class="il">
-        <li><a href="#" class="c_p1_fg">J.J. Kaye</a></li>
-        <li><a href="#" class="c_p1_fg">Account</a></li>
-        <li><a href="#" class="c_p1_fg">Help</a></li>
-      </ul>
-      <h3 class="c_p1b man">IM Global</h3>
+      <?php include_component('ua5Nav', 'header_nav'); ?>
+      <h3 class="c_p1b man"><?php echo sfConfig::get('app_ua5_cms_project_name', 'UA5 CMS'); ?></h3>
     </div> <!-- end of .container -->
   </header>
 
