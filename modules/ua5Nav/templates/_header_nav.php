@@ -1,7 +1,3 @@
-<?php /*
 <ul id="header-nav" class="il">
-  <li><a href="#" class="c_p1_fg">J.J. Kaye</a></li>
-  <li><a href="#" class="c_p1_fg">Account</a></li>
-  <li><a href="#" class="c_p1_fg">Help</a></li>
+  <li><a href="<?php echo url_for('@sf_guard_signout'); ?>" class="c_p1_fg">Logout</a></li>
 </ul>
-*/ ?>
