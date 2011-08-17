@@ -8,6 +8,14 @@
  * @author     Matt Farmer <matt@useallfive.com>
  * @version    SVN: $Id: actions.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
  */
-class Baseua5NavComponents extends sfComponents
-{
+class Baseua5NavComponents extends sfComponents {
+
+  public function executeHeader_nav() {
+  }
+
+
+  public function executeSite_nav() {
+  }
+
+
 }
