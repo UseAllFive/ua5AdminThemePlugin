@@ -1,0 +1,7 @@
+sfGuardUser:
+  User_Matt:
+    email_address:  matt@useallfive.com
+    username:       m14t
+    password:       password
+    first_name:     Matt
+    last_name:      Farmer
