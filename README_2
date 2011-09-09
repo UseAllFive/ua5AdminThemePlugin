@@ -5,16 +5,25 @@
 
     all:
       .settings:
-          enabled_modules:      [ ua5Nav ]
+          enabled_modules:      [ ua5Nav, sfGuardGroup, sfGuardUser, sfGuardPermission, sfGuardAuth ]
 
 2) Create a partial file:
   mkdir -p apps/admin/modules/ua5Nav/templates/
   cp plugins/ua5AdminThemePlugin/modules/ua5Nav/templates/_site_nav.php \
      apps/admin/modules/ua5Nav/templates/_site_nav.php
 
-3) (Optional) Override the ua5NavComponents::executeSite_nav() method in
+3) Make myUser extend ua5GuardSecurityUser
+  sed -e's/\(sfBasicSecurityUser\|sfGuardSecurityUser\)/ua5GuardSecurityUser/' apps/admin/lib/myUser.class.php > t; mv t apps/admin/lib/myUser.class.php
+
+4) (Optional) Override the ua5NavComponents::executeSite_nav() method in
    apps/admin/modules/ua5Nav/actions/components.class.php
 
+5) (Optional) Set up your Application name:
+  apps/admin/config/app.yml
+
+    all:
+      ua5_cms:
+        project_name:  My Project
 
 
 
