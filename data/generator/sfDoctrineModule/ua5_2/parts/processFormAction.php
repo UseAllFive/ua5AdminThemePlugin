@@ -6,7 +6,7 @@
       $notice = $form->getObject()->isNew() ? 'The item was created successfully.' : 'The item was updated successfully.';
 
       try {
-        $<?php echo $this->getSingularName() ?> = $form->save();
+        $<?php echo $this->getModelClass() ?> = $form->save();
       } catch (Doctrine_Validator_Exception $e) {
 
         $errorStack = $form->getObject()->getErrorStack();
@@ -21,7 +21,7 @@
         return sfView::SUCCESS;
       }
 
-      $this->dispatcher->notify(new sfEvent($this, 'admin.save_object', array('object' => $<?php echo $this->getSingularName() ?>)));
+      $this->dispatcher->notify(new sfEvent($this, 'admin.save_object', array('object' => $<?php echo $this->getModelClass() ?>)));
 
       if ($request->hasParameter('_save_and_add'))
       {
@@ -33,7 +33,7 @@
       {
         $this->getUser()->setFlash('notice', $notice);
 
-        $this->redirect(array('sf_route' => '<?php echo $this->getUrlForAction('edit') ?>', 'sf_subject' => $<?php echo $this->getSingularName() ?>));
+        $this->redirect(array('sf_route' => '<?php echo $this->getUrlForAction('edit') ?>', 'sf_subject' => $<?php echo $this->getModelClass() ?>));
       }
     }
     else
