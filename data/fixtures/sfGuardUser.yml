@@ -5,3 +5,9 @@ sfGuardUser:
     password:       password
     first_name:     Matt
     last_name:      Farmer
+  User_JJ:
+    email_address:  jjkaye@useallfive.com
+    username:       jj
+    password:       password
+    first_name:     J.J.
+    last_name:      Kaye
