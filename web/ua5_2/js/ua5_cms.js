@@ -12,7 +12,7 @@ ua5_cms.createId = function( prefix ) {
   } while( 0 !== $('#'+id).length );
   return id;
 }
-ua5_cms.applySimpleTextEditor = function( $el ) {
+ua5_cms.applySimpleTextEditor = function( $el, options) {
   var $form = $el.closest('form'),
       id = $el.attr('id');
 
@@ -27,6 +27,9 @@ ua5_cms.applySimpleTextEditor = function( $el ) {
     $el.attr('id', id);
   }
   ua5_cms.ste[id] = new SimpleTextEditor(id, "ua5_cms.ste['"+ id +"']");
+  if ( options && options.styles ) {
+    ua5_cms.ste[id].styles = options.styles;
+  }
   ua5_cms.ste[id].init();
 
   //-- Setup the onSubmit functionality

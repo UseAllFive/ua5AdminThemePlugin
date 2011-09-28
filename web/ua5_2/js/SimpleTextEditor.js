@@ -10,6 +10,14 @@ function SimpleTextEditor(id, objectId) {
     this.id = id;
     this.objectId = objectId;
     this.frame;
+    this.styles = [
+      ['',      ''],
+      ['<h1>',  'Heading 1'],
+      ['<h2>',  'Heading 2'],
+      ['<h3>',  'Heading 3'],
+      ['<p>',   'Paragraph'],
+      ['<pre>', 'Preformatted'],
+    ];
     this.viewSource = false;
     
     this.path = "/ua5AdminThemePlugin/ua5_2/css/SimpleTextEditor/"; // with slash at the end
@@ -75,11 +83,17 @@ function SimpleTextEditor(id, objectId) {
     }
 
     this.getEditorHtml = function() {
-        var html = "";
+        var i,
+            html = "";
         html += '<input type="hidden" id="'+this.id+'" name="'+(this.name||this.id)+'" value="">';
         html += '<table class="ste" cellspacing="0" cellpadding="0">';
         html += '<tr><td class="bar"><table id="'+this.id+'-buttons" cellspacing="0" cellpadding="0"><tr>';
-        html += '<td><select onchange="'+this.objectId+'.execCommand(\'formatblock\', this.value);this.selectedIndex=0;"><option value=""></option><option value="<h1>">Heading 1</option><option value="<h2>">Heading 2</option><option value="<h3>">Heading 3</option><option value="<p>">Paragraph</option><option value="<pre>">Preformatted</option></select></td>';
+
+        html += '<td><select onchange="'+this.objectId+'.execCommand(\'formatblock\', this.value);this.selectedIndex=0;">';
+        for ( i=0; i<this.styles.length; i++ ) {
+          html += '<option value="'+ this.styles[i][0] +'">'+ this.styles[i][1] +'</option>';
+        }
+        html += '</select></td>';
         html += '<td><div class="separator"></div></td>';
         html += '<td class="button"><img src="'+this.path+'images/bold.gif" width="20" height="20" alt="Bold" title="Bold" onclick="'+this.objectId+'.execCommand(\'bold\')"></td>';
         html += '<td class="button"><img src="'+this.path+'images/italic.gif" width="20" height="20" alt="Italic" title="Italic" onclick="'+this.objectId+'.execCommand(\'italic\')"></td>';

@@ -413,6 +413,43 @@ s,m,l,n = small(5px),medium(10px),large(20px),none(0px)
 }
 
 
+.r_3,
+.rt_3,
+.rl_3,
+.rtl_3 {
+  -moz-border-top-left-radiustop: 3px;
+  -webkit-border-top-left-radius: 3px;
+  border-top-left-radius: 3px;
+ -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
+}
+.r_3,
+.rt_3,
+.rr_3,
+.rtr_3 {
+  -moz-border-top-right-radius: 3px;
+  -webkit-border-top-right-radius: 3px;
+  border-top-right-radius: 3px;
+ -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
+}
+.r_3,
+.rb_3,
+.rr_3,
+.rbr_3 {
+  -moz-border-bottom-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+ -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
+}
+.r_3,
+.rb_3,
+.rl_3,
+.rbl_3 {
+  -moz-border-bottom-left-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+ -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
+}
+
 /* =============================================================================
    Left Side navigation
    ========================================================================== */
@@ -645,6 +682,41 @@ tr.sf_admin_row td a {
   float: right;
 }
 
+.sf_admin_actions a,
+.sf_admin_actions input {
+  display: inline-block;
+  height: 30px;
+  line-height: 30px;
+  vertical-align: top;
+  background-color: #f4f4f4;
+  border: 1px solid #e1e1e1;
+  padding: 0px 10px;
+  text-transform: uppercase;
+  color: #5a5a5a;
+  font-size: 12px;
+  font-weight: bold;
+}
+.sf_admin_action_save input,
+.sf_admin_action_save_and_add input,
+.sf_admin_actions a span {
+  background: transparent url(admin/action_icons.png) scroll no-repeat 0 0;
+  display: inline-block;
+  width: 17px;
+  height: 30px;
+  padding-right: 10px;
+}
+.sf_admin_action_save input,
+.sf_admin_action_save_and_add input {
+  color: #ffffff;
+  text-shadow: 1px 1px 1px #555;
+  background-repeat: repeat-x;
+  width: auto;
+}
+.sf_admin_action_delete a       span  { background-position: 0px  -30px; }
+.sf_admin_action_delete a:hover span  { background-position: 0px  -60px; }
+.sf_admin_action_list   a       span  { background-position: 0px  -90px; }
+.sf_admin_action_list   a:hover span  { background-position: 0px -120px; }
+.sf_admin_action_new    a       span  { background-position: 0px -150px; }
 
 
 /**!! START
