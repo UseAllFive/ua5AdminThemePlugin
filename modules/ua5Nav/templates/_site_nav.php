@@ -6,7 +6,7 @@
 
 <?php
   $modules = array(
-    'category'
+    'category',
   );
 ?>
 <?php foreach ( $modules as $module ) : ?>
@@ -17,7 +17,7 @@
         }
 ?>
   <li class="l1 <?php echo $class; ?>">
-    <?php echo link_to('<span class="icon"></span>Categories', 'category/index'); ?>-
+    <?php echo link_to('<span class="icon"></span>'.ucfirst(sfInflector::humanize($module)), $module.'/index'); ?> 
   </li>
 <?php endforeach; ?>
 
