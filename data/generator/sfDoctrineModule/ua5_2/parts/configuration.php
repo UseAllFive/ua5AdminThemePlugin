@@ -14,6 +14,8 @@ abstract class Base<?php echo ucfirst($this->getModuleName()) ?>GeneratorConfigu
 
 <?php include dirname(__FILE__).'/fieldsConfiguration.php' ?>
 
+<?php include dirname(__FILE__).'/showConfiguration.php' ?>
+
   /**
    * Gets the form class name.
    *
