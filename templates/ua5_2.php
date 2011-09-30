@@ -43,7 +43,7 @@
   <?php include_javascripts() ?>
 </head>
 
-<body>
+<body class="<?php echo "module". ucfirst($sf_request->getParameter('module')) .' action'. ucfirst($sf_request->getParameter('action')); ?>">
 
   <header class="c_p1_fg clearfix">
     <div class="container">
