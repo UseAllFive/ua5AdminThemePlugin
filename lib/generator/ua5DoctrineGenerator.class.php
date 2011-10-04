@@ -33,7 +33,7 @@ class ua5DoctrineGenerator extends sfDoctrineGenerator {
        *
        */
       $route = $params['doctrine_route'];
-      $link_to_params = '$'.$this->getModuleName();
+      $link_to_params = '$'.$this->getSingularName();
    } else {
       /*
        * Allow the following in generator.yml:

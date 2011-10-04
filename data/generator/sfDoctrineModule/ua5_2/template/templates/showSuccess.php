@@ -8,7 +8,7 @@
 
 <?php /*
   <div id="sf_admin_header">
-    [?php include_partial('<?php echo $this->getModuleName() ?>/form_header', array('<?php echo $this->getModelClass() ?>' => $<?php echo $this->getModelClass() ?>, 'form' => $form, 'configuration' => $configuration)) ?]
+    [?php include_partial('<?php echo $this->getModuleName() ?>/form_header', array('<?php echo $this->getSingularName() ?>' => $<?php echo $this->getSingularName() ?>, 'form' => $form, 'configuration' => $configuration)) ?]
   </div>
  */ ?>
 
@@ -17,7 +17,7 @@
       <dl>
       [?php foreach ($columns as $column): ?]
         <dt>[?php echo $column; ?]</dt>
-        <dd>[?php echo $<?php echo $this->getModelClass() ?>[$column]; ?]</dd>
+        <dd>[?php echo $<?php echo $this->getSingularName() ?>[$column]; ?]</dd>
 
       [?php endforeach; ?]
       </dl>
@@ -26,7 +26,7 @@
 
 <?php /*
   <div id="sf_admin_footer">
-    [?php include_partial('<?php echo $this->getModuleName() ?>/form_footer', array('<?php echo $this->getModelClass() ?>' => $<?php echo $this->getModelClass() ?>, 'form' => $form, 'configuration' => $configuration)) ?]
+    [?php include_partial('<?php echo $this->getModuleName() ?>/form_footer', array('<?php echo $this->getSingularName() ?>' => $<?php echo $this->getSingularName() ?>, 'form' => $form, 'configuration' => $configuration)) ?]
   </div>
  */ ?>
 </div>
