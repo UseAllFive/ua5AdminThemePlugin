@@ -68,6 +68,11 @@
   </div> <!-- end of .container -->
 
 
+<?php
+if(function_exists('dump_javascript')) {
+  dump_javascript();
+}
+?>
 
 <?php if ( $googleAnalyticsSideId = sfConfig::get('app_google_analytics_site_id') ): ?>
   <script>
