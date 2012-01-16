@@ -27,6 +27,19 @@
 
 
 
+# Enabling Autocomplete
+
+If you want to use the ua5WidgetFormJQueryUIAutocomplete widget in your admin
+templates automagically, you need to enable the module.
+
+  apps/admin/config/settings.yml:
+
+    all:
+      .settings:
+          enabled_modules:      [ ua5Nav, ua5Autocomplete, sfGuardGroup, sfGuardUser, sfGuardPermission, sfGuardAuth ]
+
+
+
 # Other points of interest:
 
 This admin generator has its own template, but if you have parts of your

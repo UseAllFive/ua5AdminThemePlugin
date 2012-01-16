@@ -11,6 +11,26 @@
 class ua5DoctrineGenerator extends sfDoctrineGenerator {
 
   /**
+   * Returns an array of tables that represents a one to many relationship.
+   *
+   * @return array An array of tables.
+   */
+  public function getOneToManyTables() {
+    $relations = array();
+    foreach ($this->table->getRelations() as $relation) {
+      if (
+        $relation->getType() === Doctrine_Relation::MANY &&
+        !isset($relation['refTable']) &&
+        !$relation->isRefClass()
+      ) {
+          $relations[] = $relation;
+      }
+    }
+    return $relations;
+  }
+
+
+  /**
    * Returns HTML code for an action link.
    *
    * @param string  $actionName The action name

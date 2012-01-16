@@ -32,6 +32,14 @@ abstract class <?php echo $this->getGeneratedModuleName() ?>Actions extends <?ph
     sfConfig::set('symfony.view.'.$this->getModuleName().'_'.$this->getActionName().'_layout', $layout);
   }
 
+<?php
+  if ( method_exists($this, 'getOneToManyTables') ) {
+    foreach ( $this->getOneToManyTables() as $relation ) {
+      include dirname(__FILE__).'/../../parts/AjaxDelete.php';
+    }
+  }
+?>
+
 <?php include dirname(__FILE__).'/../../parts/indexAction.php' ?>
 
 <?php if ($this->params['with_show']): ?>
