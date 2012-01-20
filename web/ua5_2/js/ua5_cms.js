@@ -70,27 +70,37 @@ ua5_cms.deleteRelated = function(relationAlias) {
   $(function() {
     $('input[name*="'+ relationAlias + '"][name$="[delete]"]').click(function() {
       var $this = $(this),
-          $field_row = $this.parents('tr'),
+          $field_row = $this.parents('li'),
           $obj_row = $field_row.parents('tr'),
-          id = $obj_row.find('input[name$="[id]"]').val();
+          id = parseInt($obj_row.find('input[name$="[id]"]').val(), 10);
 
       if ( confirm('Are you sure?') ) {
         $field_row.hide();
 
-        $.post(
-          ua5_cms.script_name+'/'+ ua5_cms.model_name +'/ajaxDelete'+ relationAlias,
-          {
-            'id': id
-          },
-          function(data) {
-            if(data.success) {
-              $field_row.remove();
-            } else {
-              alert('Unable to delete media: ' + data.error_msg);
-              $obj_row.show();
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: ua5_cms.script_name+'/'+ ua5_cms.model_name +'/ajaxDelete'+ relationAlias,
+            data: {
+              'id': id
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+              $field_row.show();
+            },
+            success: function(data, textStatus, jqXHR) {
+              if(data.success) {
+                $obj_row.remove();
+              } else {
+                alert(
+                  'Unable to delete media: ' + data.error_msg +"\n\n"+
+                  'model_name: '+ ua5_cms.model_name +"\n"+
+                  'relation_alias: '+ relationAlias +"\n"+
+                  'id: '+ id
+                );
+                $field_row.show();
+              }
             }
-          }
-        );
+        });
       }
 
       return false;
