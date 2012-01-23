@@ -68,7 +68,6 @@ ua5_cms.applySimpleTextEditor = function( $el, options) {
 
 ua5_cms.deleteRelated = function(relationAlias) {
   $(function() {
-    console.log('input[name*="'+ relationAlias + '"][name$="[delete]"]');
     $('input[name*="'+ relationAlias + '"][name$="[delete]"]').click(function() {
       var $this = $(this),
           $field_row = $this.parents('li'),
