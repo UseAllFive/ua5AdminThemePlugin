@@ -926,7 +926,7 @@ tr.sf_admin_row td a {
 }
 
 .sf_admin_form table.ste select {
-  min-width: 125px;
+  min-width: 0;
 }
 
 .sf_admin_form select[id*=_date] {
