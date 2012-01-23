@@ -7,18 +7,13 @@
  */
 
 
-/* =============================================================================
-   HTML5 element display
-   ========================================================================== */
-
+/* @group HTML5 element display */
 article, aside, details, figcaption, figure, footer, header, hgroup, nav, section { display: block; }
 audio[controls], canvas, video { display: inline-block; *display: inline; *zoom: 1; }
+/* @end group */
 
 
-/* =============================================================================
-   Base
-   ========================================================================== */
-
+/* @group Base */
 /*
  * 1. Correct text resizing oddly in IE6/7 when body font-size is set using em units
  *    http://clagnut.com/blog/348/#c790
@@ -43,24 +38,20 @@ body, button, input, select, textarea { font-family: sans-serif; color: #222; }
 
 ::-moz-selection { background: #fe57a1; color: #fff; text-shadow: none; }
 ::selection { background: #fe57a1; color: #fff; text-shadow: none; }
+/* @end group */
 
 
-/* =============================================================================
-   Links
-   ========================================================================== */
-
+/* @group Links */
 a { color: #00e; }
 a:visited { color: #551a8b; }
 a:focus { outline: thin dotted; }
 
 /* Improve readability when focused and hovered in all browsers: people.opera.com/patrickl/experiments/keyboard/test */
 a:hover, a:active { outline: 0; }
+/* @end group */
 
 
-/* =============================================================================
-   Typography
-   ========================================================================== */
-
+/* @group Typography */
 abbr[title] { border-bottom: 1px dotted; }
 
 b, strong { font-weight: bold; }
@@ -90,21 +81,17 @@ small { font-size: 85%; }
 sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
 sup { top: -0.5em; }
 sub { bottom: -0.25em; }
+/* @end group */
 
 
-/* =============================================================================
-   Lists
-   ========================================================================== */
-
+/* @group Lists */
 ul, ol { margin: 1em 0; padding: 0 0 0 40px; }
 dd { margin: 0 0 0 40px; }
 nav ul, nav ol { list-style: none; margin: 0; padding: 0; }
+/* @end group */
 
 
-/* =============================================================================
-   Embedded content
-   ========================================================================== */
-
+/* @group Embedded content */
 /*
  * Improve image quality when scaled in IE7
  * code.flickr.com/blog/2008/11/12/on-ui-quality-the-little-things-client-side-image-resizing/
@@ -117,19 +104,15 @@ img { border: 0; -ms-interpolation-mode: bicubic; }
  */
 
 svg:not(:root) { overflow: hidden; }
+/* @end group */
 
 
-/* =============================================================================
-   Figures
-   ========================================================================== */
-
+/* @group Figures */
 figure { margin: 0; }
+/* @end group */
 
 
-/* =============================================================================
-   Forms
-   ========================================================================== */
-
+/* @group Forms */
 form { margin: 0; }
 fieldset { border: 0; margin: 0; padding: 0; }
 
@@ -186,13 +169,105 @@ textarea { overflow: auto; vertical-align: top; }
 input:valid, textarea:valid {  }
 input:invalid, textarea:invalid { background-color: #f0dddd; }
 
+input[type="file"] + input[type="button"] {
+  cursor: pointer;
+  border: 1px solid #79c7db;
+  background-color: #e6faff;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#e6faff), to(#afeeff));
+  background-image: -webkit-linear-gradient(top, #e6faff, #afeeff);
+  background-image:    -moz-linear-gradient(top, #e6faff, #afeeff);
+  background-image:     -ms-linear-gradient(top, #e6faff, #afeeff);
+  background-image:      -o-linear-gradient(top, #e6faff, #afeeff);
+  background-image:         linear-gradient(top, #e6faff, #afeeff);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#e6faff', EndColorStr='#afeeff');
+}
 
-/* =============================================================================
-   Tables
-   ========================================================================== */
+input[type="button"] {
+  width: auto;
+  height: 25px;
+  padding: 4px 10px;
+  border: 1px solid #c1c1c1;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  background-color: #f6f6f6;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#f6f6f6), to(#d0d0d0));
+  background-image: -webkit-linear-gradient(top, #f6f6f6, #d0d0d0);
+  background-image:    -moz-linear-gradient(top, #f6f6f6, #d0d0d0);
+  background-image:     -ms-linear-gradient(top, #f6f6f6, #d0d0d0);
+  background-image:      -o-linear-gradient(top, #f6f6f6, #d0d0d0);
+  background-image:         linear-gradient(top, #f6f6f6, #d0d0d0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#f6f6f6', EndColorStr='#d0d0d0');
+}
 
+a.btn.view {
+  background-color: #ffffff;
+  background-image: url(/ua5AdminThemePlugin/ua5_2/img/view.png);
+  background-position: 10px 50%;
+  background-repeat: no-repeat;
+  border: 1px solid #c1c1c1;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  color: #4f9db1;
+  display: block;
+  float: left;
+  height: 23px;
+  line-height: 23px;
+  padding-left: 35px;
+  width: 40px;
+}
+/* @end group */
+
+
+/* @group Form Autocomplete */
+.ui-autocomplete {
+  background: #f5f5f5;
+  border: 1px solid #bbbbbb;
+  list-style-type: none;
+  padding: 0;
+  position: absolute;
+}
+
+.ui-autocomplete .ui-menu-item {
+  margin: 0;
+  padding: 0;
+  zoom: 1;
+  float: left;
+  clear: left;
+  width: 100%;
+  cursor: pointer;
+}
+
+.ui-autocomplete .ui-menu-item a,
+.ui-autocomplete .ui-menu-item a:hover {
+  color: #333333;
+  display: block;
+  font-size: 12px;
+  padding: 5px;
+  text-decoration: none;
+  zoom: 1;
+}
+
+.ui-autocomplete .ui-menu-item a.ui-state-hover {
+  background: #ffffff;
+  border-top: 1px solid #bbbbbb;
+  border-bottom: 1px solid #bbbbbb;
+}
+
+.ui-autocomplete .ui-menu-item:first-child a.ui-state-hover {
+  border-top: none;
+}
+
+.ui-autocomplete .ui-menu-item:last-child a.ui-state-hover {
+  border-bottom: none;  
+}
+
+/* @end group */
+
+
+/* @group Tables */
 table { border-collapse: collapse; border-spacing: 0; }
-
 
 /** From OO CSS : https://github.com/stubbornella/oocss **/
 /* **************** TEMPLATE ***************** */
@@ -242,8 +317,11 @@ body {
   width:300px;
   _margin-left:-3px;
 }
+/* @end group */
+
+
+/* @group Spacing */
 /** 
- * Spacing classes 
  * Should be used to modify the default spacing between objects (not between nodes of the same object)
  * Please use judiciously. You want to be using defaults most of the time, these are exceptions! 
  * <type><location><size>
@@ -258,7 +336,6 @@ p,m = padding,margin
 a,t,r,b,l,h,v = all,top,right,bottom,left,horizontal,vertical
 s,m,l,n = small(5px),medium(10px),large(20px),none(0px)
 */
-
 .ptn,.pvn,.pan{padding-top:0px}
 .pts,.pvs,.pas{padding-top:5px}
 .ptm,.pvm,.pam{padding-top:10px}
@@ -291,7 +368,7 @@ s,m,l,n = small(5px),medium(10px),large(20px),none(0px)
 .mls,.mhs,.mas{margin-left:5px}
 .mlm,.mhm,.mam{margin-left:10px}
 .mll,.mhl,.mal{margin-left:20px}
-
+/* @end group */
 
 
 /* =============================================================================
@@ -582,6 +659,8 @@ s,m,l,n = small(5px),medium(10px),large(20px),none(0px)
 }
 
 #sf_admin_container h1 {
+  font-size: 24px;
+  font-family: sans-serif;
   margin-bottom: 10px;
 }
 
@@ -682,6 +761,16 @@ tr.sf_admin_row td a {
   float: right;
 }
 
+.sf_admin_actions {
+  padding: 0;
+  list-style-type: none;
+}
+
+.sf_admin_actions li {
+  margin-right: 10px;
+  display: inline-block;
+}
+
 .sf_admin_actions a,
 .sf_admin_actions input {
   display: inline-block;
@@ -769,6 +858,25 @@ tr.sf_admin_row td a {
 /**!! END Pagination **/
 
 
+/* @group Form Errors */
+.sf_admin_form .error_list {
+  padding: 0;
+  list-style-type: none;
+}
+
+.sf_admin_form .error_list li {
+  display: block;
+  margin-bottom: 5px;
+  color: #ff0000;
+  font-weight: bold;
+}
+
+.sf_admin_form .error_list li::before {
+  content: '*';
+}
+/* @end group */
+
+
 /* =============================================================================
    Edit / Form
    ========================================================================== */
@@ -787,11 +895,10 @@ tr.sf_admin_row td a {
 
 .sf_admin_form fieldset {
   margin-bottom: 15px;
-  padding: 20px 20px;
+  padding: 20px;
   border: 1px solid #c9c9c9;
-  background-color: #fbfbfb;
-  
-  box-shadow:inset 0 0 4px #ddd;
+  background-color: #fbfbfb;  
+  box-shadow: inset 0 0 4px #ddd;
 }
 
 
@@ -802,12 +909,24 @@ tr.sf_admin_row td a {
 
 
 .sf_admin_form input[type=text],  .sf_admin_form textarea {
-  -moz-border-radius: 2px;
-  -webkit-border-radius: 2px;
-  border-radius: 2px;
-  
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
   border: 1px solid #bbbbbb;
   padding: 5px;
+  min-width: 300px;
+}
+
+.sf_admin_form textarea {
+  min-width:480px;
+}
+
+.sf_admin_form select {
+  min-width: 350px;
+}
+
+.sf_admin_form select[id*=_date] {
+  min-width: 100px;
 }
 
 .sf_admin_form input.big {
@@ -823,7 +942,30 @@ tr.sf_admin_row td a {
   color: #aaa;
 }
 
+.sf_admin_form .sf_admin_boolean label {
+  margin-left: 20px;
+}
 
+.sf_admin_form .sf_admin_boolean .content {
+  margin-top: -15px;
+}
+
+.sf_admin_form_row {
+  margin-bottom: 15px;
+}
+
+.sf_admin_form_row label {
+  display: block;
+  font-weight: bold;
+}
+
+.sf_admin_form_row input[type="checkbox"] + label {
+  display: inline-block;
+}
+
+.sf_admin_form_row .content {
+  margin-top: 5px;
+}
 
 /**!! START
  *    "subfieldsets" for segments form -- mock from jj **/
@@ -858,16 +1000,21 @@ tr.sf_admin_row td a {
 
 /**!! START
  *    tabular forms styles **/
-.sf_admin_form table {}
+.sf_admin_form table {
+  width: 100%;
+}
+
 .sf_admin_form table th {
   padding: 6px 10px;
   text-align: left;
   font-weight: normal;
   color: #888;
 }
+
 .sf_admin_form table td {
   padding: 6px 10px;
 }
+
 /**!! END tabular form styles **/
 
 

@@ -108,11 +108,133 @@ ua5_cms.deleteRelated = function(relationAlias) {
   });
 }
 
+ua5_cms.namespace('form').chosen = (function() {
 
-/*
-ua5_cms = (function(window, document, $) {
-  
-  return {
+  var $chosen_fields,
+      $date_fields,
+      $upload_fields;
+
+
+  function applyChosen(opts) {
+    if ( 'Object' !== typeof(opts) ) {
+      opts = {};
+    }
+    $chosen_fields.chosen(opts);  
   }
-})(this, this.document, jQuery);
-*/
+
+
+  function applyDateLabels() {
+    $date_fields.each(function() {
+      var $this = $(this)
+          name = this.name.split('[').pop().replace(']', '');
+      $this.attr('data-placeholder', name.substr(0,1).toUpperCase()+name.substr(1).toLowerCase());
+    });
+  }
+
+
+  function createCustomUpload() {
+    $upload_fields.each(function() {
+
+      var label,
+          width,
+          height,
+          $parent,
+          $input = $(this),
+          $wrap = $('<div />', {
+            'style':  'position: relative; cursor: pointer;'
+          }),
+          $after = $('<input />', {
+            'type': 'button',
+            'value': 'Upload',
+            'style': 'position: absolute; left: 0; top: 0; z-index: 1'
+          });
+
+      $input
+        .wrap($wrap)
+        .after($after);
+      width = $after.outerWidth();
+      height = $after.outerHeight();
+      $parent = $input.parent();
+
+      $input.css({
+        'opacity': 0,
+        'z-index': 2,
+        'position': 'absolute',
+        'width': width,
+        'height': height
+      });
+      $parent.css({
+        'width': width,
+        'height': height
+      });
+
+      $input.change(function() {
+        $after.val('Upload '+$input.val().split('\\').pop());
+        width = $after.outerWidth();
+        $input.css('width', width);
+        $parent.css('width', width);
+      });
+
+    });
+  }
+
+
+  function setViewButtons() {
+    $view_fields.each(function() {
+      var $this = $(this),
+          image_url = $this.data('thumb-url'),
+          image_tag = '<img src="'+image_url+'" />';
+      $this.qtip({
+        content: image_tag,
+        show: 'mouseover',
+        hide: 'mouseout',
+        style: {
+          name: 'light',
+          tip: true,
+          width: {
+            max: 500
+          },
+          border: {
+            radius: 4,
+            color: '#e1e1e1'
+          }
+        },
+        position: {
+          corner: {
+            target: 'topMiddle',
+            tooltip: 'bottomMiddle'
+          }
+        }
+      });
+    });
+  }
+
+
+  function init() {
+
+    $chosen_fields = $('select');
+    $date_fields = $('select[name$="[month]"],select[name$="[day]"],select[name$="[year]"]');
+    $upload_fields = $('input[type="file"]');
+    $view_fields = $('a.view');
+
+    //-- Add appropriate labels on date dropdowns
+    applyDateLabels();
+
+    //-- Make select fields use chosen plugin
+    applyChosen({ allow_single_deselect: true });
+
+    //-- Create custom upload fields
+    createCustomUpload();
+
+    //-- Enable the view button behavior
+    setViewButtons();
+
+  }
+  return {
+    'init': init
+  };
+})();
+
+jQuery(function() {
+  ua5_cms.form.chosen.init();
+});

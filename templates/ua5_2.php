@@ -28,16 +28,19 @@
 
 
   <link rel="stylesheet" type="text/css" media="screen" href="/ua5AdminThemePlugin/ua5_2/css/admin.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="/ua5AdminThemePlugin/ua5_2/css/chosen.css" />
   <?php include_stylesheets() ?>
 
   <script src="/ua5AdminThemePlugin/ua5_2/js/libs/modernizr-2.0.min.js"></script>
   <script src="/ua5AdminThemePlugin/ua5_2/js/libs/respond.min.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
-  <script>window.jQuery || document.write('<script src="/ua5AdminThemePlugin/ua5_2/js/libs/jquery-1.6.2.min.js"><\/script>')</script>
-<?php if ( sfConfig::get('app_ua5_cms_include_jquery_ui', false) ): ?>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="/ua5AdminThemePlugin/ua5_2/js/libs/jquery-1.7.1.min.js"><\/script>')</script>
+  <script src="/ua5AdminThemePlugin/ua5_2/js/libs/jquery.qtip-1.0.0-rc3.min.js"></script>
+  <?php if ( sfConfig::get('app_ua5_cms_include_jquery_ui', false) ): ?>
   <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js"></script>
   <script>window.jQuery.ui || document.write('<script src="/ua5AdminThemePlugin/ua5_2/js/libs/jquery-ui-1.8.5.min.js"><\/script>')</script>
-<?php endif; ?>
+  <?php endif; ?>
+  <script src="/ua5AdminThemePlugin/ua5_2/js/libs/chosen.js"></script>
   <script src="/ua5AdminThemePlugin/ua5_2/js/ua5_cms.js"></script>
 
   <?php include_javascripts() ?>
