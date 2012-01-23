@@ -68,6 +68,7 @@ ua5_cms.applySimpleTextEditor = function( $el, options) {
 
 ua5_cms.deleteRelated = function(relationAlias) {
   $(function() {
+    console.log('input[name*="'+ relationAlias + '"][name$="[delete]"]');
     $('input[name*="'+ relationAlias + '"][name$="[delete]"]').click(function() {
       var $this = $(this),
           $field_row = $this.parents('li'),
@@ -182,8 +183,8 @@ ua5_cms.namespace('form').chosen = (function() {
   function setViewButtons() {
     $view_fields.each(function() {
       var $this = $(this),
-          image_url = $this.data('thumb-url'),
-          image_tag = '<img src="'+image_url+'" />';
+          image_url = $this.attr('href'),
+          image_tag = '<img width="475" src="'+image_url+'" />';
       $this.qtip({
         content: image_tag,
         show: 'mouseover',
@@ -192,6 +193,7 @@ ua5_cms.namespace('form').chosen = (function() {
           name: 'light',
           tip: true,
           width: {
+            min: 500,
             max: 500
           },
           border: {
