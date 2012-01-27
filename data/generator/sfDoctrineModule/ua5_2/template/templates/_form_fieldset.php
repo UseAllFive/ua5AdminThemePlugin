@@ -12,7 +12,11 @@
       'help'       => $field->getConfig('help'),
       'form'       => $form,
       'field'      => $field,
-      'class'      => 'sf_admin_form_row sf_admin_'.strtolower($field->getType()).' sf_admin_form_field_'.$name,
+      'class'      => sprintf(
+        'sf_admin_form_row sf_admin_%s sf_admin_form_field_%s',
+        strtolower($field->getType()),
+        sfInflector::tableize(str_replace(' ', '_', $name))
+      ),
     )) ?]
   [?php endforeach; ?]
 </fieldset>
