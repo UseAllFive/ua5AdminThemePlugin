@@ -70,11 +70,23 @@ ua5_cms.deleteRelated = function(relationAlias) {
   $(function() {
     $('input[name*="'+ relationAlias + '"][name$="[delete]"]').click(function() {
       var $this = $(this),
-          $field_row = $this.parents('li'),
-          $obj_row = $field_row.parents('tr'),
-          id = parseInt($obj_row.find('input[name$="[id]"]').val(), 10);
+          $field_row,
+          $obj_row,
+          id;
 
       if ( confirm('Are you sure?') ) {
+
+        //-- Handle if we are in a table or list wrapper
+        if ( 'TD' === $this.parent()[0].tagName ) {
+          $field_row = $this.closest('tr');
+          $obj_row = $field_row.parent().closest('tr');
+        } else {
+          $field_row = $this.closest('li');
+          $obj_row = $field_row.parent().closest('tr');
+        }
+
+        id = parseInt($obj_row.find('input[name$="[id]"]').val(), 10);
+
         $field_row.hide();
 
         $.ajax({
