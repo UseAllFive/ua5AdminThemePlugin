@@ -39,6 +39,28 @@ templates automagically, you need to enable the module.
           enabled_modules:      [ ua5Nav, ua5Autocomplete, sfGuardGroup, sfGuardUser, sfGuardPermission, sfGuardAuth ]
 
 
+# Using embeded relations
+
+  1) Tell the generator to use the ua5DoctrineGenerator
+
+    apps/backend/modules/model/config/generator.yml
+      generator:
+        class: ua5DoctrineGenerator
+
+  2) Tell the base forms to extend the ua5FormDoctrine
+    lib/form/doctrine/BaseFormDoctrine.class.php:
+      abstract class BaseFormDoctrine extends ua5FormDoctrine
+
+
+  3) Tell the Model specific form to embed the relations
+    lib/form/doctrine/myModelForm.class.php:
+
+      protected
+        $embededRelations = array(
+          array('RelationAlias', 'New Relation Form Label', 3 /* new objects in new form */, $rel_collection_form_name),
+        );
+
+  4) Create the Collection Forms
 
 # Other points of interest:
 

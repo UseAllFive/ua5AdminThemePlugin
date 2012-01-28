@@ -199,6 +199,18 @@ input[type="button"] {
   background-image:         linear-gradient(top, #f6f6f6, #d0d0d0);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#f6f6f6', EndColorStr='#d0d0d0');
 }
+input[type="button"][disabled] {
+  /* freestyled these.  might need to be tweaked ^m14t */
+  color: #777777;
+  background-color: #e6e6e6;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#e6e6e6), to(#c0c0c0));
+  background-image: -webkit-linear-gradient(top, #e6e6e6, #c0c0c0);
+  background-image:    -moz-linear-gradient(top, #e6e6e6, #c0c0c0);
+  background-image:     -ms-linear-gradient(top, #e6e6e6, #c0c0c0);
+  background-image:      -o-linear-gradient(top, #e6e6e6, #c0c0c0);
+  background-image:         linear-gradient(top, #e6e6e6, #c0c0c0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#e6e6e6', EndColorStr='#c0c0c0');
+}
 
 a.btn.view {
   background-color: #ffffff;
@@ -1062,6 +1074,13 @@ header {
 .main .leftCol { background-color: purple; }
 .main { background-color: yellow; }
 */
+
+
+/* For embeded forms */
+
+table.embeded_form>tbody>tr>th {
+  display: none;
+}
 
 
 

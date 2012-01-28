@@ -33,6 +33,7 @@ abstract class <?php echo $this->getGeneratedModuleName() ?>Actions extends <?ph
   }
 
 <?php
+  include dirname(__FILE__).'/../../parts/AjaxDeleteGeneric.php';
   if ( method_exists($this, 'getOneToManyTables') ) {
     foreach ( $this->getOneToManyTables() as $relation ) {
       include dirname(__FILE__).'/../../parts/AjaxDelete.php';

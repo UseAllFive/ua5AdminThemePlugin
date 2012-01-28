@@ -87,7 +87,7 @@ ua5_cms.deleteRelated = function(relationAlias) {
 
         id = parseInt($obj_row.find('input[name$="[id]"]').val(), 10);
 
-        $field_row.hide();
+        $this.prop('disabled', true);
 
         $.ajax({
             type: 'POST',
@@ -97,11 +97,42 @@ ua5_cms.deleteRelated = function(relationAlias) {
               'id': id
             },
             error: function(jqXHR, textStatus, errorThrown) {
-              $field_row.show();
+              $this.prop('disabled', false);
             },
             success: function(data, textStatus, jqXHR) {
-              if(data.success) {
-                $obj_row.remove();
+              var i,
+                  matches,
+                  prefix,
+                  selector,
+                  $els;
+
+              if ( data.success ) {
+                $obj_row.slideUp(1500, function() {
+                  $(this).remove();
+                });
+
+                //-- Since we removed an object, if there are ones after this
+                //   one, we need to fix their index's
+                matches = $this.attr('name').match(/(.*)\[([0-9]+)\]/),
+                prefix = matches[1],
+                i = parseInt(matches[2], 10),
+                selector = '[name^="'+ prefix +'['+ (1+i) +']"]';
+                $els = $(selector);
+
+                while ( 0 < $els.length ) {
+                  $els.each(function() {
+                    var cur_name = $(this).attr('name'),
+                        new_name = cur_name.replace(
+                          prefix +'['+ (1+i) +']',
+                          prefix +'['+ (i) +']'
+                        );
+                    $(this).attr('name', new_name);
+                  });
+                  i += 1;
+                  selector = '[name^="'+ prefix +'['+ (1+i) +']"]';
+                  $els = $(selector);
+                }
+
               } else {
                 alert(
                   'Unable to delete media: ' + data.error_msg +"\n\n"+
