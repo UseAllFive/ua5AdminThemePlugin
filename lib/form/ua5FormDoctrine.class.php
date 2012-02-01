@@ -147,14 +147,14 @@ abstract class ua5FormDoctrine extends sfFormDoctrine {
             '<a href="%s" class="%s" data-thumb-url="%s" target="_blank">%s</a>',
             $obj->ThumbnailUrl($col, 'original'),
             'btn view image',
-            $obj->ThumbnailUrl($col, 'thumb'),
+            $obj->ThumbnailUrl($col, 'original'),
             'View'
           );
         $this->setWidget($col, new sfWidgetFormInputFileEditable(array(
           'edit_mode' => !$this->isNew(),
           'is_image' => true,
           'with_delete' => $obj[$col] && !$required,
-          'file_src' => $obj->ThumbnailUrl($col, 'thumb'),
+          'file_src' => $obj->ThumbnailUrl($col, 'original'),
           'template' => <<<EOT
 <div class="media clearfix">
   <ul>
