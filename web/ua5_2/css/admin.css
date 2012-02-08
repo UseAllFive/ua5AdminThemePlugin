@@ -634,6 +634,9 @@ s,m,l,n = small(5px),medium(10px),large(20px),none(0px)
 .sf_admin_filter li {
   padding-top: 14px;
 }
+.sf_admin_filter select {
+  max-width: 170px;
+}
 .sf_admin_filter input[type=text] {
   width: 140px;
   height: 25px;
