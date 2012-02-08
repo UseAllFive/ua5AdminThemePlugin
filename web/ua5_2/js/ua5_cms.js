@@ -168,9 +168,14 @@ ua5_cms.namespace('form').chosen = (function() {
 
   function applyDateLabels() {
     $date_fields.each(function() {
-      var $this = $(this)
+      var $this = $(this),
           name = this.name.split('[').pop().replace(']', '');
       $this.attr('data-placeholder', name.substr(0,1).toUpperCase()+name.substr(1).toLowerCase());
+      if ( 'month' === name ) {
+        if ( $this.parents('.sf_admin_filter').length ) {
+          $this.before('<br/>');
+        }
+      }
     });
   }
 
