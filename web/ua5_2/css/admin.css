@@ -962,11 +962,19 @@ tr.sf_admin_row td a {
 }
 
 .sf_admin_form .sf_admin_boolean label {
-  margin-left: 20px;
+  display: inline-block;
 }
 
-.sf_admin_form .sf_admin_boolean .content {
-  margin-top: -15px;
+.sf_admin_form ul.checkbox_list,
+.sf_admin_form ul.radio_list {
+  padding: 0;
+  list-style-type: none;
+}
+
+.sf_admin_form ul.checkbox_list > li,
+.sf_admin_form ul.radio_list > li {
+  display: inline-block;
+  margin-right: 5px;
 }
 
 .sf_admin_form_row {
