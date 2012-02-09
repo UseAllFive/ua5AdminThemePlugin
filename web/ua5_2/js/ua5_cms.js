@@ -155,8 +155,8 @@ ua5_cms.namespace('form').chosen = (function() {
 
   var $chosen_fields,
       $date_fields,
-      $upload_fields;
-
+      $upload_fields,
+      date_fields_selector = 'select[name*="[date]"],select[name*="[month]"],select[name*="[day]"],select[name*="[year]"]';
 
   function applyChosen(opts) {
     if ( 'Object' !== typeof(opts) ) {
@@ -261,8 +261,8 @@ ua5_cms.namespace('form').chosen = (function() {
 
   function init() {
 
-    $chosen_fields = $('select');
-    $date_fields = $('select[name$="[month]"],select[name$="[day]"],select[name$="[year]"]');
+    $chosen_fields = $('select:not('+date_fields_selector+')');
+    $date_fields = $(date_fields_selector);
     $upload_fields = $('input[type="file"]');
     $view_fields = $('a.view');
 

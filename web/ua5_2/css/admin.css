@@ -232,52 +232,6 @@ a.btn.view {
 /* @end group */
 
 
-/* @group Form Autocomplete */
-.ui-autocomplete {
-  background: #f5f5f5;
-  border: 1px solid #bbbbbb;
-  list-style-type: none;
-  padding: 0;
-  position: absolute;
-}
-
-.ui-autocomplete .ui-menu-item {
-  margin: 0;
-  padding: 0;
-  zoom: 1;
-  float: left;
-  clear: left;
-  width: 100%;
-  cursor: pointer;
-}
-
-.ui-autocomplete .ui-menu-item a,
-.ui-autocomplete .ui-menu-item a:hover {
-  color: #333333;
-  display: block;
-  font-size: 12px;
-  padding: 5px;
-  text-decoration: none;
-  zoom: 1;
-}
-
-.ui-autocomplete .ui-menu-item a.ui-state-hover {
-  background: #ffffff;
-  border-top: 1px solid #bbbbbb;
-  border-bottom: 1px solid #bbbbbb;
-}
-
-.ui-autocomplete .ui-menu-item:first-child a.ui-state-hover {
-  border-top: none;
-}
-
-.ui-autocomplete .ui-menu-item:last-child a.ui-state-hover {
-  border-bottom: none;  
-}
-
-/* @end group */
-
-
 /* @group Tables */
 table { border-collapse: collapse; border-spacing: 0; }
 
@@ -895,7 +849,6 @@ tr.sf_admin_row td a {
 /* =============================================================================
    Edit / Form
    ========================================================================== */
-
 .sf_admin_form {
   border: 1px solid #e1e1e1;
   padding: 20px;
@@ -961,10 +914,6 @@ tr.sf_admin_row td a {
   color: #aaa;
 }
 
-.sf_admin_form .sf_admin_boolean label {
-  display: inline-block;
-}
-
 .sf_admin_form ul.checkbox_list,
 .sf_admin_form ul.radio_list {
   padding: 0;
@@ -982,16 +931,17 @@ tr.sf_admin_row td a {
 }
 
 .sf_admin_form_row label {
-  display: block;
-  font-weight: bold;
-}
-
-.sf_admin_form_row input[type="checkbox"] + label {
   display: inline-block;
+  font-weight: bold;
 }
 
 .sf_admin_form_row .content {
   margin-top: 5px;
+}
+
+.sf_admin_boolean > div > .content {
+  display: inline-block;
+  margin-left: 5px;
 }
 
 /**!! START
@@ -1067,38 +1017,12 @@ header {
   float: right;
 }
 
-.ui-sortable .ui-icon {
-  width: 16px;
-  height: 16px;
-  background-image: url(admin/222222_256x240_icons_icons.png);
-}
-.ui-sortable tr {
-  cursor: pointer;
-}
-.ui-sortable .ui-icon.ui-icon-arrowthick-2-n-s {
-  background-position: -128px -48px;
-}
-
-/*
-.page { background-color: green; }
-.leftCol { background-color: red; }
-.main .leftCol { background-color: purple; }
-.main { background-color: yellow; }
-*/
-
-
 /* For embeded forms */
 
 table.embeded_form>tbody>tr>th {
   display: none;
 }
 
-
-
-/* For media */
-.sf_admin_form_row .media {
-  /*  border: 1px solid red;*/
-}
 
 .sf_admin_form_row .media .thumb {
   float: left;

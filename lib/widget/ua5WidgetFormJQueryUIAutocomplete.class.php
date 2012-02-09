@@ -2,6 +2,8 @@
 
 
 class ua5WidgetFormJQueryUIAutocomplete extends sfWidgetFormDoctrineChoice {
+
+
   /**
    * Configures the current widget.
    *
@@ -35,6 +37,7 @@ class ua5WidgetFormJQueryUIAutocomplete extends sfWidgetFormDoctrineChoice {
   public function getChoices() {
     return array();
   }
+
 
   /**
    * @param  string $name        The element name
@@ -87,6 +90,18 @@ EOF
     );
     return $this->renderTag('input', array('type' => 'text', 'name' => $name, 'value' => $visibleValue));
 
+  }
+
+
+  /**
+   * Gets the Stylesheet paths associated with the widget.
+   *
+   * @return array An array of Stylesheet paths
+   */
+  public function getStylesheets() {
+    return array(
+      '/ua5AdminThemePlugin/ua5_2/css/jquery-ui/ua5_admin_theme/jquery-ui-ua5-admin-theme.css' => 'all'
+    );
   }
 
 
