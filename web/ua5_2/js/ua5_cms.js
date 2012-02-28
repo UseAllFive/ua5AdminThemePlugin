@@ -284,6 +284,64 @@ ua5_cms.namespace('form').chosen = (function() {
   };
 })();
 
+ua5_cms.sortable = (function() {
+
+  "use strict";
+
+  function init(model, selector) {
+    var $list = $(selector);
+
+    //-- Show handles
+    $list.children('tr').children('th')
+      .css({
+        'display': 'block',
+        'color': '#ffffff',
+        'padding-top': '16px'
+      }).each(function() {
+        $(this).append('<img src="/ua5AdminThemePlugin/images/sort.png" style="margin-top: -10px;" />');
+      });
+
+    $list.sortable({
+      'axis': 'y',
+      'cursor': 'move',
+      'update': function(e, ui) {
+
+        //-- Don't cache the items so we can get the new order
+        var $items = $list.children('tr'),
+            order = {};
+
+        $items.each(function(i, el) {
+          var $this = $(this),
+              $position_input = $this.find('[name$="[position]"]'),
+              id = $this.children('th').text(),
+              old_position = parseInt($position_input.val(),10),
+              new_position = i;
+          order[id] = {
+            'old_position': old_position,
+            'new_position': new_position
+          };
+          $position_input.val(new_position);
+        });
+
+        $.ajax({
+          url: ua5_cms.script_name + '/ua5Sort/sort',
+          type: "POST",
+          data: {
+            'model': model,
+            'order': order
+          },
+          dataType: "json"
+        });
+      }
+    });
+  }
+
+  return {
+    'init': init
+  };
+})();
+
+
 jQuery(function() {
   ua5_cms.form.chosen.init();
 });
