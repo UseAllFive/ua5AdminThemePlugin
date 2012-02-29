@@ -296,6 +296,7 @@ ua5_cms.sortable = (function() {
       .css({
         'display': 'block',
         'color': '#ffffff',
+        'font-size': '0px',
         'padding-top': '16px'
       }).each(function() {
         $(this).append('<img src="/ua5AdminThemePlugin/images/sort.png" style="margin-top: -10px;" />');

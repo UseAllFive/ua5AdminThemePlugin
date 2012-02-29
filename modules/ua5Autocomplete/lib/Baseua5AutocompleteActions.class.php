@@ -12,20 +12,23 @@ class Baseua5AutocompleteActions extends sfActions {
 
   public function executeLookup(sfWebRequest $request) {
 
-    $this->forward404Unless( $model = $request->getParameter('model'));
-    $this->forward404Unless( $term = $request->getParameter('term'));
+    $this->forward404Unless(
+      ($model = $request->getParameter('model')) &&
+      ($term = $request->getParameter('term')) &&
+      ($table_method = $request->getParameter('table_method'))
+    );
     $search_column = $request->getParameter('column', 'name');
     $id_column = $request->getParameter('value', 'id');
 
-    $rows = Doctrine_Core::getTable($model)
-      ->createQuery()
-      ->select(sprintf('%s value, %s label', $id_column, $search_column))
-      ->where($search_column.' LIKE ?', '%'.$request['term'].'%')
-      ->limit(20)
-      ->orderBy($search_column.' ASC')
-      ->fetchArray();
+    $q = Doctrine_Core::getTable($model)->$table_method();
+    $q->select("$id_column value, $search_column label");
+    $q->andWhere("$search_column LIKE ?", "%$term%");
+    $q->orderBy($search_column.' ASC');
+    $q->limit(20);
+    $rows = $q->fetchArray();
 
     $res = array(
+//      'query' => $q->getSqlQuery(),
       'entries' => $rows,
     );
 
