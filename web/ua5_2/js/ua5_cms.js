@@ -66,12 +66,22 @@ ua5_cms.applySimpleTextEditor = function( $el, options) {
 }
 
 
-ua5_cms.deleteRelated = function(relationAlias) {
-  $(function() {
-    $('input[name*="'+ relationAlias + '"][name$="[delete]"]').click(function() {
+ua5_cms.deleteRelated = (function() {
+  var _added_relations = {};
+
+  return function(relationAlias) {
+    if ( _added_relations[relationAlias] ) {
+      //-- Only bind once per relationAlias
+      return false;
+    }
+
+    _added_relations[relationAlias] = true;
+
+    $('input[name*="['+ relationAlias + ']"][name$="[delete]"]').click(function() {
       var $this = $(this),
           $field_row,
           $obj_row,
+          $id,
           id;
 
       if ( confirm('Are you sure?') ) {
@@ -80,12 +90,20 @@ ua5_cms.deleteRelated = function(relationAlias) {
         if ( 'TD' === $this.parent()[0].tagName ) {
           $field_row = $this.closest('tr');
           $obj_row = $field_row.parent().closest('tr');
+          id = $this.data('object-id');
+          if ( !id ) {
+            $id = $obj_row.find('td>table>tbody>tr>td>input[name$="[id]"]');
+            id = parseInt($id.val(), 10);
+          }
         } else {
           $field_row = $this.closest('li');
           $obj_row = $field_row.parent().closest('tr');
+          id = $this.data('object-id');
+          if ( !id ) {
+            $id = $obj_row.find('td>ul>li>input[name$="[id]"]');
+            id = parseInt($id.val(), 10);
+          }
         }
-
-        id = parseInt($obj_row.find('input[name$="[id]"]').val(), 10);
 
         $this.prop('disabled', true);
 
@@ -148,8 +166,8 @@ ua5_cms.deleteRelated = function(relationAlias) {
 
       return false;
     });
-  });
-}
+  }
+})();
 
 ua5_cms.namespace('form').chosen = (function() {
 

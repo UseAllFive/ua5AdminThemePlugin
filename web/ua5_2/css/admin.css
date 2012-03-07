@@ -1054,6 +1054,7 @@ table.embeded_form>tbody>tr>th {
 ul {
   margin: 0px;
 }
+ul.ns,
 ul.il>li {
   list-style: none;
   list-style-image: none;
