@@ -207,7 +207,7 @@ ua5_cms.namespace('form').chosen = (function() {
           $parent,
           $input = $(this),
           $wrap = $('<div />', {
-            'style':  'position: relative; cursor: pointer;'
+            'style':  'position: relative; cursor: pointer; overflow: hidden;'
           }),
           $after = $('<input />', {
             'type': 'button',
