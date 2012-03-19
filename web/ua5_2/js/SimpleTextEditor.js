@@ -91,7 +91,9 @@ function SimpleTextEditor(id, objectId) {
 
         html += '<td><select onchange="'+this.objectId+'.execCommand(\'formatblock\', this.value);this.selectedIndex=0;">';
         for ( i=0; i<this.styles.length; i++ ) {
-          html += '<option value="'+ this.styles[i][0] +'">'+ this.styles[i][1] +'</option>';
+          if ( this.styles[i] ) {
+            html += '<option value="'+ this.styles[i][0] +'">'+ this.styles[i][1] +'</option>';
+          }
         }
         html += '</select></td>';
         html += '<td><div class="separator"></div></td>';
