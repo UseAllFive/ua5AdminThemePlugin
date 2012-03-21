@@ -241,6 +241,10 @@ table { border-collapse: collapse; border-spacing: 0; }
 body {
   _text-align:center; /* IE5.5 */
 }
+ul.wysihtml5-toolbar {
+  background: 0;
+  border: 0;
+}
 .main {
   display:table-cell;
   *display:block;

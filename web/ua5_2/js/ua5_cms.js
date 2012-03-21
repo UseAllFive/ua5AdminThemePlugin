@@ -330,7 +330,24 @@ ua5_cms.sortable = (function() {
   };
 })();
 
+ua5_cms.bootstrap = (function() {
+
+  var _$fields;
+
+  function _init() {
+
+    _$fields = $('textarea').filter(':not(.noWYSIWYG)');
+    _$fields.wysihtml5();
+
+  }
+
+  return {
+    'init': _init
+  };
+
+})();
 
 jQuery(function() {
   ua5_cms.form.chosen.init();
+  ua5_cms.bootstrap.init();
 });
