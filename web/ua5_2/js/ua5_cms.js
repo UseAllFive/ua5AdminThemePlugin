@@ -36,36 +36,6 @@ ua5_cms.createId = function( prefix ) {
   return id;
 }
 
-
-ua5_cms.applySimpleTextEditor = function( $el, options) {
-  var $form = $el.closest('form'),
-      id = $el.attr('id');
-
-  //-- Make sure we have a ua5_cms.ste object
-  if ( !ua5_cms.ste ) {
-    ua5_cms.ste = [];
-  }
-
-  //-- If we don't have an ID already, assign one
-  if ( !id ) {
-    id = ua5_cms.createId();
-    $el.attr('id', id);
-  }
-  ua5_cms.ste[id] = new SimpleTextEditor(id, "ua5_cms.ste['"+ id +"']");
-  if ( options && options.styles ) {
-    ua5_cms.ste[id].styles = options.styles;
-  }
-  ua5_cms.ste[id].init();
-
-  //-- Setup the onSubmit functionality
-  $form.submit(function() {
-    ua5_cms.ste[id].submit();
-  });
-
-  return $el;
-}
-
-
 ua5_cms.deleteRelated = (function() {
   var _added_relations = {};
 
@@ -180,7 +150,7 @@ ua5_cms.namespace('form').chosen = (function() {
     if ( 'Object' !== typeof(opts) ) {
       opts = {};
     }
-    $chosen_fields.chosen(opts);  
+    $chosen_fields.chosen(opts);
   }
 
 
