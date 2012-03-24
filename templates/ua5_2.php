@@ -27,11 +27,15 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
 
-  <link rel="stylesheet" type="text/css" media="screen" href="/ua5AdminThemePlugin/ua5_2/css/admin.css" />
+  <?php if ( sfConfig::get('app_ua5_cms_include_jquery_ui', false) ): ?>
+  <link rel="stylesheet" type="text/css" media="screen" href="/js/jquery-plugin/css/custom-theme/jquery-ui-1.8.14.custom.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="/ua5AdminThemePlugin/ua5_2/css/jquery-ui/ua5_admin_theme/jquery-ui-ua5-admin-theme.css" />
+  <?php endif; ?>
   <link rel="stylesheet" type="text/css" media="screen" href="/ua5AdminThemePlugin/ua5_2/css/chosen.css" />
   <link rel="stylesheet" type="text/css" media="screen" href="/ua5AdminThemePlugin/ua5_2/dependencies/bootstrap-wysihtml5/lib/css/bootstrap.min.css" />
   <link rel="stylesheet" type="text/css" media="screen" href="/ua5AdminThemePlugin/ua5_2/dependencies/bootstrap-wysihtml5/lib/css/prettify.css" />
   <link rel="stylesheet" type="text/css" media="screen" href="/ua5AdminThemePlugin/ua5_2/dependencies/bootstrap-wysihtml5/src/bootstrap-wysihtml5.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="/ua5AdminThemePlugin/ua5_2/css/admin.css" />
   <?php include_stylesheets() ?>
 
   <script src="/ua5AdminThemePlugin/ua5_2/js/libs/modernizr-2.0.min.js"></script>
@@ -40,8 +44,8 @@
   <script>window.jQuery || document.write('<script src="/ua5AdminThemePlugin/ua5_2/js/libs/jquery-1.7.1.min.js"><\/script>')</script>
   <script src="/ua5AdminThemePlugin/ua5_2/js/libs/jquery.qtip-1.0.0-rc3.min.js"></script>
   <?php if ( sfConfig::get('app_ua5_cms_include_jquery_ui', false) ): ?>
-  <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js"></script>
-  <script>window.jQuery.ui || document.write('<script src="/ua5AdminThemePlugin/ua5_2/js/libs/jquery-ui-1.8.5.min.js"><\/script>')</script>
+  <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/jquery-ui.min.js"></script>
+  <script>window.jQuery.ui || document.write('<script src="/ua5AdminThemePlugin/ua5_2/js/libs/jquery-ui-1.8.14.min.js"><\/script>')</script>
   <?php endif; ?>
   <script src="/ua5AdminThemePlugin/ua5_2/js/libs/chosen.js"></script>
   <script src="/ua5AdminThemePlugin/ua5_2/dependencies/bootstrap-wysihtml5/lib/js/wysihtml5-0.3.0_rc1.js"></script>

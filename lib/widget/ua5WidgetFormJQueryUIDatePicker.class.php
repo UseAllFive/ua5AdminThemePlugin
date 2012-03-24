@@ -3,6 +3,10 @@
 class ua5WidgetFormJQueryUIDatepicker extends sfWidgetFormDate {
 
 
+  protected
+    $default_jquery_datepicker_options = array();
+
+
   /**
    * Configures the current widget.
    *
@@ -12,7 +16,16 @@ class ua5WidgetFormJQueryUIDatepicker extends sfWidgetFormDate {
    * @see sfWidgetForm
    */
   protected function configure($options = array(), $attributes = array()) {
+
+    sfConfig::set('app_ua5_cms_include_jquery_ui', true);
+
     parent::configure($options, $attributes);
+
+    $this->addOption('date_format', 'm/d/Y');
+    $this->addOption('jquery_datepicker_options');
+
+    $this->setDefault(date($this->getOption('date_format')));
+
   }
 
 
@@ -27,37 +40,19 @@ class ua5WidgetFormJQueryUIDatepicker extends sfWidgetFormDate {
    * @see sfWidgetForm
    */
   public function render($name, $value = null, $attributes = array(), $errors = array()) {
-    $formatted_value = date('m/d/Y', strtotime($value));
+    $formatted_value = date($this->getOption('date_format'), strtotime($value));
     $value_id = $this->generateId($name);
+    $js_options = json_encode(array_merge(
+      $this->default_jquery_datepicker_options,
+      $this->getOption('jquery_datepicker_options', array())
+    ));
     JSUtil::appendOnReady(<<<EOF
       (function() {
-        jQuery('#$value_id').datepicker();
+        jQuery('#$value_id').datepicker($js_options);
       })();
 EOF
     );
     return $this->renderTag('input', array('type' => 'text', 'name' => $name, 'value' => $formatted_value));
-  }
-
-
-  /**
-   * Gets the Stylesheet paths associated with the widget.
-   *
-   * @return array An array of Stylesheet paths
-   */
-  public function getStylesheets() {
-    return array(
-      '/ua5AdminThemePlugin/ua5_2/css/jquery-ui/ua5_admin_theme/jquery-ui-ua5-admin-theme.css' => 'all'
-    );
-  }
-
-
-  /**
-   * Gets the JavaScript paths associated with the widget.
-   *
-   * @return array An array of JavaScript paths
-   */
-  public function getJavascripts() {
-    return array('/ua5AdminThemePlugin/ua5_2/js/libs/jquery-ui-1.8.5.min.js');
   }
 
 }

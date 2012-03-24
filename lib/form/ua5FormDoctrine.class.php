@@ -48,7 +48,19 @@ abstract class ua5FormDoctrine extends sfFormDoctrine {
         ucfirst(sfInflector::classify($rel_alias))
       );
     }
-    return array($rel_alias, $rel_new_form_name, $rel_new_form_count, $rel_collection_form_name);
+
+    if ( array_key_exists('embed_delete_js', $cfg) ) {
+      $embed_delete_js = $cfg['embed_delete_js'];
+    } else {
+      $embed_delete_js = true;
+    }
+    return array(
+      $rel_alias,
+      $rel_new_form_name,
+      $rel_new_form_count,
+      $rel_collection_form_name,
+      $embed_delete_js,
+    );
   }
 
 
@@ -75,11 +87,14 @@ abstract class ua5FormDoctrine extends sfFormDoctrine {
           $rel_alias,
           $rel_new_form_name,
           $rel_new_form_count,
-          $rel_collection_form_name
+          $rel_collection_form_name,
+          $embed_delete_js
         ) = $this->_parseEmbedRelatedConfig($relation_cfg);
 
         $this->embedRelation($rel_alias, null, array(), null, "<table class=\"embeded_form\">\n  %content%</table>");
-        JSUtil::appendOnReady(sprintf("ua5_cms.deleteRelated('%s');", $rel_alias));
+        if ( $embed_delete_js ) {
+          JSUtil::appendOnReady(sprintf("ua5_cms.deleteRelated('%s');", $rel_alias));
+        }
         $this->embedForm(
           $rel_new_form_name,
           new $rel_collection_form_name(null, array(
@@ -113,7 +128,8 @@ abstract class ua5FormDoctrine extends sfFormDoctrine {
           $rel_alias,
           $rel_new_form_name,
           $rel_new_form_count,
-          $rel_collection_form_name
+          $rel_collection_form_name,
+          $embed_delete_js
         ) = $this->_parseEmbedRelatedConfig($relation_cfg);
 
         $obj_vals = $this->getValue($rel_new_form_name);

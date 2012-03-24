@@ -1,6 +1,5 @@
 <?php
 
-
 class ua5WidgetFormJQueryUIAutocomplete extends sfWidgetFormDoctrineChoice {
 
 
@@ -19,9 +18,11 @@ class ua5WidgetFormJQueryUIAutocomplete extends sfWidgetFormDoctrineChoice {
    *
    * @see sfWidgetForm
    */
-  protected function configure($options = array(), $attributes = array())
-  {
+  protected function configure($options = array(), $attributes = array()) {
+    sfConfig::set('app_ua5_cms_include_jquery_ui', true);
+
     $this->addRequiredOption('model');
+    $this->addOption('allow_other', false);
     $this->addOption('column', 'name');
     $this->addOption('table_method', 'createQuery');
     $this->addOption('url', '/ua5Autocomplete/lookup/model/%model%/table_method/%table_method%/column/%column%/value/%column%/term/');
@@ -56,11 +57,17 @@ class ua5WidgetFormJQueryUIAutocomplete extends sfWidgetFormDoctrineChoice {
 
     $column = $this->getOption('column');
     $model = $this->getOption('model');
-    if ( $model ) {
-      $valueObj = Doctrine_Core::getTable($model)->find($value);
-      $visibleValue = ($valueObj ? $valueObj[$column] : '');
+    $table_method = $this->getOption('table_method');
+
+    if ( $this->getOption('allow_other', false) ) {
+      $visibleValue = $value;
     } else {
-      $visibleValue = null;
+      if ( $model ) {
+        $valueObj = Doctrine_Core::getTable($model)->find($value);
+        $visibleValue = ($valueObj ? $valueObj[$column] : '');
+      } else {
+        $visibleValue = null;
+      }
     }
 
     $value_id = $this->generateId($name);
@@ -71,9 +78,9 @@ class ua5WidgetFormJQueryUIAutocomplete extends sfWidgetFormDoctrineChoice {
         '%column%'
       ),
       array(
-        $this->getOption('model'),
-        $this->getOption('table_method'),
-        $this->getOption('column'),
+        $model,
+        $table_method,
+        $column,
       ),
       $this->getOption('url')
     );
@@ -106,28 +113,6 @@ EOF
     );
     return $this->renderTag('input', array('type' => 'text', 'name' => $name, 'value' => $visibleValue));
 
-  }
-
-
-  /**
-   * Gets the Stylesheet paths associated with the widget.
-   *
-   * @return array An array of Stylesheet paths
-   */
-  public function getStylesheets() {
-    return array(
-      '/ua5AdminThemePlugin/ua5_2/css/jquery-ui/ua5_admin_theme/jquery-ui-ua5-admin-theme.css' => 'all'
-    );
-  }
-
-
-  /**
-   * Gets the JavaScript paths associated with the widget.
-   *
-   * @return array An array of JavaScript paths
-   */
-  public function getJavascripts() {
-    return array('/ua5AdminThemePlugin/ua5_2/js/libs/jquery-ui-1.8.5.min.js');
   }
 
 

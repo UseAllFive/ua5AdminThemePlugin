@@ -59,15 +59,23 @@ class ua5EmbededFormValidatorSchema extends sfValidatorSchema {
       }
 
 
-      foreach( $this->required_fields[$subform_name] as $name => $field ) {
-        $errorSchemaLocal->addError(new sfValidatorError($this, 'required'), $name);
+      if ( array_key_exists($subform_name, $this->required_fields) ) {
+        foreach( $this->required_fields[$subform_name] as $name => $field ) {
+          $errorSchemaLocal->addError(new sfValidatorError($this, 'required'), $name);
+        }
       }
 
 
       // throws the error for the main form
       if ( count($errorSchemaLocal) ) {
         $errorSchema->addError($errorSchemaLocal[$subform_name], (string) $subform_name);
+      /* Shouldn't this be like this? 
+        $errorSchema->addError(new sfValidatorError($this, (string) $subform_name));
+       */
       }
+
+
+      //-- FIXME:  -- we never throw $errorSchema?
 
       if (
         !$at_least_one_value_set &&
