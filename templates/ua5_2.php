@@ -32,10 +32,8 @@
   <link rel="stylesheet" type="text/css" media="screen" href="/ua5AdminThemePlugin/ua5_2/css/jquery-ui/ua5_admin_theme/jquery-ui-ua5-admin-theme.css" />
   <?php endif; ?>
   <link rel="stylesheet" type="text/css" media="screen" href="/ua5AdminThemePlugin/ua5_2/css/chosen.css" />
-  <link rel="stylesheet" type="text/css" media="screen" href="/ua5AdminThemePlugin/ua5_2/dependencies/bootstrap-wysihtml5/lib/css/bootstrap.min.css" />
-  <link rel="stylesheet" type="text/css" media="screen" href="/ua5AdminThemePlugin/ua5_2/dependencies/bootstrap-wysihtml5/lib/css/prettify.css" />
-  <link rel="stylesheet" type="text/css" media="screen" href="/ua5AdminThemePlugin/ua5_2/dependencies/bootstrap-wysihtml5/src/bootstrap-wysihtml5.css" />
   <link rel="stylesheet" type="text/css" media="screen" href="/ua5AdminThemePlugin/ua5_2/css/admin.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="/ua5AdminThemePlugin/ua5_2/dependencies/jwysiwyg/jquery.wysiwyg.css" />
   <?php include_stylesheets() ?>
 
   <script src="/ua5AdminThemePlugin/ua5_2/js/libs/modernizr-2.0.min.js"></script>
@@ -48,10 +46,7 @@
   <script>window.jQuery.ui || document.write('<script src="/ua5AdminThemePlugin/ua5_2/js/libs/jquery-ui-1.8.14.min.js"><\/script>')</script>
   <?php endif; ?>
   <script src="/ua5AdminThemePlugin/ua5_2/js/libs/chosen.js"></script>
-  <script src="/ua5AdminThemePlugin/ua5_2/dependencies/bootstrap-wysihtml5/lib/js/wysihtml5-0.3.0_rc1.js"></script>
-  <script src="/ua5AdminThemePlugin/ua5_2/dependencies/bootstrap-wysihtml5/lib/js/prettify.js"></script>
-  <script src="/ua5AdminThemePlugin/ua5_2/dependencies/bootstrap-wysihtml5/lib/js/bootstrap.min.js"></script>
-  <script src="/ua5AdminThemePlugin/ua5_2/dependencies/bootstrap-wysihtml5/src/bootstrap-wysihtml5.js"></script>
+  <script src="/ua5AdminThemePlugin/ua5_2/dependencies/jwysiwyg/jquery.wysiwyg.js"></script>
   <script src="/ua5AdminThemePlugin/ua5_2/js/ua5_cms.js"></script>
 
   <?php include_javascripts() ?>
