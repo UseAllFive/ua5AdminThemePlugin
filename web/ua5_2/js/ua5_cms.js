@@ -325,8 +325,24 @@ ua5_cms.sortable = (function() {
     });
   }
 
+  function style_sort_btns() {
+    $('.sf_admin_action_promote a').button({
+      icons: {
+        primary: "ui-icon-triangle-1-n"
+      },
+      text: false
+    });
+    $('.sf_admin_action_demote a').button({
+      icons: {
+        primary: "ui-icon-triangle-1-s"
+      },
+      text: false
+    });
+  }
+
   return {
-    'init': init
+    'init': init,
+    'style_sort_btns': style_sort_btns
   };
 })();
 
