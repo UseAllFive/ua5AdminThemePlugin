@@ -74,4 +74,10 @@ abstract class <?php echo $this->getGeneratedModuleName() ?>Actions extends <?ph
 <?php include dirname(__FILE__).'/../../parts/paginationAction.php' ?>
 
 <?php include dirname(__FILE__).'/../../parts/sortingAction.php' ?>
+
+<?php
+  if ( $this->table->hasTemplate('Sortable') ) {
+    include dirname(__FILE__).'/../../parts/sortableActions.php';
+  }
+?>
 }
