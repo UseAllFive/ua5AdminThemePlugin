@@ -67,9 +67,14 @@ class ua5DoctrineGenerator extends sfDoctrineGenerator {
        *
        */
       $action = isset($params['action']) ? $params['action'] : 'List'.sfInflector::camelize($actionName);
-      $route = isset($params['route']) ? $params['route'] : $this->getModuleName().'/'.$action;;
+      $route = sprintf(
+        "'%s'",
+        isset($params['route']) ? $params['route'] : $this->getModuleName().'/'.$action
+      );
 
-      $url_params = $pk_link ? '?'.$this->getPrimaryKeyUrlParams() : '\'';
+      if ( $pk_link ) {
+        $url_params = ".'?".$this->getPrimaryKeyUrlParams();
+      }
       if ( isset($params['url_params']) && is_array($params['url_params']) ) {
         foreach ( $params['url_params'] as $k => $v ) {
           if ( '@sf_request' === $v ) {
@@ -84,7 +89,7 @@ class ua5DoctrineGenerator extends sfDoctrineGenerator {
     }
 
     return sprintf(
-      '[?php echo link_to(__(\'%s\', array(), \'%s\'), \'%s\', %s) ?]',
+      '[?php echo link_to(__(\'%s\', array(), \'%s\'), %s, %s) ?]',
       $params['label'],
       $this->getI18nCatalogue(),
       $route,
