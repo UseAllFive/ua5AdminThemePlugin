@@ -22,7 +22,7 @@ class ua5WidgetFormJQueryUIDatepicker extends sfWidgetFormDate {
     parent::configure($options, $attributes);
 
     $this->addOption('date_format', 'm/d/Y');
-    $this->addOption('jquery_datepicker_options');
+    $this->addOption('jquery_datepicker_options', array());
 
     $this->setDefault(date($this->getOption('date_format')));
 
