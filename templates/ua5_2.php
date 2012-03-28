@@ -28,7 +28,6 @@
 
 
   <?php if ( sfConfig::get('app_ua5_cms_include_jquery_ui', false) ): ?>
-  <link rel="stylesheet" type="text/css" media="screen" href="/js/jquery-plugin/css/custom-theme/jquery-ui-1.8.14.custom.css" />
   <link rel="stylesheet" type="text/css" media="screen" href="/ua5AdminThemePlugin/ua5_2/css/jquery-ui/ua5_admin_theme/jquery-ui-ua5-admin-theme.css" />
   <?php endif; ?>
   <link rel="stylesheet" type="text/css" media="screen" href="/ua5AdminThemePlugin/ua5_2/css/chosen.css" />
