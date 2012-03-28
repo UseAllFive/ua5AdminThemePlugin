@@ -26,7 +26,9 @@ class ua5WidgetFormJQueryUIDatetimePicker extends sfWidgetFormInput {
 
     parent::configure($options, $attributes);
 
-    $this->setDefault(date($this->getOption('date_format')));
+    if ( $this->getOption('required') ) {
+      $this->setDefault(date($this->getOption('date_format')));
+    }
 
   }
 
@@ -42,7 +44,11 @@ class ua5WidgetFormJQueryUIDatetimePicker extends sfWidgetFormInput {
    * @see sfWidgetForm
    */
   public function render($name, $value = null, $attributes = array(), $errors = array()) {
-    $formatted_value = date($this->getOption('date_format'), strtotime($value));
+    if ( null === $value ) {
+      $formatted_value = null;
+    } else {
+      $formatted_value = date($this->getOption('date_format'), strtotime($value));
+    }
     $value_id = $this->generateId($name);
     $js_options = json_encode(array_merge(
       $this->default_jquery_datetimepicker_options,
