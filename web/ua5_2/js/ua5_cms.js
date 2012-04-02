@@ -353,7 +353,9 @@ ua5_cms.wysiwyg = (function() {
   function _init() {
 
     _$fields = $('textarea').filter(':not(.noWYSIWYG)');
-    _$fields.wysiwyg();
+    _$fields.wysiwyg({
+      'initialContent': ''
+    });
 
   }
 
