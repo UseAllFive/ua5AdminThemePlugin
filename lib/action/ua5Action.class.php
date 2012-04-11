@@ -32,4 +32,18 @@ abstract class ua5Action extends sfAction {
   }
 
 
+  /**
+   * Forwards current action to the default 403 error action unless the specified condition is true.
+   *
+   * @param bool    $condition  A condition that evaluates to true or false
+   * @param string  $message    Message of the generated exception
+   *
+   */
+  public function forward403Unless($condition, $message = null) {
+    if (!$condition) {
+      $this->forward(sfConfig::get('sf_secure_module'), sfConfig::get('sf_secure_action'));
+    }
+  }
+
+
 }
