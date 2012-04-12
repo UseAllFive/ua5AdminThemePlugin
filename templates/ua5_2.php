@@ -46,6 +46,11 @@
   <?php endif; ?>
   <script src="/ua5AdminThemePlugin/ua5_2/js/libs/chosen.js"></script>
   <script src="/ua5AdminThemePlugin/ua5_2/dependencies/jwysiwyg/jquery.wysiwyg.js"></script>
+  <script src="/ua5AdminThemePlugin/ua5_2/dependencies/jwysiwyg/controls/wysiwyg.colorpicker.js"></script>
+  <script src="/ua5AdminThemePlugin/ua5_2/dependencies/jwysiwyg/controls/wysiwyg.cssWrap.js"></script>
+  <script src="/ua5AdminThemePlugin/ua5_2/dependencies/jwysiwyg/controls/wysiwyg.image.js"></script>
+  <script src="/ua5AdminThemePlugin/ua5_2/dependencies/jwysiwyg/controls/wysiwyg.link.js"></script>
+  <script src="/ua5AdminThemePlugin/ua5_2/dependencies/jwysiwyg/controls/wysiwyg.table.js"></script>
   <script src="/ua5AdminThemePlugin/ua5_2/js/ua5_cms.js"></script>
 
   <?php include_javascripts() ?>
