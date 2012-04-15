@@ -21,12 +21,24 @@ abstract class ua5Action extends sfAction {
   }
 
 
+  public function setResponseCacheDuration($timeout) {
+    $response = $this->getResponse();
+
+    if ( false === $timeout || 0 === $timeout ) {
+      // prevent response caching on client side
+      $response->addCacheControlHttpHeader('no-cache, must-revalidate');
+      $response->setHttpHeader('Expires', 'Mon, 26 Jul 1997 05:00:00 GMT');
+    } else {
+      $response->addCacheControlHttpHeader('max-age='.$timeout);
+      $response->setHttpHeader('Pragma', 'public');
+      $response->setHttpHeader('Expires', gmdate('D, j M Y H:i:s e', time()+$timeout));
+    }
+    return $response;
+  }
+
+
   static public function setJsonResponseHeaders(sfResponse $response) {
     $response->setContentType('application/json');
-
-    // prevent response caching on client side
-    $response->addCacheControlHttpHeader('no-cache, must-revalidate');
-    $response->setHttpHeader('Expires', 'Mon, 26 Jul 1997 05:00:00 GMT');
 
     return $response;
   }
