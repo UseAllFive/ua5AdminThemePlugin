@@ -29,9 +29,26 @@ abstract class ua5Action extends sfAction {
       $response->addCacheControlHttpHeader('no-cache, must-revalidate');
       $response->setHttpHeader('Expires', 'Mon, 26 Jul 1997 05:00:00 GMT');
     } else {
-      $response->addCacheControlHttpHeader('max-age='.$timeout);
-      $response->setHttpHeader('Pragma', 'public');
-      $response->setHttpHeader('Expires', gmdate('D, j M Y H:i:s e', time()+$timeout));
+      //-- References:
+      //   https://developers.google.com/speed/docs/best-practices/caching
+      //   
+      /* */
+      //-- What it seems like we should send
+      $response->addCacheControlHttpHeader(sprintf('max-age=%s, public, must-revalidate', $timeout));
+      $response->setHttpHeader('Expires', gmdate('D, j M Y H:i:s \G\M\T', time()+$timeout));
+      $response->setHttpHeader('Last-modified', gmdate('D, j M Y H:i:s \G\M\T', time()));
+      header_remove('Pragma');
+      /* */
+
+      /*
+      //-- Attempts to make it work
+      $response->addCacheControlHttpHeader(sprintf('max-age=%s, public', $timeout));
+      $response->setHttpHeader('Expires', gmdate('D, j M Y H:i:s \G\M\T', time()+$timeout));
+      $response->setHttpHeader('Last-modified', 'Mon, 26 Jul 1997 05:00:00 GMT');
+      //$response->setHttpHeader('Pragma', 'public');
+      header_remove('Cookie');
+      header_remove('Set-Cookie');
+      /* */
     }
     return $response;
   }
