@@ -26,10 +26,11 @@ abstract class <?php echo $this->getGeneratedModuleName() ?>Actions extends <?ph
 
     $this->helper = new <?php echo $this->getModuleName() ?>GeneratorHelper();
 
-    //-- Set the default template
-    //-- FIXME:  make it possible to disable this
-    $layout = sfConfig::get('sf_plugins_dir').'/ua5AdminThemePlugin/templates/ua5_2';
-    sfConfig::set('symfony.view.'.$this->getModuleName().'_'.$this->getActionName().'_layout', $layout);
+    if ( sfConfig::get('app_ua5_cms_use_ua5_layout', true) ) {
+      //-- Set the default template
+      $layout = sfConfig::get('sf_plugins_dir').'/ua5AdminThemePlugin/templates/ua5_2';
+      sfConfig::set('symfony.view.'.$this->getModuleName().'_'.$this->getActionName().'_layout', $layout);
+    }
   }
 
 <?php
