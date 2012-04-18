@@ -32,7 +32,7 @@ ua5_cms.createId = function( prefix ) {
   }
   do {
     id = prefix + (new Date().getTime());
-  } while( 0 !== $('#'+id).length );
+  } while( !!document.getElementById(id) );
   return id;
 }
 
@@ -350,11 +350,266 @@ ua5_cms.wysiwyg = (function() {
 
   var _$fields;
 
+  function _buildToolbar(opts) {
+
+    var i,
+        j,
+        $inner,
+        $toolbar_item,
+        $toolbar = $('<div class="ua5-wysiwyg-toolbar clearfix" id="' + ua5_cms.createId('ua5_cms_wysiwyg_toolbar') + '"></div>'),
+        $optional = $('<div class="ua5-wysiwyg-toolbar-options clearfix"></div>'),
+        default_opts = {
+          'toolbar': {
+
+            'bold': {
+              'tag': 'a',
+              'icon': 'bold',
+              'attrs': {
+                'title': 'CTRL+B',
+                'data-wysihtml5-command': 'bold'
+              }
+            },
+
+            'italic': {
+              'tag': 'a',
+              'icon': 'italic',
+              'attrs': {
+                'title': 'CTRL+I',
+                'data-wysihtml5-command': 'italic'
+              }
+            },
+
+            'underline': {
+              'tag': 'a',
+              'icon': 'underline',
+              'attrs': {
+                'title': 'CTRL+U',
+                'data-wysihtml5-command': 'underline'
+              }
+            },
+
+            'leftAlign': {
+              'tag': 'a',
+              'icon': 'justify-left',
+              'attrs': {
+                'title': 'Left Align',
+                'data-wysihtml5-command': 'justifyLeft'
+              }
+            },
+
+            'centerAlign': {
+              'tag': 'a',
+              'icon': 'justify-center',
+              'attrs': {
+                'title': 'Center Align',
+                'data-wysihtml5-command': 'justifyCenter'
+              }
+            },
+
+            'rightAlign': {
+              'tag': 'a',
+              'icon': 'justify-right',
+              'attrs': {
+                'title': 'Right Align',
+                'data-wysihtml5-command': 'justifyRight'
+              }
+            },
+
+            'h1': {
+              'tag': 'a',
+              'icon': 'h1',
+              'attrs': {
+                'title': '',
+                'data-wysihtml5-command': 'formatBlock',
+                'data-wysihtml5-command-value': 'h1'
+              }
+            },
+
+            'h2': {
+              'tag': 'a',
+              'icon': 'h2',
+              'attrs': {
+                'title': '',
+                'data-wysihtml5-command': 'formatBlock',
+                'data-wysihtml5-command-value': 'h2'
+              }
+            },
+
+            'h3': {
+              'tag': 'a',
+              'icon': 'h3',
+              'attrs': {
+                'title': '',
+                'data-wysihtml5-command': 'formatBlock',
+                'data-wysihtml5-command-value': 'h3'
+              }
+            },
+
+            'ul': {
+              'tag': 'a',
+              'icon': 'unordered-list',
+              'attrs': {
+                'title': '',
+                'data-wysihtml5-command': 'insertUnorderedList'
+              }
+            },
+
+            'ol': {
+              'tag': 'a',
+              'icon': 'ordered-list',
+              'attrs': {
+                'title': '',
+                'data-wysihtml5-command': 'insertOrderedList'
+              }
+            },
+
+            'link': {
+              'tag': 'a',
+              'icon': 'link',
+              'html': '<div data-wysihtml5-dialog="createLink" style="display: none;">' +
+                      '  <label>' +
+                      '    Link:' +
+                      '    <input data-wysihtml5-dialog-field="href" value="http://">' +
+                      '  </label>' +
+                      '  <a class="btn" data-wysihtml5-dialog-action="save">OK</a>&nbsp;<a class="btn" data-wysihtml5-dialog-action="cancel">Cancel</a>' +
+                      '</div>',
+              'attrs': {
+                'title': '',
+                'data-wysihtml5-command': 'createLink'
+              }
+            },
+
+            'image': {
+              'tag': 'a',
+              'icon': 'image',
+              'html': '<div data-wysihtml5-dialog="insertImage" style="display: none;">' +
+                      '  <label>' +
+                      '    Image:' +
+                      '    <input data-wysihtml5-dialog-field="src" value="http://">' +
+                      '  </label>' +
+                      '  <label>' +
+                      '    Align:' +
+                      '    <select data-wysihtml5-dialog-field="className">' +
+                      '      <option value="">default</option>' +
+                      '      <option value="wysiwyg-float-left">left</option>' +
+                      '      <option value="wysiwyg-float-right">right</option>' +
+                      '    </select>' +
+                      '  </label>' +
+                      '  <a class="btn" data-wysihtml5-dialog-action="save">OK</a>&nbsp;<a class="btn" data-wysihtml5-dialog-action="cancel">Cancel</a>' +
+                      '</div>',
+              'attrs': {
+                'title': '',
+                'data-wysihtml5-command': 'insertImage'
+              }
+            },
+
+            'speech': {
+              'tag': 'a',
+              'icon': 'speech',
+              'attrs': {
+                'title': '',
+                'data-wysihtml5-command': 'insertSpeech'
+              }
+            },
+
+            'source': {
+              'tag': 'a',
+              'icon': 'source',
+              'attrs': {
+                'title': '',
+                'data-wysihtml5-action': 'change_view'
+              }
+            },
+
+            'separator': {
+              'tag': 'span',
+              'text': '',
+              'attrs': {
+                'class': 'separator'
+              }
+            }
+
+          },
+          
+          enabled_items: [
+            'bold', 'italic', 'underline', 'separator',
+            'leftAlign', 'centerAlign', 'rightAlign', 'separator',
+            'h1', 'h2', 'h3', 'separator',
+            'ul', 'ol', 'separator',
+            'link', 'image', 'separator',
+            'speech', 'separator',
+            'source'
+          ]
+          
+        };
+
+    opts = $.extend(default_opts, opts);
+
+    for ( i in opts.enabled_items ) {
+      if ( opts.toolbar.hasOwnProperty(opts.enabled_items[i]) ) {
+
+        $toolbar_item = $('<'+opts.toolbar[opts.enabled_items[i]].tag+' class="btn" />');
+        
+        if ( opts.toolbar[opts.enabled_items[i]].hasOwnProperty('icon') ) {
+          $toolbar_item.append('<i class="icon-'+opts.toolbar[opts.enabled_items[i]].icon+'" />');
+        }
+
+        if ( opts.toolbar[opts.enabled_items[i]].hasOwnProperty('text') ) {
+          $toolbar_item.append($('<span />').text(opts.toolbar[opts.enabled_items[i]].text));
+        }
+
+        for ( j in opts.toolbar[opts.enabled_items[i]].attrs ) {
+          $toolbar_item.attr(j, opts.toolbar[opts.enabled_items[i]].attrs[j]);
+        }
+
+        $toolbar.append($toolbar_item);
+
+        if ( opts.toolbar[opts.enabled_items[i]].hasOwnProperty('html') ) {
+          $optional.append(opts.toolbar[opts.enabled_items[i]].html);
+        }
+
+      }
+    }
+
+    $toolbar.append($optional);
+
+    return $toolbar;
+
+  }
+
   function _init() {
 
+    var editor,
+        $toolbar,
+        $wrap,
+        $this;
+
+    //-- Get the CMS fields
     _$fields = $('textarea').filter(':not(.noWYSIWYG)');
-    _$fields.wysiwyg({
-      'initialContent': ''
+
+    //-- Override the default parser rules
+    window.wysihtml5ParserRules.tags = $.extend({}, window.wysihtml5ParserRules.tags, {
+      'b': {
+        'rename_tag': 'strong'
+      }
+    });
+
+    //-- Create the toolbar for each editor
+    _$fields.each(function() {
+
+      $this = $(this);
+      $wrap = $('<div id="' + ua5_cms.createId('ua5_cms_wysiwyg_wrap') + '" />');
+      $toolbar = _buildToolbar();
+
+      $this.wrap($wrap);
+      $this.before($toolbar);
+
+      editor = new wysihtml5.Editor($this.attr('id'), {
+        toolbar: $toolbar.attr('id'),
+        stylesheets: '/ua5AdminThemePlugin/ua5_2/css/wysiwyg.css',
+        parserRules:  window.wysihtml5ParserRules
+      });
+
     });
 
   }
@@ -366,6 +621,6 @@ ua5_cms.wysiwyg = (function() {
 })();
 
 jQuery(function() {
-  ua5_cms.form.chosen.init();
   ua5_cms.wysiwyg.init();
+  ua5_cms.form.chosen.init();
 });

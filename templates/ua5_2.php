@@ -32,7 +32,7 @@
   <?php endif; ?>
   <link rel="stylesheet" type="text/css" media="screen" href="/ua5AdminThemePlugin/ua5_2/css/chosen.css" />
   <link rel="stylesheet" type="text/css" media="screen" href="/ua5AdminThemePlugin/ua5_2/css/admin.css" />
-  <link rel="stylesheet" type="text/css" media="screen" href="/ua5AdminThemePlugin/ua5_2/dependencies/jwysiwyg/jquery.wysiwyg.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="/ua5AdminThemePlugin/ua5_2/css/wysiwyg.css" />
   <?php include_stylesheets() ?>
 
   <script src="/ua5AdminThemePlugin/ua5_2/js/libs/modernizr-2.0.min.js"></script>
@@ -45,12 +45,8 @@
   <script>window.jQuery.ui || document.write('<script src="/ua5AdminThemePlugin/ua5_2/js/libs/jquery-ui-1.8.14.min.js"><\/script>')</script>
   <?php endif; ?>
   <script src="/ua5AdminThemePlugin/ua5_2/js/libs/chosen.js"></script>
-  <script src="/ua5AdminThemePlugin/ua5_2/dependencies/jwysiwyg/jquery.wysiwyg.js"></script>
-  <script src="/ua5AdminThemePlugin/ua5_2/dependencies/jwysiwyg/controls/wysiwyg.colorpicker.js"></script>
-  <script src="/ua5AdminThemePlugin/ua5_2/dependencies/jwysiwyg/controls/wysiwyg.cssWrap.js"></script>
-  <script src="/ua5AdminThemePlugin/ua5_2/dependencies/jwysiwyg/controls/wysiwyg.image.js"></script>
-  <script src="/ua5AdminThemePlugin/ua5_2/dependencies/jwysiwyg/controls/wysiwyg.link.js"></script>
-  <script src="/ua5AdminThemePlugin/ua5_2/dependencies/jwysiwyg/controls/wysiwyg.table.js"></script>
+  <script src="/ua5AdminThemePlugin/ua5_2/dependencies/wysihtml5/parser_rules/advanced.js"></script>
+  <script src="/ua5AdminThemePlugin/ua5_2/dependencies/wysihtml5/dist/wysihtml5-0.3.0_rc2.js"></script>
   <script src="/ua5AdminThemePlugin/ua5_2/js/ua5_cms.js"></script>
 
   <?php include_javascripts() ?>
