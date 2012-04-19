@@ -40,7 +40,26 @@ class ua5WidgetFormJQueryUIDatepicker extends sfWidgetFormDate {
    * @see sfWidgetForm
    */
   public function render($name, $value = null, $attributes = array(), $errors = array()) {
-    $formatted_value = date($this->getOption('date_format'), strtotime($value));
+    $formatted_value = null;
+    if ( is_array($value) ) {
+      if (
+        "" != $value['year'] &&
+        "" != $value['month'] &&
+        "" != $value['day']
+      ) {
+        $formatted_value = date(
+          $this->getOption('date_format'),
+          strtotime(sprintf(
+            '%s-%s-%s',
+            $value['year'],
+            $value['month'],
+            $value['day']
+          ))
+        );
+      }
+    } elseif ( $value ) {
+      $formatted_value = date($this->getOption('date_format'), strtotime($value));
+    }
     $value_id = $this->generateId($name);
     $js_options = json_encode(array_merge(
       $this->default_jquery_datepicker_options,
