@@ -587,6 +587,10 @@ ua5_cms.wysiwyg = (function() {
         $wrap,
         $this;
 
+    if ( ! window.wysihtml5ParserRules ) {
+      return false;
+    }
+
     //-- Get the CMS fields
     _$fields = $('textarea').filter(':not(.noWYSIWYG)');
 
