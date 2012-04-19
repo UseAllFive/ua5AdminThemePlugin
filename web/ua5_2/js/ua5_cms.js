@@ -249,6 +249,9 @@ ua5_cms.namespace('form').chosen = (function() {
 
   function init() {
 
+    if ( !$.fn.chosen ) {
+      return false;
+    }
     $chosen_fields = $('select:not('+date_fields_selector+')');
     $date_fields = $(date_fields_selector);
     $upload_fields = $('input[type="file"]');
