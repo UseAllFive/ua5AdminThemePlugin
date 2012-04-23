@@ -153,33 +153,39 @@ abstract class ua5FormDoctrine extends sfFormDoctrine {
   }
 
 
+  protected function getImageColumnTemplate(sfDoctrineRecord $object, $field_name) {
+    $view_link = !$object[$field_name]? '' :
+      sprintf(
+        '<li><a href="%s" class="%s" data-thumb-url="%s" target="_blank">%s</a></li>',
+        $object->ThumbnailUrl($field_name, 'original'),
+        'btn view image',
+        $object->ThumbnailUrl($field_name, 'original'),
+        'View'
+      );
+    return <<<EOT
+<div class="media clearfix">
+  <ul>
+    <li>%input%</li>
+    $view_link
+    <li>%delete% %delete_label%</li>
+  </ul>
+</div>
+EOT
+    ;
+  }
+
+
   protected function configureImageColumns() {
     if ( isset($this->image_columns) ) {
       foreach ( $this->image_columns as $col ) {
         $obj = $this->getObject();
         $required = $this->getValidator($col)->getOption('required');
-        $view_link = !$obj[$col]? '' :
-          sprintf(
-            '<a href="%s" class="%s" data-thumb-url="%s" target="_blank">%s</a>',
-            $obj->ThumbnailUrl($col, 'original'),
-            'btn view image',
-            $obj->ThumbnailUrl($col, 'original'),
-            'View'
-          );
         $this->setWidget($col, new sfWidgetFormInputFileEditable(array(
           'edit_mode' => !$this->isNew(),
           'is_image' => true,
           'with_delete' => $obj[$col] && !$required,
           'file_src' => $obj->ThumbnailUrl($col, 'original'),
-          'template' => <<<EOT
-<div class="media clearfix">
-  <ul>
-    <li>%input%</li>
-    <li>$view_link</li>
-    <li>%delete% %delete_label%</li>
-  </ul>
-</div>
-EOT
+          'template' => $this->getImageColumnTemplate($obj, $col),
         )));
         $this->setValidator($col, new sfValidatorFile(array(
           'required' => $required && $this->isNew(),
