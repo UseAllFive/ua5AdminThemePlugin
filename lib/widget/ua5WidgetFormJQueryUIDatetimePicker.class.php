@@ -1,5 +1,15 @@
 <?php
 
+/*
+ * To use this widget a few things need to happen:
+ *   1)  the JS helper needs to be enabled:
+ *         apps/admin/config/settings.yml:
+ *           all:
+ *             .settings:
+ *               standard_helpers:       [Partial, Cache, JS]
+ *   2)  jQuery and jQuery-ui need to be enabled on the page
+ *
+ */
 class ua5WidgetFormJQueryUIDatetimePicker extends sfWidgetFormInput {
 
 
@@ -30,6 +40,13 @@ class ua5WidgetFormJQueryUIDatetimePicker extends sfWidgetFormInput {
       $this->setDefault(date($this->getOption('date_format')));
     }
 
+  }
+
+
+  public function getJavaScripts() {
+    return array(
+      '/ua5AdminThemePlugin/ua5_2/js/libs/jquery-ui-timepicker-addon.js',
+    );
   }
 
 
