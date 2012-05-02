@@ -623,8 +623,7 @@ s,m,l,n = small(5px),medium(10px),large(20px),none(0px)
    Admin container
    ========================================================================== */
 #sf_admin_container {
-  padding: 30px;
-  
+  padding: 30px 30px 200px 30px;
   /**!! content gray border **/
   border-style: solid;
   border-color: #dedede;
@@ -1030,7 +1029,7 @@ header {
 
 .sf_admin_td_actions li {
   float: left;
-  margin: 0 5px -8px 0;
+  margin: 0 5px 0 0;
 }
 
 /* For embeded forms */
