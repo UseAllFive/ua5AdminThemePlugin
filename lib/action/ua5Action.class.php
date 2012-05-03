@@ -21,6 +21,23 @@ abstract class ua5Action extends sfAction {
   }
 
 
+  public function renderJsonSuccess($json) {
+    $default_data = array(
+      'status' => 'success',
+    );
+    return $this->renderJson(array_merge($default_data, $json));
+  }
+
+
+  public function renderJsonError($errors) {
+    $data = array(
+      'status' => 'error',
+      'errors' => $errors
+    );
+    return $this->renderJson($data);
+  }
+
+
   public function setResponseCacheDuration($timeout) {
     $response = $this->getResponse();
 
