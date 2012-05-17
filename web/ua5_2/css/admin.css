@@ -43,7 +43,7 @@ body, button, input, select, textarea { font-family: sans-serif; color: #222; }
 
 /* @group Links */
 a { color: #00e; }
-a:visited { color: #551a8b; }
+a:visited { color: #687f8f; }
 a:focus { outline: thin dotted; }
 
 /* Improve readability when focused and hovered in all browsers: people.opera.com/patrickl/experiments/keyboard/test */
