@@ -17,6 +17,19 @@ abstract class ua5Action extends sfAction {
   public function renderJson($json) {
     self::setJsonResponseHeaders($this->getResponse());
 
+    if ( sfConfig::get('sf_debug') ) {
+      $debug = array();
+      if ( array_key_exists('debug', $json) ) {
+        $debug = $json['debug'];
+      }
+
+      $debug_info = new ua5JsonDebugInfo();
+
+      $json['debug'] = array_merge(
+        $debug_info->jsonSerialize(),
+        $debug
+      );
+    }
     return $this->renderText(json_encode($json));
   }
 
