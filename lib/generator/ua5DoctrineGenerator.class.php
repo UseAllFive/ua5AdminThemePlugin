@@ -72,8 +72,9 @@ class ua5DoctrineGenerator extends sfDoctrineGenerator {
         isset($params['route']) ? $params['route'] : $this->getModuleName().'/'.$action
       );
 
+      $url_params = "";
       if ( $pk_link ) {
-        $url_params = ".'?".$this->getPrimaryKeyUrlParams();
+        $url_params.= ".'?".$this->getPrimaryKeyUrlParams();
       }
       if ( isset($params['url_params']) && is_array($params['url_params']) ) {
         foreach ( $params['url_params'] as $k => $v ) {
