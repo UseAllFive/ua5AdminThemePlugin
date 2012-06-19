@@ -34,7 +34,7 @@ ua5_cms.createId = function( prefix ) {
     id = prefix + (new Date().getTime());
   } while( !!document.getElementById(id) );
   return id;
-}
+};
 
 ua5_cms.deleteRelated = (function() {
   var _added_relations = {};
@@ -136,7 +136,7 @@ ua5_cms.deleteRelated = (function() {
 
       return false;
     });
-  }
+  };
 })();
 
 ua5_cms.namespace('form').chosen = (function() {
@@ -144,7 +144,17 @@ ua5_cms.namespace('form').chosen = (function() {
   var $chosen_fields,
       $date_fields,
       $upload_fields,
-      date_fields_selector = 'select[name*="[date]"],select[name*="[month]"],select[name*="[day]"],select[name*="[year]"]';
+      date_fields_selector = [
+        'select[name*="[date]"]',
+        'select[name*="[month]"]',
+        'select[name*="[day]"]',
+        'select[name*="[year]"]'
+      ].join(','),
+      ignored_fields_selector = [
+        date_fields_selector,
+        '.double_list_select',
+        '.double_list_select-selected'
+      ].join(',');
 
   function applyChosen(opts) {
     if ( 'Object' !== typeof(opts) ) {
@@ -252,7 +262,8 @@ ua5_cms.namespace('form').chosen = (function() {
     if ( !$.fn.chosen ) {
       return false;
     }
-    $chosen_fields = $('select:not('+date_fields_selector+')');
+
+    $chosen_fields = $('select').not(ignored_fields_selector);
     $date_fields = $(date_fields_selector);
     $upload_fields = $('input[type="file"]');
     $view_fields = $('a.view');
@@ -533,7 +544,7 @@ ua5_cms.wysiwyg = (function() {
             }
 
           },
-          
+
           enabled_items: [
             'bold', 'italic', 'underline', 'separator',
             'leftAlign', 'centerAlign', 'rightAlign', 'separator',
@@ -543,7 +554,7 @@ ua5_cms.wysiwyg = (function() {
             'speech', 'separator',
             'source'
           ]
-          
+
         };
 
     opts = $.extend(default_opts, opts);
@@ -552,7 +563,7 @@ ua5_cms.wysiwyg = (function() {
       if ( opts.toolbar.hasOwnProperty(opts.enabled_items[i]) ) {
 
         $toolbar_item = $('<'+opts.toolbar[opts.enabled_items[i]].tag+' class="btn" />');
-        
+
         if ( opts.toolbar[opts.enabled_items[i]].hasOwnProperty('icon') ) {
           $toolbar_item.append('<i class="icon-'+opts.toolbar[opts.enabled_items[i]].icon+'" />');
         }
