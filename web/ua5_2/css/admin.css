@@ -640,6 +640,15 @@ s,m,l,n = small(5px),medium(10px),large(20px),none(0px)
   max-width: 500px;
 }
 
+#sf_admin_container .error {
+  background-color: #fef1ec;
+  padding: 12px;
+  border: 1px solid #cc0000;
+  border-radius: 5px;
+  color: #cd0a0a;
+  font-weight: bold;
+}
+
 #sf_admin_header {
   margin-bottom: 15px;
 }
