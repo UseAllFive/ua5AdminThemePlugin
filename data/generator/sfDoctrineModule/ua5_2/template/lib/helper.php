@@ -77,6 +77,12 @@ abstract class Base<?php echo ucfirst($this->getModuleName()) ?>GeneratorHelper 
       return '';
     }
 
-    return '<li class="sf_admin_action_save_and_add"><input type="submit" value="'.__($params['label'], array(), 'sf_admin').' new <?php echo ucfirst(sfInflector::humanize($this->getSingularName())) ?>" name="_save_and_add" class="r_3 /></li>';    
+    return '<li class="sf_admin_action_save_and_add"><input type="submit" value="'.__($params['label'], array(), 'sf_admin').' new <?php echo ucfirst(sfInflector::humanize($this->getSingularName())) ?>" name="_save_and_add" class="r_3 /></li>';
   }
+
+  public function linkToShow($object, $params)
+  {
+    return '<li class="sf_admin_action_show">'.link_to('<span class="icon"></span>'.__($params['label'], array(), 'sf_admin'), $this->getUrlForAction('show'), $object).'</li>';
+  }
+
 }

@@ -64,6 +64,18 @@
 <?php unset($this->config['list']['display'], $this->config['list']['hide']) ?>
   }
 
+  public function getShowDisplay()
+  {
+<?php if (isset($this->config['show']['display'])): ?>
+    return <?php echo $this->asPhp($this->config['show']['display']) ?>;
+<?php elseif (isset($this->config['show']['hide'])): ?>
+    return <?php echo $this->asPhp(array_diff($this->getAllFieldNames(false), $this->config['show']['hide'])) ?>;
+<?php else: ?>
+    return <?php echo $this->asPhp($this->getAllFieldNames(false)) ?>;
+<?php endif; ?>
+<?php unset($this->config['show']['display'], $this->config['show']['hide']) ?>
+  }
+
   public function getFieldsDefault()
   {
     return array(

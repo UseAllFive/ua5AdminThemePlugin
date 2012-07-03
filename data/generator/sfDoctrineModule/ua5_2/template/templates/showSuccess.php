@@ -15,10 +15,22 @@
   <div id="sf_admin_content">
     <div class="sf_admin_form r_5">
       <dl>
+      [?php $table = $<?php echo $this->getSingularName() ?>->getTable(); ?]
       [?php foreach ($columns as $column): ?]
-        <dt>[?php echo $column; ?]</dt>
-        <dd>[?php echo $<?php echo $this->getSingularName() ?>[$column]; ?]</dd>
-
+        <dt>[?php echo ucwords(sfInflector::humanize(sfInflector::tableize($column))); ?]</dt>
+        <dd>
+        [?php if (
+          $table->hasRelation($column) &&
+          Doctrine_Relation::MANY === $table->getRelation($column)->getType()
+        ): ?]
+          <ul>
+          [?php foreach ( $<?php echo $this->getSingularName() ?>[$column] as $relation_row ): ?]
+            <li>[?php echo $relation_row; ?]</li>
+          [?php endforeach; ?]
+          </ul>
+        [?php else: ?]
+          [?php echo $<?php echo $this->getSingularName() ?>[$column]; ?]
+        [?php endif; ?]
       [?php endforeach; ?]
       </dl>
     </div>

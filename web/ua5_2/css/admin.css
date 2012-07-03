@@ -942,6 +942,7 @@ tr.sf_admin_row td a {
   margin-bottom: 15px;
 }
 
+body.actionShow .sf_admin_form dt,
 .sf_admin_form_row label {
   display: inline-block;
   font-weight: bold;
