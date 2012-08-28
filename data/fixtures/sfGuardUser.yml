@@ -23,3 +23,9 @@ sfGuardUser:
     password:       password
     first_name:     Levi
     last_name:      Brooks
+  User_Bret:
+    email_address:  bret@useallfive.com
+    username:       bret
+    password:       password
+    first_name:     Bret
+    last_name:      Morris
