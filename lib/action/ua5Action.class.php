@@ -34,7 +34,7 @@ abstract class ua5Action extends sfAction {
   }
 
 
-  public function renderJsonSuccess($json) {
+  public function renderJsonSuccess($json = array()) {
     $default_data = array(
       'status' => 'success',
     );
@@ -42,7 +42,7 @@ abstract class ua5Action extends sfAction {
   }
 
 
-  public function renderJsonError($errors) {
+  public function renderJsonError($errors = array()) {
     $data = array(
       'status' => 'error',
       'errors' => $errors
