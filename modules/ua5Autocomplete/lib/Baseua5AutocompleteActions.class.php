@@ -28,7 +28,6 @@ class Baseua5AutocompleteActions extends ua5Actions {
     $rows = $q->fetchArray();
 
     $res = array(
-//      'query' => $q->getSqlQuery(),
       'entries' => $rows,
     );
 
