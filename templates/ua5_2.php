@@ -45,8 +45,8 @@
   <script>window.jQuery.ui || document.write('<script src="/ua5AdminThemePlugin/ua5_2/js/libs/jquery-ui-1.8.14.min.js"><\/script>')</script>
   <?php endif; ?>
   <script src="/ua5AdminThemePlugin/ua5_2/js/libs/chosen.js"></script>
-  <script src="/ua5AdminThemePlugin/ua5_2/dependencies/wysihtml5/parser_rules/advanced.js"></script>
-  <script src="/ua5AdminThemePlugin/ua5_2/dependencies/wysihtml5/dist/wysihtml5-0.3.0_rc2.js"></script>
+  <script src="/ua5AdminThemePlugin/ua5_2/js/wysihtml5-config.js"></script>
+  <script src="/ua5AdminThemePlugin/ua5_2/dependencies/wysihtml5/dist/wysihtml5-0.3.0.js"></script>
   <script src="/ua5AdminThemePlugin/ua5_2/js/ua5_cms.js"></script>
 
   <?php include_javascripts() ?>
