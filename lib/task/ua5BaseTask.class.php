@@ -38,7 +38,8 @@ abstract class ua5BaseTask extends sfBaseTask {
       $cmd = sprintf('ps -ef');
       exec($cmd, $output);
       $output = preg_grep('/ grep /', $output, PREG_GREP_INVERT);
-      $output = preg_grep(sprintf('/ *\b%s\b +\b%s\b/', getmyuid(), $cur_pid), $output);
+      $regex = sprintf('/ *\b(%s|%s|root)\b +\b%s\b/', getmyuid(), get_current_user(), $cur_pid);
+      $output = preg_grep($regex, $output);
       if ( 0 < count($output) ) { //-- we have a match!
         //-- A process was found
         return true;
@@ -74,7 +75,7 @@ abstract class ua5BaseTask extends sfBaseTask {
 
   protected function pidGetDir() {
     if ( is_null($this->pid_dir) ) {
-      $this->pid_dir = sprintf( '%s/%s.pids', sys_get_temp_dir(), __CLASS__);
+      $this->pid_dir = sprintf( '%s/%s.pids', sys_get_temp_dir(), get_class($this));
       if ( !file_exists($this->pid_dir) ) {
         //-- Make the dir
         if ( !mkdir($this->pid_dir, 0777, true) ) {
