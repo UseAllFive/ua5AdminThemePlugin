@@ -641,18 +641,25 @@ s,m,l,n = small(5px),medium(10px),large(20px),none(0px)
 }
 
 #sf_admin_container .notice,
+#sf_admin_container .warn,
 #sf_admin_container .error {
   background-color: #fef1ec;
   padding: 12px;
   border: 1px solid #cc0000;
   border-radius: 5px;
-  color: #cd0a0a;
+  color: #030303;
   font-weight: bold;
+}
+#sf_admin_container .error {
+  color: #cd0a0a;
 }
 #sf_admin_container .notice {
   background-color: #f1fbe5;
   border-color: #8cce3b;
-  color: #030303;
+}
+#sf_admin_container .warn {
+  background-color: #FFEA9A;
+  border-color: #DBB23B;
 }
 
 #sf_admin_header {
