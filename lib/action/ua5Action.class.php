@@ -61,7 +61,7 @@ abstract class ua5Action extends sfAction {
     } else {
       //-- References:
       //   https://developers.google.com/speed/docs/best-practices/caching
-      //   
+      //
       /* */
       //-- What it seems like we should send
       $response->addCacheControlHttpHeader(sprintf('max-age=%s, public, must-revalidate', $timeout));
@@ -103,5 +103,21 @@ abstract class ua5Action extends sfAction {
     }
   }
 
+ /**
+  * Generic form error output.
+  */
+  protected function renderFormJsonError(sfFormDoctrine $form) {
+    $errors = array();
+    foreach ($form->getFormFieldSchema() as $name => $field) {
+      //-- Taken from `sfFormField::renderError`.
+      $error = $field->getWidget() instanceof sfWidgetFormSchema
+        ? $field->getWidget()->getGlobalErrors($field->getError())
+        : $field->getError();
+      if ( null !== $error ) {
+        $errors[] = $error->getMessage();
+      }
+    }
+    return $this->renderJsonError($errors);
+  }
 
 }
