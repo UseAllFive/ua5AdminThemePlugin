@@ -11,7 +11,7 @@
 <div id="sf_admin_container" class="main">
   <h1>[?php echo <?php echo $this->getI18NString('list.title') ?> ?]</h1>
 
-  [?php include_partial('<?php echo $this->getModuleName() ?>/flashes', array('form' => $form)) ?]
+  [?php include_partial('<?php echo $this->getModuleName() ?>/flashes') ?]
 
   <div id="sf_admin_header">
     [?php include_partial('<?php echo $this->getModuleName() ?>/list_header', array('pager' => $pager)) ?]
