@@ -4,7 +4,7 @@
 <div id="sf_admin_container">
   <h1>Show <?php echo sfInflector::humanize($this->getModuleName()); ?></h1>
 
-  [?php include_partial('<?php echo $this->getModuleName() ?>/flashes') ?]
+  [?php include_partial('<?php echo $this->getModuleName() ?>/flashes', array('form' => $form)) ?]
 
 <?php /*
   <div id="sf_admin_header">
