@@ -2,7 +2,7 @@
 [?php include_partial(
   '<?php echo $this->getModuleName(); ?>/assets',
   array(
-    '<?php echo $this->getModuleName(); ?>' => $<?php echo $this->getModuleName(); ?>,
+    '<?php echo $this->getModuleName(); ?>' => isset($<?php echo $this->getModuleName(); ?>)?$<?php echo $this->getModuleName(); ?>:null,
   )
 ); ?]
 [?php
