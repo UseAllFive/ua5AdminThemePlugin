@@ -14,7 +14,7 @@ abstract class ua5Action extends sfAction {
    *
    * @return sfView::NONE
    */
-  public function renderJson($json) {
+  public function renderJson($json, $jsonp = false) {
     self::setJsonResponseHeaders($this->getResponse());
 
     if ( sfConfig::get('sf_debug') ) {
@@ -30,24 +30,29 @@ abstract class ua5Action extends sfAction {
         $debug
       );
     }
-    return $this->renderText(json_encode($json));
+
+    $output = json_encode($json);
+    if (false !== $jsonp) {
+      $output = sprintf('%s(%s)', $jsonp, $output);
+    }
+    return $this->renderText($output);
   }
 
 
-  public function renderJsonSuccess($json = array()) {
+  public function renderJsonSuccess($json = array(), $jsonp = false) {
     $default_data = array(
       'status' => 'success',
     );
-    return $this->renderJson(array_merge($default_data, $json));
+    return $this->renderJson(array_merge($default_data, $json), $jsonp);
   }
 
 
-  public function renderJsonError($errors = array()) {
+  public function renderJsonError($errors = array(), $jsonp = false) {
     $data = array(
       'status' => 'error',
       'errors' => $errors
     );
-    return $this->renderJson($data);
+    return $this->renderJson($data, $jsonp);
   }
 
 
