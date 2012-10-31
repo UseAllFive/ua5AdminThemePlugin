@@ -78,7 +78,7 @@ abstract class ua5Action extends sfAction
             $response->addCacheControlHttpHeader(sprintf('max-age=%s, public, must-revalidate', $timeout));
             $response->setHttpHeader('Expires', gmdate('D, j M Y H:i:s \G\M\T', time()+$timeout));
             $response->setHttpHeader('Last-modified', gmdate('D, j M Y H:i:s \G\M\T', time()));
-            header_remove('Pragma');
+            @header_remove('Pragma');
 
             /*
             //-- Attempts to make it work
