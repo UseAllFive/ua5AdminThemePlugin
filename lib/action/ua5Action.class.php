@@ -15,7 +15,10 @@ abstract class ua5Action extends sfAction
      */
     public function renderJson($json, $jsonp = false)
     {
-        self::setJsonResponseHeaders($this->getResponse());
+        self::setJsonResponseHeaders(
+            $this->getResponse(),
+            false === $jsonp ? null : 'application/javascript'
+        );
 
         if (sfConfig::get('sf_debug')) {
             $debug = array();
@@ -91,9 +94,12 @@ abstract class ua5Action extends sfAction
     }
 
 
-    public static function setJsonResponseHeaders(sfResponse $response)
+    public static function setJsonResponseHeaders(sfResponse $response, $content_type = null)
     {
-        $response->setContentType('application/json');
+        if (null === $content_type) {
+            $content_type = 'application/json';
+        }
+        $response->setContentType($content_type);
 
         return $response;
     }
