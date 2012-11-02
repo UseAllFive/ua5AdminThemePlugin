@@ -2,30 +2,30 @@ sfGuardUser:
   User_Jason:
     email_address:  jason@useallfive.com
     username:       jason
-    password:       password
+    password:       59fee3d9d2
     first_name:     Jason
     last_name:      Farrell
   User_JJ:
     email_address:  jjkaye@useallfive.com
     username:       jj
-    password:       password
+    password:       dd0fa1c3b2
     first_name:     J.J.
     last_name:      Kaye
   User_Matt:
     email_address:  matt@useallfive.com
     username:       m14t
-    password:       password
+    password:       8c24ccfb39
     first_name:     Matt
     last_name:      Farmer
   User_Levi:
     email_address:  levi@useallfive.com
     username:       l3vib
-    password:       password
+    password:       bf6fc6ab28
     first_name:     Levi
     last_name:      Brooks
   User_Bret:
     email_address:  bret@useallfive.com
     username:       bret
-    password:       password
+    password:       c9fdb255fb
     first_name:     Bret
     last_name:      Morris
