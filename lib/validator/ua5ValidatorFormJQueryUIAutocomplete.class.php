@@ -1,15 +1,18 @@
 <?php
 
-class ua5ValidatorFormJQueryUIAutocomplete extends sfValidatorDoctrineChoice {
+class ua5ValidatorFormJQueryUIAutocomplete extends sfValidatorDoctrineChoice
+{
 
-  protected function configure($options = array(), $messages = array()) {
+  protected function configure($options = array(), $messages = array())
+  {
     $this->addOption('add_missing', true);
     $this->addOption('table_method', 'createQuery');
     parent::configure($options, $messages);
   }
 
 
-  protected function doClean($value) {
+  protected function doClean($value)
+  {
 
     $model = $this->getOption('model');
     $column = $this->getOption('column');

@@ -1,11 +1,9 @@
 <?php
 
-class ua5WidgetFormJQueryUIDatepicker extends sfWidgetFormDate {
+class ua5WidgetFormJQueryUIDatepicker extends sfWidgetFormDate
+{
 
-
-  protected
-    $default_jquery_datepicker_options = array();
-
+  protected $default_jquery_datepicker_options = array();
 
   /**
    * Configures the current widget.
@@ -15,7 +13,8 @@ class ua5WidgetFormJQueryUIDatepicker extends sfWidgetFormDate {
    *
    * @see sfWidgetForm
    */
-  protected function configure($options = array(), $attributes = array()) {
+  protected function configure($options = array(), $attributes = array())
+  {
 
     sfConfig::set('app_ua5_cms_include_jquery_ui', true);
 
@@ -28,7 +27,6 @@ class ua5WidgetFormJQueryUIDatepicker extends sfWidgetFormDate {
 
   }
 
-
   /**
    * @param  string $name        The element name
    * @param  string $value       The date displayed in this widget
@@ -39,7 +37,8 @@ class ua5WidgetFormJQueryUIDatepicker extends sfWidgetFormDate {
    *
    * @see sfWidgetForm
    */
-  public function render($name, $value = null, $attributes = array(), $errors = array()) {
+  public function render($name, $value = null, $attributes = array(), $errors = array())
+  {
     $formatted_value = null;
     if ( is_array($value) ) {
       if (
@@ -73,5 +72,4 @@ EOF
     );
     return $this->renderTag('input', array('type' => 'text', 'name' => $name, 'value' => $formatted_value));
   }
-
 }

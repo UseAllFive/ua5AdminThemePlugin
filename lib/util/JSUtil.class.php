@@ -1,18 +1,18 @@
 <?php
 
-class JSUtil {
-
+class JSUtil
+{
 
   protected static $inline = array();
   protected static $onReady = array();
-
 
   /**
    * Append arbitrary JS to the end of the document
    *
    * @param type $js
    */
-  public static function appendInline($js) {
+  public static function appendInline($js)
+  {
     self::$inline[] = $js;
   }
 
@@ -23,7 +23,8 @@ class JSUtil {
    *
    * @param type $js
    */
-  public static function appendOnReady($js) {
+  public static function appendOnReady($js)
+  {
     self::$onReady[] = $js;
   }
 
@@ -37,13 +38,13 @@ class JSUtil {
    *
    * @throws sfException when number of args doesn't match number of placeholders
    */
-  public static function interpolateJSArgs($js, array $args) {
+  public static function interpolateJSArgs($js, array $args)
+  {
     $clauses = preg_split('/(\?)/', $js, null, PREG_SPLIT_DELIM_CAPTURE);
     $code = '';
     $n = 0;
-    $q = 0;
 
-    foreach ( $clauses as $clause ) {
+    foreach ($clauses as $clause) {
       if ( $clause === '?' ) {
         $code .= json_encode($args[$n++]);
       } else {
@@ -59,12 +60,13 @@ class JSUtil {
   }
 
 
-  public static function dump() {
+  public static function dump()
+  {
     $out = '';
 
     // accumulate inline JS
-    if ( count(self::$inline) ) {
-      foreach ( self::$inline as $js ) {
+    if (count(self::$inline)) {
+      foreach (self::$inline as $js) {
         $out .= $js . "\n\n";
       }
     }
@@ -72,18 +74,16 @@ class JSUtil {
     // accumulate onready js
     if ( count(self::$onReady) ) {
       $out .= "jQuery(function() {\n";
-      foreach ( self::$onReady as $js ) {
+      foreach (self::$onReady as $js) {
         $out .= "$js\n\n";
       }
       $out .= "});\n";
     }
 
-    if  ($out ) {
+    if ($out) {
       $out = "<script type=\"text/javascript\">\n$out</script>\n";
     }
 
     return $out;
   }
-
-
 }

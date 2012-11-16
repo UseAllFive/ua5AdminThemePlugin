@@ -1,16 +1,16 @@
 <?php
 
-class ua5EmbededFormValidatorSchema extends sfValidatorSchema {
+class ua5EmbededFormValidatorSchema extends sfValidatorSchema
+{
 
-  protected
-    $required_fields = array(),
-    $required_fields_count = array();
+  protected $required_fields = array();
+  protected $required_fields_count = array();
 
-
-  public function __construct($options = array(), $messages = array()) {
-    foreach( $options['fields'] as $subform_name => $subform_validator_schema ) {
+  public function __construct($options = array(), $messages = array())
+  {
+    foreach ($options['fields'] as $subform_name => $subform_validator_schema) {
       $this->required_fields[$subform_name] = array();
-      foreach ( $subform_validator_schema->getFields() as $name => $field ) {
+      foreach ($subform_validator_schema->getFields() as $name => $field) {
         if ( true === $field->getOption('required', false) ) {
           $this->required_fields[$subform_name][$name] = $field;
         }
@@ -25,7 +25,8 @@ class ua5EmbededFormValidatorSchema extends sfValidatorSchema {
   }
 
 
-  protected function configure($options = array(), $messages = array()) {
+  protected function configure($options = array(), $messages = array())
+  {
 /*
     foreach( $this->required_fields as $subform_name => $fields ) {
       foreach( $fieldsas $name => $field ) {
@@ -35,10 +36,11 @@ class ua5EmbededFormValidatorSchema extends sfValidatorSchema {
 */
   }
 
-  protected function doClean($subforms) {
+  protected function doClean($subforms)
+  {
     $errorSchema = new sfValidatorErrorSchema($this);
 
-    foreach ( $subforms as $subform_name => $subform_values ) {
+    foreach ($subforms as $subform_name => $subform_values) {
 
       $errorSchemaLocal = new sfValidatorErrorSchema($this);
       $at_least_one_value_set = false;
@@ -46,7 +48,7 @@ class ua5EmbededFormValidatorSchema extends sfValidatorSchema {
       //-- unset the required_fields that have values
       if ( array_key_exists($subform_name, $this->required_fields) ) {
         if ( $subform_values ) {
-          foreach ( $subform_values as $name => $value ) {
+          foreach ($subform_values as $name => $value) {
             if ( array_key_exists($name, $this->required_fields[$subform_name]) ) {
               //-- There is a value and the field is required
               unset($this->required_fields[$subform_name][$name]);

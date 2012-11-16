@@ -10,14 +10,12 @@
  *   2)  jQuery and jQuery-ui need to be enabled on the page
  *
  */
-class ua5WidgetFormJQueryUIDatetimePicker extends sfWidgetFormInput {
+class ua5WidgetFormJQueryUIDatetimePicker extends sfWidgetFormInput
+{
 
-
-  protected
-    $default_jquery_datetimepicker_options = array(
-      'ampm' => true,
-    );
-
+  protected $default_jquery_datetimepicker_options = array(
+    'ampm' => true,
+  );
 
   /**
    * Configures the current widget.
@@ -27,7 +25,8 @@ class ua5WidgetFormJQueryUIDatetimePicker extends sfWidgetFormInput {
    *
    * @see sfWidgetForm
    */
-  protected function configure($options = array(), $attributes = array()) {
+  protected function configure($options = array(), $attributes = array())
+  {
 
     sfConfig::set('app_ua5_cms_include_jquery_ui', true);
 
@@ -42,13 +41,12 @@ class ua5WidgetFormJQueryUIDatetimePicker extends sfWidgetFormInput {
 
   }
 
-
-  public function getJavaScripts() {
+  public function getJavaScripts()
+  {
     return array(
       '/ua5AdminThemePlugin/ua5_2/js/libs/jquery-ui-timepicker-addon.js',
     );
   }
-
 
   /**
    * @param  string $name        The element name
@@ -60,7 +58,8 @@ class ua5WidgetFormJQueryUIDatetimePicker extends sfWidgetFormInput {
    *
    * @see sfWidgetForm
    */
-  public function render($name, $value = null, $attributes = array(), $errors = array()) {
+  public function render($name, $value = null, $attributes = array(), $errors = array())
+  {
     if ( null === $value ) {
       $formatted_value = null;
     } else {
@@ -79,5 +78,4 @@ EOF
     );
     return $this->renderTag('input', array('type' => 'text', 'name' => $name, 'value' => $formatted_value));
   }
-
 }

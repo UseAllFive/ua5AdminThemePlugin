@@ -1,14 +1,15 @@
 <?php
 
-class ua5JsonDebugInfoDoctrine {
-
+class ua5JsonDebugInfoDoctrine
+{
 
   /**
    * Returns an array of Doctrine query events.
-   * 
+   *
    * @return array
    */
-  protected function getDoctrineEvents() {
+  protected function getDoctrineEvents()
+  {
     $databaseManager = sfContext::getInstance()->getDatabaseManager();
 
     $events = array();
@@ -29,13 +30,13 @@ class ua5JsonDebugInfoDoctrine {
     return $events;
   }
 
-
   /**
    * Builds the sql logs and returns them as an array.
    *
    * @return array
    */
-  protected function getSqlLog() {
+  protected function getSqlLog()
+  {
     $log = array();
     foreach ($this->getDoctrineEvents() as $i => $event) {
       $params = sfDoctrineConnectionProfiler::fixParams($event->getParams());
@@ -54,8 +55,8 @@ class ua5JsonDebugInfoDoctrine {
     return $log;
   }
 
-
-  public function jsonSerialize() {
+  public function jsonSerialize()
+  {
     $events = $this->getDoctrineEvents();
     return array(
       'doctrine' => array(
@@ -65,6 +66,4 @@ class ua5JsonDebugInfoDoctrine {
       ),
     );
   }
-
-
 }

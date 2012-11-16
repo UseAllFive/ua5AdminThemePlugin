@@ -1,9 +1,10 @@
 <?php
 
-class ua5JsonDebugInfoMemory {
+class ua5JsonDebugInfoMemory
+{
 
-
-  public function jsonSerialize() {
+  public function jsonSerialize()
+  {
     return array(
       'memory' => array(
         'usage' => sprintf('%.1f', (memory_get_peak_usage(true))),
@@ -11,6 +12,4 @@ class ua5JsonDebugInfoMemory {
       ),
     );
   }
-
-
 }

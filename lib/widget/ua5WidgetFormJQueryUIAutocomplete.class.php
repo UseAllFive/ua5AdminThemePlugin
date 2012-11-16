@@ -1,7 +1,7 @@
 <?php
 
-class ua5WidgetFormJQueryUIAutocomplete extends sfWidgetFormDoctrineChoice {
-
+class ua5WidgetFormJQueryUIAutocomplete extends sfWidgetFormDoctrineChoice
+{
 
   /**
    * Configures the current widget.
@@ -18,7 +18,8 @@ class ua5WidgetFormJQueryUIAutocomplete extends sfWidgetFormDoctrineChoice {
    *
    * @see sfWidgetForm
    */
-  protected function configure($options = array(), $attributes = array()) {
+  protected function configure($options = array(), $attributes = array())
+  {
     sfConfig::set('app_ua5_cms_include_jquery_ui', true);
 
     $this->addRequiredOption('model');
@@ -30,16 +31,15 @@ class ua5WidgetFormJQueryUIAutocomplete extends sfWidgetFormDoctrineChoice {
     parent::configure($options, $attributes);
   }
 
-
   /**
    * Returns the choices associated to the model.
    *
    * @return array An array of choices
    */
-  public function getChoices() {
+  public function getChoices()
+  {
     return array();
   }
-
 
   /**
    * @param  string $name        The element name
@@ -53,7 +53,6 @@ class ua5WidgetFormJQueryUIAutocomplete extends sfWidgetFormDoctrineChoice {
    */
   public function render($name, $value = null, $attributes = array(), $errors = array())
   {
-
     $column = $this->getOption('column');
     $model = $this->getOption('model');
     $table_method = $this->getOption('table_method');
@@ -112,6 +111,4 @@ EOF
     return $this->renderTag('input', array('type' => 'text', 'name' => $name, 'value' => $visibleValue));
 
   }
-
-
 }

@@ -8,14 +8,16 @@
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
  * @version    SVN: $Id: sfDoctrineGenerator.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
  */
-class ua5DoctrineGenerator extends sfDoctrineGenerator {
+class ua5DoctrineGenerator extends sfDoctrineGenerator
+{
 
   /**
    * Returns an array of tables that represents a one to many relationship.
    *
    * @return array An array of tables.
    */
-  public function getOneToManyTables() {
+  public function getOneToManyTables()
+  {
     $relations = array();
     foreach ($this->table->getRelations() as $relation) {
       if (
@@ -40,10 +42,11 @@ class ua5DoctrineGenerator extends sfDoctrineGenerator {
    * @return string HTML code
    *
    */
-  public function getLinkToAction($actionName, $params, $pk_link = false)  {
+  public function getLinkToAction($actionName, $params, $pk_link = false)
+  {
 
 
-    if ( isset($params['doctrine_route']) ) {
+    if (isset($params['doctrine_route'])) {
       /*
        * Allow the following in generator.yml:
        *
@@ -54,7 +57,7 @@ class ua5DoctrineGenerator extends sfDoctrineGenerator {
        */
       $route = $params['doctrine_route'];
       $link_to_params = '$'.$this->getSingularName();
-   } else {
+    } else {
       /*
        * Allow the following in generator.yml:
        *
@@ -73,12 +76,12 @@ class ua5DoctrineGenerator extends sfDoctrineGenerator {
       );
 
       $url_params = "";
-      if ( $pk_link ) {
+      if ($pk_link) {
         $url_params.= ".'?".$this->getPrimaryKeyUrlParams();
       }
-      if ( isset($params['url_params']) && is_array($params['url_params']) ) {
-        foreach ( $params['url_params'] as $k => $v ) {
-          if ( '@sf_request' === $v ) {
+      if (isset($params['url_params']) && is_array($params['url_params'])) {
+        foreach ($params['url_params'] as $k => $v) {
+          if ('@sf_request' === $v) {
             $url_params.= '. \'&'. urlencode($k) .'=\'. urlencode(sfContext::getInstance()->getRequest()->getParameter(\''. $k .'\'))';
           } else {
             $url_params.= '. \'&'. http_build_query(array($k => $v));
@@ -97,6 +100,4 @@ class ua5DoctrineGenerator extends sfDoctrineGenerator {
       $link_to_params
     );
   }
-
-
 }

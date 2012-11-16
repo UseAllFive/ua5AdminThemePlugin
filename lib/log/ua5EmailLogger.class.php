@@ -8,19 +8,20 @@
  * @author Aaron Hall <adhall@gmail.com>
  *
  */
-class ua5EmailLogger extends sfLogger {
+class ua5EmailLogger extends sfLogger
+{
 
-  protected
-    $subject_format   = 'Application error',
-    $body_format      = 'Time: %time%%EOL%Priority: %priority%%EOL%%EOL%%message%%EOL%%EOL%%request%',
-    $time_format      = '%b %d %H:%M:%S',
-    $exception_format = '[%class%] %message%%EOL%%EOL%%trace%',
-    $request_format   = '%method% %uri% (%xhr%)%EOL%%EOL%[IP] %ip%%EOL%[USER_AGENT] %user_agent%%EOL%[GET] %get%%EOL%[POST] %post%%EOL%Referrer: %referrer%%EOL%Forwarded-for: %forwarded_for%',
-    $recipients       = null, // string address or array of addresses
-    $from             = null;
+  protected $subject_format   = 'Application error';
+  protected $body_format      = 'Time: %time%%EOL%Priority: %priority%%EOL%%EOL%%message%%EOL%%EOL%%request%';
+  protected $time_format      = '%b %d %H:%M:%S';
+  protected $exception_format = '[%class%] %message%%EOL%%EOL%%trace%';
+  protected $request_format   = '%method% %uri% (%xhr%)%EOL%%EOL%[IP] %ip%%EOL%[USER_AGENT] %user_agent%%EOL%[GET] %get%%EOL%[POST] %post%%EOL%Referrer: %referrer%%EOL%Forwarded-for: %forwarded_for%';
+  protected $recipients       = null; // string address or array of addresses
+  protected $from             = null;
 
 
-  public function initialize(sfEventDispatcher $dispatcher, $options = array()) {
+  public function initialize(sfEventDispatcher $dispatcher, $options = array())
+  {
     $this->extractOptions(array(
       'subject_format',
       'body_format',
@@ -34,20 +35,22 @@ class ua5EmailLogger extends sfLogger {
   }
 
 
-  protected function extractOptions($keys, $options) {
-    foreach ( $keys as $key ) {
-      if ( isset($options[$key]) ) {
+  protected function extractOptions($keys, $options)
+  {
+    foreach ($keys as $key) {
+      if (isset($options[$key])) {
         $this->$key = $options[$key];
       }
     }
   }
 
 
-  public function listenToLogEvent(sfEvent $event) {
+  public function listenToLogEvent(sfEvent $event)
+  {
     $priority = isset($event['priority']) ? $event['priority'] : self::INFO;
 
-    if ( $event->getSubject() instanceof Exception ) {
-      if ( $this->getLogLevel() >= $priority ) {
+    if ($event->getSubject() instanceof Exception) {
+      if ($this->getLogLevel() >= $priority) {
         $this->doLogException($event->getSubject(), $priority);
       }
     } else {
@@ -56,7 +59,8 @@ class ua5EmailLogger extends sfLogger {
   }
 
 
-  protected function doLogException(Exception $e, $priority) {
+  protected function doLogException(Exception $e, $priority)
+  {
     $message = strtr($this->exception_format, array(
       '%class%'   => get_class($e),
       '%message%' => $e->getMessage(),
@@ -68,7 +72,8 @@ class ua5EmailLogger extends sfLogger {
   }
 
 
-  protected function doLog($message, $priority) {
+  protected function doLog($message, $priority)
+  {
     $request = sfContext::getInstance()->getRequest();
     $request_map = array(
       '%method%'        => $request->getMethod(),
@@ -104,20 +109,22 @@ class ua5EmailLogger extends sfLogger {
    * @param string $subject The message subject
    * @param string $body The message body
    */
-  protected function doMail($subject, $body) {
+  protected function doMail($subject, $body)
+  {
     try {
       sfContext::getInstance()->getMailer()->composeAndSend($this->from, $this->recipients, $subject, $body);
-    } catch(Exception $e) {
+    } catch (Exception $e) {
       // do nothing
     }
   }
 
 
-  static protected function buildParameterString(array $params) {
+  protected static function buildParameterString(array $params)
+  {
     $parts = array();
 
-    foreach ( $params as $key => $val ) {
-      if ( is_array($val) ) {
+    foreach ($params as $key => $val) {
+      if (is_array($val)) {
         $parts[] = "{$key}: {" . self::buildParameterString($val) . "}";
       } else {
         $parts[] = $val ? "{$key}: $val" : $key;
@@ -126,6 +133,4 @@ class ua5EmailLogger extends sfLogger {
 
     return implode(', ', $parts);
   }
-
-
 }

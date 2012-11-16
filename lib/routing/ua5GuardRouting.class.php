@@ -23,14 +23,23 @@ class ua5GuardRouting
    * @param sfEvent An sfEvent instance
    * @static
    */
-  static public function listenToRoutingLoadConfigurationEvent(sfEvent $event)
+  public static function listenToRoutingLoadConfigurationEvent(sfEvent $event)
   {
     $r = $event->getSubject();
 
     // preprend our routes
-    $r->prependRoute('sf_guard_signin', new sfRoute('/login', array('module' => 'ua5GuardAuth', 'action' => 'signin'))); 
-   	$r->prependRoute('sf_guard_signout', new sfRoute('/logout', array('module' => 'ua5GuardAuth', 'action' => 'signout'))); 
-   	$r->prependRoute('sf_guard_password', new sfRoute('/request_password', array('module' => 'ua5GuardAuth', 'action' => 'password')));
+    $r->prependRoute('sf_guard_signin', new sfRoute(
+      '/login',
+      array('module' => 'ua5GuardAuth', 'action' => 'signin')
+    ));
+    $r->prependRoute('sf_guard_signout', new sfRoute(
+      '/logout',
+      array('module' => 'ua5GuardAuth', 'action' => 'signout')
+    ));
+    $r->prependRoute('sf_guard_password', new sfRoute(
+      '/request_password',
+      array('module' => 'ua5GuardAuth', 'action' => 'password')
+    ));
   }
 
   /**
@@ -39,7 +48,7 @@ class ua5GuardRouting
    * @param sfEvent $event
    * @static
    */
-  static public function addRouteForAdminUser(sfEvent $event)
+  public static function addRouteForAdminUser(sfEvent $event)
   {
     $event->getSubject()->prependRoute('sf_guard_user', new sfDoctrineRouteCollection(array(
       'name'                => 'sf_guard_user',
@@ -58,7 +67,7 @@ class ua5GuardRouting
    * @param sfEvent $event
    * @static
    */
-  static public function addRouteForAdminGroup(sfEvent $event)
+  public static function addRouteForAdminGroup(sfEvent $event)
   {
     $event->getSubject()->prependRoute('sf_guard_group', new sfDoctrineRouteCollection(array(
       'name'                => 'sf_guard_group',
@@ -77,7 +86,7 @@ class ua5GuardRouting
    * @param sfEvent $event
    * @static
    */
-  static public function addRouteForAdminPermission(sfEvent $event)
+  public static function addRouteForAdminPermission(sfEvent $event)
   {
     $event->getSubject()->prependRoute('sf_guard_permission', new sfDoctrineRouteCollection(array(
       'name'                => 'sf_guard_permission',

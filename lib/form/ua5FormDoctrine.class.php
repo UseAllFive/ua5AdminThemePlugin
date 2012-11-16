@@ -8,15 +8,14 @@
  * @author     Matt Farmer <matt@useallfive.com>
  * @version    SVN: $Id: sfDoctrineFormBaseTemplate.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
  */
-abstract class ua5FormDoctrine extends sfFormDoctrine {
+abstract class ua5FormDoctrine extends sfFormDoctrine
+{
 
-  protected
-    $model_class = null;
+  protected $model_class = null;
 
-
-  public function setup() {
+  public function setup()
+  {
   }
-
 
   /*
    * @param (string) Relation Alias
@@ -25,8 +24,8 @@ abstract class ua5FormDoctrine extends sfFormDoctrine {
    * @param (string) Name of new Form collection Class
    *
    */
-  protected function _parseEmbedRelatedConfig($cfg) {
-
+  protected function _parseEmbedRelatedConfig($cfg)
+  {
     $obj = $this->getObject();
     $class = get_class($obj);
 
@@ -71,8 +70,8 @@ abstract class ua5FormDoctrine extends sfFormDoctrine {
     );
   }
 
-
-  public function configure() {
+  public function configure()
+  {
     parent::configure();
 
     $this->configureVideoColumns();
@@ -82,14 +81,14 @@ abstract class ua5FormDoctrine extends sfFormDoctrine {
   }
 
 
-  protected function _embedRelated() {
-
-    if ( isset($this->embededRelations) ) {
+  protected function _embedRelated()
+  {
+    if (isset($this->embededRelations)) {
 
       $obj = $this->getObject();
       $class = get_class($obj);
 
-      foreach ( $this->embededRelations as $relation_cfg ) {
+      foreach ($this->embededRelations as $relation_cfg) {
 
         list(
           $rel_alias,
@@ -101,7 +100,7 @@ abstract class ua5FormDoctrine extends sfFormDoctrine {
         ) = $this->_parseEmbedRelatedConfig($relation_cfg);
 
         $this->embedRelation($rel_alias, $form_class, array(), null, "<table class=\"embeded_form\">\n  %content%</table>");
-        if ( $embed_delete_js ) {
+        if ($embed_delete_js) {
           JSUtil::appendOnReady(sprintf("ua5_cms.deleteRelated('%s');", $rel_alias));
         }
         $this->embedForm(
@@ -116,7 +115,8 @@ abstract class ua5FormDoctrine extends sfFormDoctrine {
     }
   }
 
-  public function save($con = null) {
+  public function save($con = null)
+  {
     $ret = parent::save($con);
 
     $this->saveVideoColumns();
@@ -126,12 +126,13 @@ abstract class ua5FormDoctrine extends sfFormDoctrine {
   }
 
 
-  public function saveEmbeddedForms($con = null, $forms = null) {
+  public function saveEmbeddedForms($con = null, $forms = null)
+  {
 
-    if ( null === $forms && isset($this->embededRelations) ) {
+    if (null === $forms && isset($this->embededRelations)) {
 
       $forms = $this->embeddedForms;
-      foreach ( $this->embededRelations as $relation_cfg ) {
+      foreach ($this->embededRelations as $relation_cfg) {
 
         list(
           $rel_alias,
@@ -144,7 +145,7 @@ abstract class ua5FormDoctrine extends sfFormDoctrine {
 
         $obj_vals = $this->getValue($rel_new_form_name);
         foreach ($forms[$rel_new_form_name] as $name => $form) {
-          if ( !isset($obj_vals[$name]) || "" == $obj_vals[$name] ) {
+          if (!isset($obj_vals[$name]) || "" == $obj_vals[$name]) {
             unset($forms[$rel_new_form_name][$name]);
           }
         }
@@ -154,16 +155,16 @@ abstract class ua5FormDoctrine extends sfFormDoctrine {
     return parent::saveEmbeddedForms($con, $forms);
   }
 
-
-  protected function getModelClass() {
-    if ( is_null($this->model_class) ) {
+  protected function getModelClass()
+  {
+    if (is_null($this->model_class)) {
       $this->model_class = sfInflector::tableize(get_class($this->getObject()));
     }
     return $this->model_class;
   }
 
-
-  protected function getImageColumnTemplate(sfDoctrineRecord $object, $field_name) {
+  protected function getImageColumnTemplate(sfDoctrineRecord $object, $field_name)
+  {
     $view_link = !$object[$field_name]? '' :
       sprintf(
         '<li><a href="%s" class="%s" data-thumb-url="%s" target="_blank">%s</a></li>',
@@ -185,9 +186,10 @@ EOT
   }
 
 
-  protected function configureImageColumns() {
-    if ( isset($this->image_columns) ) {
-      foreach ( $this->image_columns as $col ) {
+  protected function configureImageColumns()
+  {
+    if (isset($this->image_columns)) {
+      foreach ($this->image_columns as $col) {
         $obj = $this->getObject();
         $required = $this->getValidator($col)->getOption('required');
         $this->setWidget($col, new sfWidgetFormInputFileEditable(array(
@@ -202,7 +204,7 @@ EOT
           'mime_types' => 'web_images',
           'path' => sfConfig::get('sf_upload_dir')
         )));
-        if ( !$required ) {
+        if (!$required) {
           //-- Add validator for deletable images
           $this->setValidator($col.'_delete', new sfValidatorBoolean());
         }
@@ -211,9 +213,10 @@ EOT
   }
 
 
-  protected function saveImageColumns() {
-    if ( isset($this->image_columns) ) {
-      foreach ( $this->image_columns as $col ) {
+  protected function saveImageColumns()
+  {
+    if (isset($this->image_columns)) {
+      foreach ($this->image_columns as $col) {
         if (
           ($file = $this->getValue($col))
         ) {
@@ -232,10 +235,10 @@ EOT
     }
   }
 
-
-  protected function configureVideoColumns() {
-    if ( isset($this->video_columns) ) {
-      foreach ( $this->video_columns as $col ) {
+  protected function configureVideoColumns()
+  {
+    if (isset($this->video_columns)) {
+      foreach ($this->video_columns as $col) {
         $obj = $this->getObject();
         $required = $this->getValidator($col)->getOption('required');
         $view_link = !$obj[$col]? '' :
@@ -276,9 +279,10 @@ EOT
   }
 
 
-  protected function saveVideoColumns() {
+  protected function saveVideoColumns()
+  {
     if ( isset($this->video_columns) ) {
-      foreach ( $this->video_columns as $col ) {
+      foreach ($this->video_columns as $col) {
         if (
           isset($this->widgetSchema[$col]) &&
           ($video = $this->getValue($col))
@@ -296,6 +300,4 @@ EOT
       }
     }
   }
-
-
 }

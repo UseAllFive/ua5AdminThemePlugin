@@ -1,16 +1,15 @@
 <?php
 
-class ua5ProjectConfiguration extends sfProjectConfiguration {
+class ua5ProjectConfiguration extends sfProjectConfiguration
+{
 
-
-  protected static
-    $routing = array();
-
+  protected static $routing = array();
 
   /**
    * Returns the routing resource for the active application
    */
-  static public function getRouting($force_new = false, $app_name = null, $env = 'prod', $is_secure = null) {
+  public static function getRouting($force_new = false, $app_name = null, $env = 'prod', $is_secure = null)
+  {
 
     //-- Save our original settings so we can put them back at the end if needed
     $orig_app = sfConfig::get('sf_app');
@@ -95,6 +94,4 @@ class ua5ProjectConfiguration extends sfProjectConfiguration {
     }
     return self::$routing[$key];
   }
-
-
 }

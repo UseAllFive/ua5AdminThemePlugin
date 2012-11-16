@@ -6,15 +6,16 @@
  *
  * @author Aaron Hall <adhall@gmail.com>
  */
-class SingleDimArrayHydrator extends Doctrine_Hydrator_Abstract {
+class SingleDimArrayHydrator extends Doctrine_Hydrator_Abstract
+{
 
-  public function hydrateResultSet($stmt) {
+  public function hydrateResultSet($stmt)
+  {
     $result = array();
-    while(($val = $stmt->fetchColumn()) !== false) {
+    while (($val = $stmt->fetchColumn()) !== false) {
       $result[] = $val;
     }
 
     return $result;
   }
-
 }
