@@ -1,4 +1,5 @@
 <ul class="nav">
+<?php if ( $sf_user->isAuthenticated() ): ?>
 
 
 <?php /*
@@ -27,4 +28,5 @@
 
   <li class="l1 last">
   </li>
+<?php endif; ?>
 </ul>
