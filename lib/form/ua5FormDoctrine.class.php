@@ -190,13 +190,19 @@ EOT
   {
     if (isset($this->image_columns)) {
       foreach ($this->image_columns as $col) {
+        if ( !is_array($opts) ) {
+          $col = $opts;
+          $opts = array(
+            'image_size' => 'original',
+          );
+        }
         $obj = $this->getObject();
         $required = $this->getValidator($col)->getOption('required');
         $this->setWidget($col, new sfWidgetFormInputFileEditable(array(
           'edit_mode' => !$this->isNew(),
           'is_image' => true,
           'with_delete' => $obj[$col] && !$required,
-          'file_src' => $obj->ThumbnailUrl($col, 'original'),
+          'file_src' => $obj->ThumbnailUrl($col, $opts['image_size']),
           'template' => $this->getImageColumnTemplate($obj, $col),
         )));
         $this->setValidator($col, new sfValidatorFile(array(
