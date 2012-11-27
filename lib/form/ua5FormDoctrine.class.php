@@ -189,7 +189,7 @@ EOT
   protected function configureImageColumns()
   {
     if (isset($this->image_columns)) {
-      foreach ($this->image_columns as $col) {
+      foreach ( $this->image_columns as $col => $opts ) {
         if ( !is_array($opts) ) {
           $col = $opts;
           $opts = array(
