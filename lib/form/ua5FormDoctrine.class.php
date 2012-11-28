@@ -276,7 +276,7 @@ EOT
 EOT
         )));
         $this->setValidator($col, new sfValidatorFile(array(
-          'required' => $this->isNew(),
+          'required' => $required && $this->isNew(),
           'mime_types' => array('video/quicktime','video/x-flv', 'application/octet-stream', 'video/mp4'),
           'path' =>  $this->getObject()->getVideoEncodablePath($col, false)
         )));
