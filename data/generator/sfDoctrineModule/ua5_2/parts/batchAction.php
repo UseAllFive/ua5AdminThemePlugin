@@ -58,5 +58,6 @@
     }
 
     $this->getUser()->setFlash('notice', 'The selected items have been deleted successfully.');
-    $this->redirect('@<?php echo $this->getUrlForAction('list') ?>');
+    $route_uri = $request->getParameter('redirect_uri', '@<?php echo $this->getUrlForAction('list') ?>');
+    $this->redirect($route_uri);
   }
