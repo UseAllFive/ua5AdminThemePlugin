@@ -3,9 +3,12 @@
   $max = count($this->configuration->getValue('list.display'));
 ?>
 <?php foreach ($this->configuration->getValue('list.display') as $name => $field): ?>
-<?php 
+<?php
   $i = 1 + $i;
-  $class = (1 === $i) ? ' rtl_5' : '';
+  $class = '';
+  if (1 === $i && !$this->table->hasTemplate('Sortable')) {
+    $class .= ' rtl_5';
+  }
 ?>
 [?php slot('sf_admin.current_header') ?]
 <th class="sf_admin_<?php echo strtolower($field->getType()) ?> sf_admin_list_th_<?php echo $name.$class ?>">

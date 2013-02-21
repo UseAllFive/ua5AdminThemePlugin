@@ -3,7 +3,17 @@ $column_count =
   count($this->configuration->getValue('list.display')) +
   ($this->configuration->getValue('list.object_actions') ? 1 : 0) +
   ($this->configuration->getValue('list.batch_actions') ? 1 : 0);
+$isSortable = $this->table->hasTemplate('Sortable');
 ?>
+<?php if ($isSortable): ?>
+    [?php sfConfig::set('app_ua5_cms_include_jquery_ui', true); ?]
+    [?php js_append_onready(<<<EOT
+        ua5_cms.sortable.init('<?php echo $this->getModelClass(); ?>', '.sf_admin_list>table>tbody');
+EOT
+);
+
+    ?]
+<?php endif; ?>
 
 <div class="sf_admin_list">
   [?php if (!$pager->getNbResults()): ?]
@@ -12,6 +22,9 @@ $column_count =
     <table class="r_5" cellspacing="0">
       <thead>
         <tr>
+<?php if ($isSortable): ?>
+          <th id="sf_admin_list_th_sortable" class="rtl_5"></th>
+<?php endif; ?>
           [?php include_partial('<?php echo $this->getModuleName() ?>/list_th_<?php echo $this->configuration->getValue('list.layout') ?>', array('sort' => $sort)) ?]
 <?php if ($this->configuration->getValue('list.object_actions')): ?>
           <th id="sf_admin_list_th_actions">[?php echo __('Actions', array(), 'sf_admin') ?]</th>
@@ -23,7 +36,7 @@ $column_count =
       </thead>
       <tfoot>
         <tr>
-          <th colspan="<?php echo ($column_count) ?>" class="rb_5">
+          <th colspan="<?php echo $column_count + ($isSortable ? 1 : 0) ?>" class="rb_5">
             <div class="sf_admin_batch_actions">
               [?php include_partial('<?php echo $this->getModuleName() ?>/list_batch_actions', array('helper' => $helper)) ?]
             </div>
@@ -36,7 +49,10 @@ $column_count =
       </tfoot>
       <tbody>
         [?php foreach ($pager->getResults() as $i => $<?php echo $this->getSingularName() ?>): $odd = fmod(++$i, 2) ? 'odd' : 'even' ?]
-          <tr class="sf_admin_row [?php echo $odd ?]">
+          <tr class="sf_admin_row [?php echo $odd ?]" data-id="[?php echo $<?php echo $this->getSingularName(); ?>['id']; ?]">
+<?php if ($isSortable): ?>
+            <td><span class="ui-icon ui-icon-arrowthick-2-n-s"></span></td>
+<?php endif; ?>
             [?php include_partial('<?php echo $this->getModuleName() ?>/list_td_<?php echo $this->configuration->getValue('list.layout') ?>', array('<?php echo $this->getSingularName() ?>' => $<?php echo $this->getSingularName() ?>)) ?]
 <?php if($this->configuration->getValue('list.object_actions')): ?>
             [?php include_partial('<?php echo $this->getModuleName() ?>/list_td_actions', array('<?php echo $this->getSingularName() ?>' => $<?php echo $this->getSingularName() ?>, 'helper' => $helper)) ?]

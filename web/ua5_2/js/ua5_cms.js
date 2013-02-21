@@ -316,7 +316,7 @@ ua5_cms.sortable = (function() {
         $items.each(function(i, el) {
           var $this = $(this),
               $position_input = $this.find('[name$="[position]"]'),
-              id = $this.children('th').text(),
+              id = $this.data('id') || $this.children('th').text(),
               old_position = parseInt($position_input.val(),10),
               new_position = i;
           order[id] = {
