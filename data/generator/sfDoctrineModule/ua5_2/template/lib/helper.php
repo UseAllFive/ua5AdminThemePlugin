@@ -15,13 +15,25 @@ abstract class Base<?php echo ucfirst($this->getModuleName()) ?>GeneratorHelper 
     return 'list' == $action ? '<?php echo $this->params['route_prefix'] ?>' : '<?php echo $this->params['route_prefix'] ?>_'.$action;
   }
   
-  public function linkToNew($params)
+  public function linkToNew($params = array())
   {
+    $query_data = array();
+    $query_str = '';
+    if (isset($params['default_data'])) {
+      $query_data['<?php echo $this->getModelClass(); ?>'] = $params['default_data'];
+    }
+    if (!empty($query_data)) {
+      $query_str = '?'. http_build_query($query_data);
+    }
     return sprintf(
       '<li class="sf_admin_action_new">%s</li>',
       link_to(
         '<span class="icon"></span>Add <?php echo ucfirst(sfInflector::humanize($this->getSingularName())) ?>',
-        '@'.$this->getUrlForAction('new'),
+        sprintf(
+          '@%s%s',
+          $this->getUrlForAction('new'),
+          $query_str
+        ),
         array('class' => 'r_3')
       )
     );
