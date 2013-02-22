@@ -797,8 +797,14 @@ tr.sf_admin_row td a {
 }
 .sf_admin_action_delete a       span  { background-position: 0px  -30px; }
 .sf_admin_action_delete a:hover span  { background-position: 0px  -60px; }
-.sf_admin_action_list   a       span  { background-position: 0px  -90px; }
-.sf_admin_action_list   a:hover span  { background-position: 0px -120px; }
+.sf_admin_action_list   a       span,
+.sf_admin_actions       a       .icon.back_arrow {
+  background-position: 0px  -90px;
+}
+.sf_admin_action_list   a:hover span,
+.sf_admin_actions       a:hover .icon.back_arrow {
+  background-position: 0px -120px;
+}
 .sf_admin_action_new    a       span  { background-position: 0px -150px; }
 
 
