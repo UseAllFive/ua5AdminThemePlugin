@@ -29,9 +29,9 @@ sfGuardUser:
     password:       c9fdb255fb
     first_name:     Bret
     last_name:      Morris
-  User_Daniel:
-    email_address:  daniel@useallfive.com
-    username:       daniel
+  User_Peng:
+    email_address:  peng@useallfive.com
+    username:       peng
     password:       bf6fc255fb
-    first_name:     Daniel
-    last_name:      Ornelas
+    first_name:     Peng
+    last_name:      Wang
