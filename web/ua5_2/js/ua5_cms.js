@@ -228,21 +228,41 @@ ua5_cms.namespace('form').chosen = (function() {
   function setViewButtons() {
     $view_fields.each(function() {
       var $this = $(this),
-          image_url = $this.attr('href'),
-          image_tag = '<img width="475" src="'+image_url+'" />';
-      $this.qtip({
-        content: image_tag,
-        show: 'mouseover',
-        hide: 'mouseout',
+          src = $this.attr('href'),
+          ext = src.split('.').pop(),
+          width = 475,
+          borderWidth = 5,
+          outerWidth = width + borderWidth * 2,
+          custom = { show: {}, hide: {} },
+          tag;
+      if ( /mpe?g|mov|mp(eg)?4/.test(ext) ) {
+        tag = '<video width="'+width+'" src="'+src+'" controls autoplay loop>'+
+          'Sorry, your browser doesn\'t support video playback.'+
+          '</video>';
+        custom.hide.fixed = true;
+        custom.hide.when = { event: 'mouseout' };
+      } else {
+        tag = '<img width="'+width+'" src="'+src+'" />';
+        custom.hide = 'mouseout';
+      }
+      $this.qtip($.extend({
+        content: tag,
+        show: {
+          solo: true,
+          when: { event: 'mouseover' }
+        },
         style: {
           name: 'light',
           tip: true,
           width: {
-            min: 500,
-            max: 500
+            min: outerWidth,
+            max: outerWidth
           },
+          padding: 0,
+          lineHeight: 0,
+          boxSizing: 'border-box',
           border: {
-            radius: 4,
+            radius: borderWidth,
             color: '#e1e1e1'
           }
         },
@@ -252,7 +272,7 @@ ua5_cms.namespace('form').chosen = (function() {
             tooltip: 'bottomMiddle'
           }
         }
-      });
+      }, custom));
     });
   }
 
