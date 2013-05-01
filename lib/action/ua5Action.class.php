@@ -121,7 +121,7 @@ abstract class ua5Action extends sfAction
     /**
      * Generic form error output, with an error object for each invalid field.
      */
-    protected function renderFormJsonError(sfFormDoctrine $form)
+    protected function renderFormJsonError(sfFormDoctrine $form, $render=true)
     {
         $errors = array();
         foreach ($form->getFormFieldSchema() as $name => $field) {
@@ -136,6 +136,6 @@ abstract class ua5Action extends sfAction
                 );
             }
         }
-        return $this->renderJsonError($errors);
+        return $render ? $this->renderJsonError($errors) : $errors;
     }
 }
