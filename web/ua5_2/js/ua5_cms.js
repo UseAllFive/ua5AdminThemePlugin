@@ -585,7 +585,7 @@ ua5_cms.wysiwyg = (function() {
 
         };
 
-    opts = $.extend(default_opts, opts);
+    opts = $.extend({}, default_opts, opts);
 
     for ( i in opts.enabled_items ) {
       if ( opts.toolbar.hasOwnProperty(opts.enabled_items[i]) ) {
@@ -645,7 +645,7 @@ ua5_cms.wysiwyg = (function() {
 
       $this = $(this);
       $wrap = $('<div id="' + ua5_cms.createId('ua5_cms_wysiwyg_wrap') + '" />');
-      $toolbar = _buildToolbar();
+      $toolbar = _buildToolbar(window.wysihtml5ToolbarOptions||{});
 
       $this.wrap($wrap);
       $this.before($toolbar);

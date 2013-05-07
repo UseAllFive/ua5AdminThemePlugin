@@ -47,9 +47,10 @@
   <script src="/ua5AdminThemePlugin/ua5_2/js/libs/chosen.js"></script>
   <script src="/ua5AdminThemePlugin/ua5_2/js/wysihtml5-config.js"></script>
   <script src="/ua5AdminThemePlugin/ua5_2/dependencies/wysihtml5/dist/wysihtml5-0.3.0.js"></script>
-  <script src="/ua5AdminThemePlugin/ua5_2/js/ua5_cms.js"></script>
 
   <?php include_javascripts() ?>
+  <script src="/ua5AdminThemePlugin/ua5_2/js/ua5_cms.js"></script>
+
 </head>
 
 <body class="<?php echo "module". ucfirst($sf_request->getParameter('module')) .' action'. ucfirst($sf_request->getParameter('action')); ?>">
