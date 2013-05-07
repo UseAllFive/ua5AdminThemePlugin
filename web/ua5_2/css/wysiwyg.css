@@ -106,6 +106,7 @@ iframe.wysihtml5-sandbox,
 .ua5-wysiwyg-toolbar .btn i.icon-image { background-position: -256px 0; width: 16px; }
 .ua5-wysiwyg-toolbar .btn i.icon-speech { background-position: -276px 0; width: 16px; }
 .ua5-wysiwyg-toolbar .btn i.icon-source { background-position: -296px 0; width: 16px; }
+.ua5-wysiwyg-toolbar .btn i.icon-sup { background-position: -316px 0; width: 22px; }
 
 .ua5-wysiwyg-toolbar-options {
   float: left;

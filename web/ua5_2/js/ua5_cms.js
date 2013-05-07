@@ -449,6 +449,14 @@ ua5_cms.wysiwyg = (function() {
               }
             },
 
+            'sup': {
+              'tag': 'a',
+              'icon': 'sup',
+              'attrs': {
+                'data-wysihtml5-command': 'superscript'
+              }
+            },
+
             'h1': {
               'tag': 'a',
               'icon': 'h1',
