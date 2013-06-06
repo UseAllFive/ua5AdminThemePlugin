@@ -76,8 +76,13 @@ class Ua5Doctrine_Query extends Doctrine_Query
         $relationOptions = $this->relationNames[$relationName];
         foreach ($relationOptions as $func => $params) {
           if ('alias' === $func) {
+            if (false !== strpos($relationName, '.')) {
+              $table_reference = $relationName;
+            } else {
+              $table_reference = "$queryAlias.$relationName";
+            }
             $relationAlias = $params;
-            $this->leftJoin("$queryAlias.$relationName $relationAlias");
+            $this->leftJoin("$table_reference $relationAlias");
           } else {
             call_user_func_array(array($this, $func), $params);
           }
