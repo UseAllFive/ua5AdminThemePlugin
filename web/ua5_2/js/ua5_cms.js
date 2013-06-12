@@ -236,7 +236,7 @@ ua5_cms.namespace('form').chosen = (function() {
           custom = { show: {}, hide: {} },
           tag;
       if ( /mpe?g|mov|mp(eg)?4/.test(ext) ) {
-        tag = '<video width="'+width+'" src="'+src+'" controls autoplay loop>'+
+        tag = '<video width="'+width+'" src="'+src+'" controls autoplay>'+
           'Sorry, your browser doesn\'t support video playback.'+
           '</video>';
         custom.hide.fixed = true;
