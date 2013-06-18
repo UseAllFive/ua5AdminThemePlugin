@@ -8,14 +8,17 @@ $isSortable = $this->table->hasTemplate('Sortable');
 <?php if ($isSortable): ?>
     [?php sfConfig::set('app_ua5_cms_include_jquery_ui', true); ?]
     [?php js_append_onready(<<<EOT
-        ua5_cms.sortable.init('<?php echo $this->getModelClass(); ?>', '.sf_admin_list>table>tbody');
+        ua5_cms.sortable.init(
+            '<?php echo $this->getModelClass(); ?>',
+            '.sf_admin_list.<?php echo $this->getModelClass(); ?>>table>tbody'
+        );
 EOT
 );
 
     ?]
 <?php endif; ?>
 
-<div class="sf_admin_list">
+<div class="sf_admin_list <?php echo $this->getModelClass(); ?>">
   [?php if (!$pager->getNbResults()): ?]
     <p>[?php echo __('No result', array(), 'sf_admin') ?]</p>
   [?php else: ?]
