@@ -20,7 +20,9 @@ var ua5_cms = (function(){
       }
 
       return this[name];
-    }
+    },
+
+    'delegate': {}
   };
 })();
 
@@ -310,10 +312,14 @@ ua5_cms.sortable = (function() {
 
   "use strict";
 
-  function init(model, selector) {
+  var delegate;
+
+  function init(model, selector, opts) {
+    opts = opts || {};
     var $list = $(selector);
 
     //-- Show handles
+    //-- TODO: Not sure this is still getting used.
     $list.children('tr').children('th')
       .css({
         'display': 'block',
@@ -324,21 +330,24 @@ ua5_cms.sortable = (function() {
         $(this).append('<img src="/ua5AdminThemePlugin/images/sort.png" style="margin-top: -10px;" />');
       });
 
-    $list.sortable({
+    $list.sortable($.extend({
       'axis': 'y',
       'cursor': 'move',
+      'items' : opts.items_selector ? opts.items_selector : undefined,
       'update': function(e, ui) {
 
         //-- Don't cache the items so we can get the new order
-        var $items = $list.children('tr'),
+        var $items = opts.items_selector ? $list.find(opts.items_selector) : $list.children('tr'),
             order = {};
 
         $items.each(function(i, el) {
           var $this = $(this),
               $position_input = $this.find('[name$="[position]"]'),
-              id = $this.data('id') || $this.children('th').text(),
-              old_position = parseInt($position_input.val(),10),
-              new_position = i;
+              id = opts.getItemId ? opts.getItemId($(el))
+                   : ($this.data('id') || $this.children('th').text()),
+              old_position = parseInt($position_input.val(), 10),
+              new_position = (opts.use_nonzero_position || delegate.use_nonzero_position)
+                             ? (i + 1) : i;
           order[id] = {
             'old_position': old_position,
             'new_position': new_position
@@ -356,7 +365,7 @@ ua5_cms.sortable = (function() {
           dataType: "json"
         });
       }
-    });
+    }, opts.sortable));
   }
 
   function style_sort_btns() {
@@ -373,6 +382,10 @@ ua5_cms.sortable = (function() {
       text: false
     });
   }
+
+  delegate = ua5_cms.delegate.sortable = {
+    use_nonzero_position: false
+  };
 
   return {
     'init': init,
