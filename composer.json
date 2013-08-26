@@ -1,0 +1,13 @@
+{
+    "description": "A Symfony 1.x Admin Generator Theme.",
+    "extra": {
+        "installer-name": "ua5AdminThemePlugin"
+    },
+    "license": "MIT",
+    "name": "useallfive/admin-theme-plugin",
+    "require": {
+        "composer/installers": "1.x",
+        "symfony/sf-thumbnail-plugin": "dev-master"
+    },
+    "type": "symfony1-plugin"
+}
