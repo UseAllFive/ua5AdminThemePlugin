@@ -3,8 +3,15 @@
     $pager = $this->configuration->getPager('<?php echo $this->getModelClass() ?>');
     $pager->setQuery($this->buildQuery());
     $pager->setPage($this->getPage());
-    $pager->init();
 
+    $tableCountMethod = $this->configuration->getTableCountMethod();
+    $table = Doctrine_Core::getTable('<?php echo $this->getModelClass() ?>');
+    if ('' !== $tableCountMethod && method_exists($table, $tableCountMethod)) {
+        $query = $table->createQuery('a');
+        $countQuery = $table->$tableCountMethod($query);
+        $pager->setCountQuery($countQuery);
+    }
+    $pager->init();
     return $pager;
   }
 
