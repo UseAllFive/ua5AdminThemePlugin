@@ -4,6 +4,16 @@ class Ua5TesterResponse extends sfTesterResponse
 {
   protected $json = null;
 
+  public function isEqual($val1, $val2, $message)
+  {
+    $this->tester->is(
+      $val1,
+      $val2,
+      sprintf('Value is "%s, expected %s. %s"', $val1, $val2, $message)
+    );
+    return $this->getObjectToReturn();
+  }
+
   protected static function jsonKeyExists($json, $path, $delimiter = '.')
   {
     $has = false;
