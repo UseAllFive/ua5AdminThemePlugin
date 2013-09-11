@@ -2,8 +2,6 @@
 
 class Ua5TesterResponse extends sfTesterResponse
 {
-  protected $json = null;
-
   public function isEqual($val1, $val2, $message)
   {
     $this->tester->is(
@@ -47,10 +45,7 @@ class Ua5TesterResponse extends sfTesterResponse
 
   protected function getJson()
   {
-    if (null === $this->json) {
-        $this->json = json_decode($this->response->getContent(), true);
-    }
-    return $this->json;
+    return json_decode($this->response->getContent(), true);
   }
 
   public function hasJsonKey($path)
