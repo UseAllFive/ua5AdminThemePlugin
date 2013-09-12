@@ -14,6 +14,11 @@ class Ua5TesterResponse extends sfTesterResponse
 
   protected static function jsonKeyExists($json, $path, $delimiter = '.')
   {
+    //-- First make sure we have a valid json array.
+    if (!is_array($json)) {
+      return false;
+    }
+
     $has = false;
     if (!is_array($path)) {
       $path = explode($delimiter, $path);
@@ -62,6 +67,18 @@ class Ua5TesterResponse extends sfTesterResponse
   public function hasJsonKeyValue($path, $value)
   {
     $json = $this->getJson();
+
+    if (!is_array($json)) {
+      //-- We failed to decode the json, so fail.
+      $this->tester->fail(
+        sprintf(
+          'Invalid JSON. Could not determine if (%s) exists.',
+          $path
+        )
+      );
+      return $this->getObjectToReturn();
+    }
+
     try {
       $have = self::jsonKeyValue($json, $path);
       if (false === $have || $have !== $value) {
