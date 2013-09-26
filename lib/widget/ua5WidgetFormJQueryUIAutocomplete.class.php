@@ -26,7 +26,8 @@ class ua5WidgetFormJQueryUIAutocomplete extends sfWidgetFormDoctrineChoice
     $this->addOption('allow_other', false);
     $this->addOption('column', 'name');
     $this->addOption('table_method', 'createQuery');
-    $this->addOption('url', '/ua5Autocomplete/lookup/model/%model%/table_method/%table_method%/column/%column%/value/%column%/term/');
+    $this->addOption('value', $this->getOption('column', 'name'));
+    $this->addOption('url', '/ua5Autocomplete/lookup/model/%model%/table_method/%table_method%/column/%column%/value/%value%/term/');
 
     parent::configure($options, $attributes);
   }
@@ -73,12 +74,14 @@ class ua5WidgetFormJQueryUIAutocomplete extends sfWidgetFormDoctrineChoice
       array(
         '%model%',
         '%table_method%',
-        '%column%'
+        '%column%',
+        '%value%',
       ),
       array(
         $model,
         $table_method,
         $column,
+        $this->getOption('value'),
       ),
       $this->getOption('url')
     );
